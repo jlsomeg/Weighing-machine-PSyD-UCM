@@ -1,0 +1,722 @@
+   1              		.cpu arm7tdmi
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.file	"scaleEmulator.c"
+  21              	.Ltext0:
+  22              		.file 1 "../scaleEmulator.c"
+ 2006              		.align	1
+ 2007              	weightTo:
+ 2008 0000 0000     		.space	2
+ 2009              		.align	1
+ 2010              	weightFrom:
+ 2011 0002 0000     		.space	2
+ 2012              		.text
+ 2013              		.align	2
+ 2014              		.global	scale_init
+ 2016              	scale_init:
+ 2017              	.LFB0:
+   1:../scaleEmulator.c **** #include <s3c44b0x.h>
+   2:../scaleEmulator.c **** #include <s3cev40.h>
+   3:../scaleEmulator.c **** #include <leds.h>
+   4:../scaleEmulator.c **** #include <common_types.h>
+   5:../scaleEmulator.c **** #include "scaleEmulator.h"
+   6:../scaleEmulator.c **** 
+   7:../scaleEmulator.c **** static void pbs_isr( void )    __attribute__ ((interrupt ("IRQ")));
+   8:../scaleEmulator.c **** static void timer5_isr( void ) __attribute__ ((interrupt ("IRQ")));
+   9:../scaleEmulator.c **** 
+  10:../scaleEmulator.c **** static uint32 random( uint32 seed );
+  11:../scaleEmulator.c **** 
+  12:../scaleEmulator.c **** #define RANDOM ( (uint16)random( 0 ) )
+  13:../scaleEmulator.c **** 
+  14:../scaleEmulator.c **** #define TICKS2STABLE (15625)
+  15:../scaleEmulator.c **** 
+  16:../scaleEmulator.c **** /*******************************************************************/
+  17:../scaleEmulator.c **** 
+  18:../scaleEmulator.c **** static volatile ufix16 weightTo;      // Valor hacia el que convergeran las lecturas del sensor tra
+  19:../scaleEmulator.c **** static volatile ufix16 weightFrom;    // Valor desde el que convergeran las lecturas del sensor tra
+  20:../scaleEmulator.c **** 
+  21:../scaleEmulator.c **** /*******************************************************************/
+  22:../scaleEmulator.c **** 
+  23:../scaleEmulator.c **** void scale_init( void )
+  24:../scaleEmulator.c **** {
+ 2018              		.loc 1 24 0
+ 2019              		.cfi_startproc
+ 2020              		@ Function supports interworking.
+ 2021              		@ args = 0, pretend = 0, frame = 0
+ 2022              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2023 0000 0DC0A0E1 		mov	ip, sp
+ 2024              	.LCFI0:
+ 2025              		.cfi_def_cfa_register 12
+ 2026 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2027 0008 04B04CE2 		sub	fp, ip, #4
+ 2028              		.cfi_offset 14, -8
+ 2029              		.cfi_offset 13, -12
+ 2030              		.cfi_offset 11, -16
+ 2031              	.LCFI1:
+ 2032              		.cfi_def_cfa 11, 4
+  25:../scaleEmulator.c ****     weightFrom = 0;
+ 2033              		.loc 1 25 0
+ 2034 000c 94319FE5 		ldr	r3, .L2
+ 2035 0010 0020A0E3 		mov	r2, #0
+ 2036 0014 B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  26:../scaleEmulator.c ****     weightTo   = 0;
+ 2037              		.loc 1 26 0
+ 2038 0018 8C319FE5 		ldr	r3, .L2+4
+ 2039 001c 0020A0E3 		mov	r2, #0
+ 2040 0020 B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  27:../scaleEmulator.c **** 
+  28:../scaleEmulator.c ****     random( (BCDMIN << 8) | BCDSEC );                          // Define la semilla del generador d
+ 2041              		.loc 1 28 0
+ 2042 0024 84319FE5 		ldr	r3, .L2+8
+ 2043 0028 003093E5 		ldr	r3, [r3, #0]
+ 2044 002c 0324A0E1 		mov	r2, r3, asl #8
+ 2045 0030 7C319FE5 		ldr	r3, .L2+12
+ 2046 0034 003093E5 		ldr	r3, [r3, #0]
+ 2047 0038 033082E1 		orr	r3, r2, r3
+ 2048 003c 0300A0E1 		mov	r0, r3
+ 2049 0040 360100EB 		bl	random
+  29:../scaleEmulator.c **** 
+  30:../scaleEmulator.c ****     CLKCON |= (1<<10) | (1<<7) | (1 << 3);                     // Activa GPIO, BDMA y PWM
+ 2050              		.loc 1 30 0
+ 2051 0044 6C219FE5 		ldr	r2, .L2+16
+ 2052 0048 68319FE5 		ldr	r3, .L2+16
+ 2053 004c 003093E5 		ldr	r3, [r3, #0]
+ 2054 0050 123D83E3 		orr	r3, r3, #1152
+ 2055 0054 083083E3 		orr	r3, r3, #8
+ 2056 0058 003082E5 		str	r3, [r2, #0]
+  31:../scaleEmulator.c **** 
+  32:../scaleEmulator.c ****     PCONB &= ~(3<<9);                                          // PB[10] = out, PF[9] = out
+ 2057              		.loc 1 32 0
+ 2058 005c 58319FE5 		ldr	r3, .L2+20
+ 2059 0060 54219FE5 		ldr	r2, .L2+20
+ 2060 0064 002092E5 		ldr	r2, [r2, #0]
+ 2061 0068 062CC2E3 		bic	r2, r2, #1536
+ 2062 006c 002083E5 		str	r2, [r3, #0]
+  33:../scaleEmulator.c **** 
+  34:../scaleEmulator.c ****     TCFG0 = (TCFG0 & ~(0xff << 16)) | (255 << 16);             // T4-T5 PRESCALER = 255 (1/(255-1))
+ 2063              		.loc 1 34 0
+ 2064 0070 48319FE5 		ldr	r3, .L2+24
+ 2065 0074 44219FE5 		ldr	r2, .L2+24
+ 2066 0078 002092E5 		ldr	r2, [r2, #0]
+ 2067 007c FF2882E3 		orr	r2, r2, #16711680
+ 2068 0080 002083E5 		str	r2, [r3, #0]
+  35:../scaleEmulator.c ****     TCFG1 = (TCFG1 & ~(0xf << 16)) | (3 << 16);                // T4 DIVISOR = 16 (1/16)
+ 2069              		.loc 1 35 0
+ 2070 0084 38319FE5 		ldr	r3, .L2+28
+ 2071 0088 34219FE5 		ldr	r2, .L2+28
+ 2072 008c 002092E5 		ldr	r2, [r2, #0]
+ 2073 0090 0F28C2E3 		bic	r2, r2, #983040
+ 2074 0094 032882E3 		orr	r2, r2, #196608
+ 2075 0098 002083E5 		str	r2, [r3, #0]
+  36:../scaleEmulator.c ****     TCFG1 = (TCFG1 & ~(0xf << 20)) | (3 << 20);                // T5 DIVISOR = 16 (1/16)
+ 2076              		.loc 1 36 0
+ 2077 009c 20319FE5 		ldr	r3, .L2+28
+ 2078 00a0 1C219FE5 		ldr	r2, .L2+28
+ 2079 00a4 002092E5 		ldr	r2, [r2, #0]
+ 2080 00a8 0F26C2E3 		bic	r2, r2, #15728640
+ 2081 00ac 032682E3 		orr	r2, r2, #3145728
+ 2082 00b0 002083E5 		str	r2, [r3, #0]
+  37:../scaleEmulator.c ****     
+  38:../scaleEmulator.c ****     TCNTB4  = 0;                                               // T4 = 0
+ 2083              		.loc 1 38 0
+ 2084 00b4 0C319FE5 		ldr	r3, .L2+32
+ 2085 00b8 0020A0E3 		mov	r2, #0
+ 2086 00bc 002083E5 		str	r2, [r3, #0]
+  39:../scaleEmulator.c ****     TCON    = (TCON & ~(0xf << 20)) |  (1 << 21);              // Modo one shot, carga TCNT4, stop 
+ 2087              		.loc 1 39 0
+ 2088 00c0 04319FE5 		ldr	r3, .L2+36
+ 2089 00c4 00219FE5 		ldr	r2, .L2+36
+ 2090 00c8 002092E5 		ldr	r2, [r2, #0]
+ 2091 00cc 0F26C2E3 		bic	r2, r2, #15728640
+ 2092 00d0 022682E3 		orr	r2, r2, #2097152
+ 2093 00d4 002083E5 		str	r2, [r3, #0]
+  40:../scaleEmulator.c ****     INTMSK |= BIT_TIMER5;                                      // Enmascara la interrupcion por fin
+ 2094              		.loc 1 40 0
+ 2095 00d8 F0309FE5 		ldr	r3, .L2+40
+ 2096 00dc EC209FE5 		ldr	r2, .L2+40
+ 2097 00e0 002092E5 		ldr	r2, [r2, #0]
+ 2098 00e4 012C82E3 		orr	r2, r2, #256
+ 2099 00e8 002083E5 		str	r2, [r3, #0]
+  41:../scaleEmulator.c **** 
+  42:../scaleEmulator.c ****     TCNTB5  = 0;                                               // T5 = 0
+ 2100              		.loc 1 42 0
+ 2101 00ec E0309FE5 		ldr	r3, .L2+44
+ 2102 00f0 0020A0E3 		mov	r2, #0
+ 2103 00f4 002083E5 		str	r2, [r3, #0]
+  43:../scaleEmulator.c ****     TCON    = (TCON & ~(0xf << 24)) | (1 << 25);               // Modo one shot, carga TCNT5, stop 
+ 2104              		.loc 1 43 0
+ 2105 00f8 CC309FE5 		ldr	r3, .L2+36
+ 2106 00fc C8209FE5 		ldr	r2, .L2+36
+ 2107 0100 002092E5 		ldr	r2, [r2, #0]
+ 2108 0104 0F24C2E3 		bic	r2, r2, #251658240
+ 2109 0108 022482E3 		orr	r2, r2, #33554432
+ 2110 010c 002083E5 		str	r2, [r3, #0]
+  44:../scaleEmulator.c ****     INTMSK |= BIT_TIMER5;                                      // Enmascara la interrupcion por fin
+ 2111              		.loc 1 44 0
+ 2112 0110 B8309FE5 		ldr	r3, .L2+40
+ 2113 0114 B4209FE5 		ldr	r2, .L2+40
+ 2114 0118 002092E5 		ldr	r2, [r2, #0]
+ 2115 011c 012C82E3 		orr	r2, r2, #256
+ 2116 0120 002083E5 		str	r2, [r3, #0]
+  45:../scaleEmulator.c ****    
+  46:../scaleEmulator.c ****     PCONG    |= (3<<14) | (3<<12);                             // PG[7] = EINT7, PG[6] = EINT6
+ 2117              		.loc 1 46 0
+ 2118 0124 AC309FE5 		ldr	r3, .L2+48
+ 2119 0128 A8209FE5 		ldr	r2, .L2+48
+ 2120 012c 002092E5 		ldr	r2, [r2, #0]
+ 2121 0130 0F2A82E3 		orr	r2, r2, #61440
+ 2122 0134 002083E5 		str	r2, [r3, #0]
+  47:../scaleEmulator.c ****     PUPG     &= ~(0x3<<6);                                     // Pull-up enable
+ 2123              		.loc 1 47 0
+ 2124 0138 9C309FE5 		ldr	r3, .L2+52
+ 2125 013c 98209FE5 		ldr	r2, .L2+52
+ 2126 0140 002092E5 		ldr	r2, [r2, #0]
+ 2127 0144 C020C2E3 		bic	r2, r2, #192
+ 2128 0148 002083E5 		str	r2, [r3, #0]
+  48:../scaleEmulator.c ****     EXTINT    = (EXTINT & ~(0xff<<24)) | (2<<28) | (2<<24);    // Indica que las interrupciones de 
+ 2129              		.loc 1 48 0
+ 2130 014c 8C309FE5 		ldr	r3, .L2+56
+ 2131 0150 88209FE5 		ldr	r2, .L2+56
+ 2132 0154 002092E5 		ldr	r2, [r2, #0]
+ 2133 0158 FF24C2E3 		bic	r2, r2, #-16777216
+ 2134 015c 222482E3 		orr	r2, r2, #570425344
+ 2135 0160 002083E5 		str	r2, [r3, #0]
+  49:../scaleEmulator.c ****     pISR_PB   = (uint32) pbs_isr;                              // Instala la funcion pbs_down_isr c
+ 2136              		.loc 1 49 0
+ 2137 0164 78309FE5 		ldr	r3, .L2+60
+ 2138 0168 78209FE5 		ldr	r2, .L2+64
+ 2139 016c 002083E5 		str	r2, [r3, #0]
+  50:../scaleEmulator.c ****     EXTINTPND = BIT_LEFTPB | BIT_RIGHTPB;                      // Borra los bits de interrupción pe
+ 2140              		.loc 1 50 0
+ 2141 0170 74309FE5 		ldr	r3, .L2+68
+ 2142 0174 0C20A0E3 		mov	r2, #12
+ 2143 0178 002083E5 		str	r2, [r3, #0]
+  51:../scaleEmulator.c ****     I_ISPC    = BIT_PB;                                        // Borra el bit de interrupción pend
+ 2144              		.loc 1 51 0
+ 2145 017c 6C309FE5 		ldr	r3, .L2+72
+ 2146 0180 0226A0E3 		mov	r2, #2097152
+ 2147 0184 002083E5 		str	r2, [r3, #0]
+  52:../scaleEmulator.c ****     INTMSK   &= ~( BIT_GLOBAL | BIT_PB );                      // Desenmascara la interrupción por 
+ 2148              		.loc 1 52 0
+ 2149 0188 40309FE5 		ldr	r3, .L2+40
+ 2150 018c 3C209FE5 		ldr	r2, .L2+40
+ 2151 0190 002092E5 		ldr	r2, [r2, #0]
+ 2152 0194 4226C2E3 		bic	r2, r2, #69206016
+ 2153 0198 002083E5 		str	r2, [r3, #0]
+  53:../scaleEmulator.c **** }
+ 2154              		.loc 1 53 0
+ 2155 019c 0CD04BE2 		sub	sp, fp, #12
+ 2156 01a0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2157 01a4 1EFF2FE1 		bx	lr
+ 2158              	.L3:
+ 2159              		.align	2
+ 2160              	.L2:
+ 2161 01a8 02000000 		.word	weightFrom
+ 2162 01ac 00000000 		.word	weightTo
+ 2163 01b0 7400D701 		.word	30867572
+ 2164 01b4 7000D701 		.word	30867568
+ 2165 01b8 0400D801 		.word	30932996
+ 2166 01bc 0800D201 		.word	30539784
+ 2167 01c0 0000D501 		.word	30736384
+ 2168 01c4 0400D501 		.word	30736388
+ 2169 01c8 3C00D501 		.word	30736444
+ 2170 01cc 0800D501 		.word	30736392
+ 2171 01d0 0C00E001 		.word	31457292
+ 2172 01d4 4800D501 		.word	30736456
+ 2173 01d8 4000D201 		.word	30539840
+ 2174 01dc 4800D201 		.word	30539848
+ 2175 01e0 5000D201 		.word	30539856
+ 2176 01e4 74FF7F0C 		.word	209715060
+ 2177 01e8 00000000 		.word	pbs_isr
+ 2178 01ec 5400D201 		.word	30539860
+ 2179 01f0 2400E001 		.word	31457316
+ 2180              		.cfi_endproc
+ 2181              	.LFE0:
+ 2183              		.align	2
+ 2184              		.global	scale_getWeight
+ 2186              	scale_getWeight:
+ 2187              	.LFB1:
+  54:../scaleEmulator.c **** 
+  55:../scaleEmulator.c **** ufix16 scale_getWeight( void )
+  56:../scaleEmulator.c **** {
+ 2188              		.loc 1 56 0
+ 2189              		.cfi_startproc
+ 2190              		@ Function supports interworking.
+ 2191              		@ args = 0, pretend = 0, frame = 0
+ 2192              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2193 01f4 0DC0A0E1 		mov	ip, sp
+ 2194              	.LCFI2:
+ 2195              		.cfi_def_cfa_register 12
+ 2196 01f8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2197 01fc 04B04CE2 		sub	fp, ip, #4
+ 2198              		.cfi_offset 14, -8
+ 2199              		.cfi_offset 13, -12
+ 2200              		.cfi_offset 11, -16
+ 2201              	.LCFI3:
+ 2202              		.cfi_def_cfa 11, 4
+  57:../scaleEmulator.c ****     if( TCNTO4 )                                                          // El peso no se estabili
+ 2203              		.loc 1 57 0
+ 2204 0200 C4309FE5 		ldr	r3, .L8
+ 2205 0204 003093E5 		ldr	r3, [r3, #0]
+ 2206 0208 000053E3 		cmp	r3, #0
+ 2207 020c 2300000A 		beq	.L5
+  58:../scaleEmulator.c ****     {
+  59:../scaleEmulator.c ****         if( weightTo )
+ 2208              		.loc 1 59 0
+ 2209 0210 B8309FE5 		ldr	r3, .L8+4
+ 2210 0214 B030D3E1 		ldrh	r3, [r3, #0]	@ movhi
+ 2211 0218 0338A0E1 		mov	r3, r3, asl #16
+ 2212 021c 2338A0E1 		mov	r3, r3, lsr #16
+ 2213 0220 000053E3 		cmp	r3, #0
+ 2214 0224 0F00000A 		beq	.L6
+  60:../scaleEmulator.c ****             return ((TICKS2STABLE-TCNTO4)*weightTo/TICKS2STABLE) >> 4;    // El peso converge al va
+ 2215              		.loc 1 60 0
+ 2216 0228 9C309FE5 		ldr	r3, .L8
+ 2217 022c 003093E5 		ldr	r3, [r3, #0]
+ 2218 0230 3D3C63E2 		rsb	r3, r3, #15616
+ 2219 0234 093083E2 		add	r3, r3, #9
+ 2220 0238 90209FE5 		ldr	r2, .L8+4
+ 2221 023c B020D2E1 		ldrh	r2, [r2, #0]	@ movhi
+ 2222 0240 0228A0E1 		mov	r2, r2, asl #16
+ 2223 0244 2228A0E1 		mov	r2, r2, lsr #16
+ 2224 0248 930202E0 		mul	r2, r3, r2
+ 2225 024c 80309FE5 		ldr	r3, .L8+8
+ 2226 0250 921383E0 		umull	r1, r3, r2, r3
+ 2227 0254 2336A0E1 		mov	r3, r3, lsr #12
+ 2228 0258 2332A0E1 		mov	r3, r3, lsr #4
+ 2229 025c 0338A0E1 		mov	r3, r3, asl #16
+ 2230 0260 2338A0E1 		mov	r3, r3, lsr #16
+ 2231 0264 140000EA 		b	.L7
+ 2232              	.L6:
+  61:../scaleEmulator.c ****         else
+  62:../scaleEmulator.c ****             return (TCNTO4*weightFrom/TICKS2STABLE) >> 4;                 // El peso converge a 0 (
+ 2233              		.loc 1 62 0
+ 2234 0268 5C309FE5 		ldr	r3, .L8
+ 2235 026c 003093E5 		ldr	r3, [r3, #0]
+ 2236 0270 60209FE5 		ldr	r2, .L8+12
+ 2237 0274 B020D2E1 		ldrh	r2, [r2, #0]	@ movhi
+ 2238 0278 0228A0E1 		mov	r2, r2, asl #16
+ 2239 027c 2228A0E1 		mov	r2, r2, lsr #16
+ 2240 0280 930202E0 		mul	r2, r3, r2
+ 2241 0284 48309FE5 		ldr	r3, .L8+8
+ 2242 0288 921383E0 		umull	r1, r3, r2, r3
+ 2243 028c 2336A0E1 		mov	r3, r3, lsr #12
+ 2244 0290 2332A0E1 		mov	r3, r3, lsr #4
+ 2245 0294 0338A0E1 		mov	r3, r3, asl #16
+ 2246 0298 2338A0E1 		mov	r3, r3, lsr #16
+ 2247 029c 060000EA 		b	.L7
+ 2248              	.L5:
+  63:../scaleEmulator.c ****     }
+  64:../scaleEmulator.c ****     else
+  65:../scaleEmulator.c ****         return weightTo >> 4;                                             // El peso se ha estabili
+ 2249              		.loc 1 65 0
+ 2250 02a0 28309FE5 		ldr	r3, .L8+4
+ 2251 02a4 B030D3E1 		ldrh	r3, [r3, #0]	@ movhi
+ 2252 02a8 0338A0E1 		mov	r3, r3, asl #16
+ 2253 02ac 2338A0E1 		mov	r3, r3, lsr #16
+ 2254 02b0 2332A0E1 		mov	r3, r3, lsr #4
+ 2255 02b4 0338A0E1 		mov	r3, r3, asl #16
+ 2256 02b8 2338A0E1 		mov	r3, r3, lsr #16
+ 2257              	.L7:
+  66:../scaleEmulator.c **** }
+ 2258              		.loc 1 66 0
+ 2259 02bc 0300A0E1 		mov	r0, r3
+ 2260 02c0 0CD04BE2 		sub	sp, fp, #12
+ 2261 02c4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2262 02c8 1EFF2FE1 		bx	lr
+ 2263              	.L9:
+ 2264              		.align	2
+ 2265              	.L8:
+ 2266 02cc 4400D501 		.word	30736452
+ 2267 02d0 00000000 		.word	weightTo
+ 2268 02d4 83DE1B43 		.word	1125899907
+ 2269 02d8 02000000 		.word	weightFrom
+ 2270              		.cfi_endproc
+ 2271              	.LFE1:
+ 2273              		.align	2
+ 2275              	pbs_isr:
+ 2276              	.LFB2:
+  67:../scaleEmulator.c **** 
+  68:../scaleEmulator.c **** /*******************************************************************/
+  69:../scaleEmulator.c **** 
+  70:../scaleEmulator.c **** static void pbs_isr( void )
+  71:../scaleEmulator.c **** {
+ 2277              		.loc 1 71 0
+ 2278              		.cfi_startproc
+ 2279              		@ Interrupt Service Routine.
+ 2280              		@ args = 0, pretend = 0, frame = 0
+ 2281              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2282 02dc 04C02DE5 		str	ip, [sp, #-4]!
+ 2283 02e0 0DC0A0E1 		mov	ip, sp
+ 2284              	.LCFI4:
+ 2285              		.cfi_def_cfa_register 12
+ 2286 02e4 0FD82DE9 		stmfd	sp!, {r0, r1, r2, r3, fp, ip, lr, pc}
+ 2287 02e8 04B04CE2 		sub	fp, ip, #4
+ 2288              		.cfi_offset 14, -8
+ 2289              		.cfi_offset 13, -12
+ 2290              		.cfi_offset 11, -16
+ 2291              		.cfi_offset 3, -20
+ 2292              		.cfi_offset 2, -24
+ 2293              		.cfi_offset 1, -28
+ 2294              		.cfi_offset 0, -32
+ 2295              	.LCFI5:
+ 2296              		.cfi_def_cfa 11, 4
+  72:../scaleEmulator.c ****     INTMSK |= BIT_PB;                             // Enmascara la interrupcion por pulsacion del pu
+ 2297              		.loc 1 72 0
+ 2298 02ec 80319FE5 		ldr	r3, .L14
+ 2299 02f0 7C219FE5 		ldr	r2, .L14
+ 2300 02f4 002092E5 		ldr	r2, [r2, #0]
+ 2301 02f8 022682E3 		orr	r2, r2, #2097152
+ 2302 02fc 002083E5 		str	r2, [r3, #0]
+  73:../scaleEmulator.c **** 
+  74:../scaleEmulator.c ****     TCNTB5 = 15625;                               // T5 = 1000 ms = (15625*(255+1)*16)/64000000
+ 2303              		.loc 1 74 0
+ 2304 0300 70319FE5 		ldr	r3, .L14+4
+ 2305 0304 70219FE5 		ldr	r2, .L14+8
+ 2306 0308 002083E5 		str	r2, [r3, #0]
+  75:../scaleEmulator.c ****     TCON   = (TCON & ~(0xf << 24)) | (1 << 25);   // Modo one shot, carga TCNT5, stop T5
+ 2307              		.loc 1 75 0
+ 2308 030c 6C319FE5 		ldr	r3, .L14+12
+ 2309 0310 68219FE5 		ldr	r2, .L14+12
+ 2310 0314 002092E5 		ldr	r2, [r2, #0]
+ 2311 0318 0F24C2E3 		bic	r2, r2, #251658240
+ 2312 031c 022482E3 		orr	r2, r2, #33554432
+ 2313 0320 002083E5 		str	r2, [r3, #0]
+  76:../scaleEmulator.c ****     TCON   = (TCON & ~(0xf << 24)) | (1 << 24);   // Modo one shot, no carga TCNT5, start T5
+ 2314              		.loc 1 76 0
+ 2315 0324 54319FE5 		ldr	r3, .L14+12
+ 2316 0328 50219FE5 		ldr	r2, .L14+12
+ 2317 032c 002092E5 		ldr	r2, [r2, #0]
+ 2318 0330 0F24C2E3 		bic	r2, r2, #251658240
+ 2319 0334 012482E3 		orr	r2, r2, #16777216
+ 2320 0338 002083E5 		str	r2, [r3, #0]
+  77:../scaleEmulator.c ****     pISR_TIMER5 = (uint32) timer5_isr;            // Instala la función timer5_down_isr como RTI po
+ 2321              		.loc 1 77 0
+ 2322 033c 40319FE5 		ldr	r3, .L14+16
+ 2323 0340 40219FE5 		ldr	r2, .L14+20
+ 2324 0344 002083E5 		str	r2, [r3, #0]
+  78:../scaleEmulator.c ****     I_ISPC      = BIT_TIMER5;                     // Borra el bit de interrupción pendiente
+ 2325              		.loc 1 78 0
+ 2326 0348 3C319FE5 		ldr	r3, .L14+24
+ 2327 034c 012CA0E3 		mov	r2, #256
+ 2328 0350 002083E5 		str	r2, [r3, #0]
+  79:../scaleEmulator.c ****     INTMSK     &= ~( BIT_GLOBAL | BIT_TIMER5 );   // Desenmascara la interrupción por fin del T5 y 
+ 2329              		.loc 1 79 0
+ 2330 0354 18219FE5 		ldr	r2, .L14
+ 2331 0358 14319FE5 		ldr	r3, .L14
+ 2332 035c 003093E5 		ldr	r3, [r3, #0]
+ 2333 0360 0133C3E3 		bic	r3, r3, #67108864
+ 2334 0364 013CC3E3 		bic	r3, r3, #256
+ 2335 0368 003082E5 		str	r3, [r2, #0]
+  80:../scaleEmulator.c ****    
+  81:../scaleEmulator.c ****     EXTINTPND = BIT_LEFTPB | BIT_RIGHTPB;         // Borra los bits de interrupción pendiente en el
+ 2336              		.loc 1 81 0
+ 2337 036c 1C319FE5 		ldr	r3, .L14+28
+ 2338 0370 0C20A0E3 		mov	r2, #12
+ 2339 0374 002083E5 		str	r2, [r3, #0]
+  82:../scaleEmulator.c ****     I_ISPC = BIT_PB;                              // Borra el bit de interrupcion pendiente comun a
+ 2340              		.loc 1 82 0
+ 2341 0378 0C319FE5 		ldr	r3, .L14+24
+ 2342 037c 0226A0E3 		mov	r2, #2097152
+ 2343 0380 002083E5 		str	r2, [r3, #0]
+  83:../scaleEmulator.c **** 
+  84:../scaleEmulator.c ****     TCNTB4 = TICKS2STABLE;                        // T4 = (TICKS2STABLE*(255+1)*16)/64000000
+ 2344              		.loc 1 84 0
+ 2345 0384 08319FE5 		ldr	r3, .L14+32
+ 2346 0388 EC209FE5 		ldr	r2, .L14+8
+ 2347 038c 002083E5 		str	r2, [r3, #0]
+  85:../scaleEmulator.c ****     TCON   = (TCON & ~(0xf << 20)) |  (1 << 21);  // Modo one shot, carga TCNT4, stop T4
+ 2348              		.loc 1 85 0
+ 2349 0390 E8309FE5 		ldr	r3, .L14+12
+ 2350 0394 E4209FE5 		ldr	r2, .L14+12
+ 2351 0398 002092E5 		ldr	r2, [r2, #0]
+ 2352 039c 0F26C2E3 		bic	r2, r2, #15728640
+ 2353 03a0 022682E3 		orr	r2, r2, #2097152
+ 2354 03a4 002083E5 		str	r2, [r3, #0]
+  86:../scaleEmulator.c ****     TCON   = (TCON & ~(0xf << 20)) |  (1 << 20);  // Modo one shot, no carga TCNT4, start T4
+ 2355              		.loc 1 86 0
+ 2356 03a8 D0309FE5 		ldr	r3, .L14+12
+ 2357 03ac CC209FE5 		ldr	r2, .L14+12
+ 2358 03b0 002092E5 		ldr	r2, [r2, #0]
+ 2359 03b4 0F26C2E3 		bic	r2, r2, #15728640
+ 2360 03b8 012682E3 		orr	r2, r2, #1048576
+ 2361 03bc 002083E5 		str	r2, [r3, #0]
+  87:../scaleEmulator.c ****     while( !TCNTO4 );                             // Necesario para compensar el retardo en actuali
+ 2362              		.loc 1 87 0
+ 2363 03c0 0000A0E1 		mov	r0, r0	@ nop
+ 2364              	.L11:
+ 2365              		.loc 1 87 0 is_stmt 0 discriminator 1
+ 2366 03c4 CC309FE5 		ldr	r3, .L14+36
+ 2367 03c8 003093E5 		ldr	r3, [r3, #0]
+ 2368 03cc 000053E3 		cmp	r3, #0
+ 2369 03d0 FBFFFF0A 		beq	.L11
+  88:../scaleEmulator.c **** 
+  89:../scaleEmulator.c ****     if( !weightTo )
+ 2370              		.loc 1 89 0 is_stmt 1
+ 2371 03d4 C0309FE5 		ldr	r3, .L14+40
+ 2372 03d8 B030D3E1 		ldrh	r3, [r3, #0]	@ movhi
+ 2373 03dc 0338A0E1 		mov	r3, r3, asl #16
+ 2374 03e0 2338A0E1 		mov	r3, r3, lsr #16
+ 2375 03e4 000053E3 		cmp	r3, #0
+ 2376 03e8 0F00001A 		bne	.L12
+  90:../scaleEmulator.c ****     {
+  91:../scaleEmulator.c ****         weightFrom = 0;
+ 2377              		.loc 1 91 0
+ 2378 03ec AC309FE5 		ldr	r3, .L14+44
+ 2379 03f0 0020A0E3 		mov	r2, #0
+ 2380 03f4 B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  92:../scaleEmulator.c ****         weightTo = RANDOM;                        // Emula el deposito de mercancia
+ 2381              		.loc 1 92 0
+ 2382 03f8 0000A0E3 		mov	r0, #0
+ 2383 03fc 470000EB 		bl	random
+ 2384 0400 0030A0E1 		mov	r3, r0
+ 2385 0404 0338A0E1 		mov	r3, r3, asl #16
+ 2386 0408 2328A0E1 		mov	r2, r3, lsr #16
+ 2387 040c 88309FE5 		ldr	r3, .L14+40
+ 2388 0410 B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  93:../scaleEmulator.c ****         PDATB &= ~(3 << 9);                       // Enciende leds
+ 2389              		.loc 1 93 0
+ 2390 0414 88309FE5 		ldr	r3, .L14+48
+ 2391 0418 84209FE5 		ldr	r2, .L14+48
+ 2392 041c 002092E5 		ldr	r2, [r2, #0]
+ 2393 0420 062CC2E3 		bic	r2, r2, #1536
+ 2394 0424 002083E5 		str	r2, [r3, #0]
+ 2395 0428 0D0000EA 		b	.L10
+ 2396              	.L12:
+  94:../scaleEmulator.c ****     }
+  95:../scaleEmulator.c ****     else
+  96:../scaleEmulator.c ****     {
+  97:../scaleEmulator.c ****         weightFrom = weightTo;
+ 2397              		.loc 1 97 0
+ 2398 042c 68309FE5 		ldr	r3, .L14+40
+ 2399 0430 B030D3E1 		ldrh	r3, [r3, #0]	@ movhi
+ 2400 0434 0338A0E1 		mov	r3, r3, asl #16
+ 2401 0438 2328A0E1 		mov	r2, r3, lsr #16
+ 2402 043c 5C309FE5 		ldr	r3, .L14+44
+ 2403 0440 B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  98:../scaleEmulator.c ****         weightTo = 0;                             // Emula la retirada de mercancia
+ 2404              		.loc 1 98 0
+ 2405 0444 50309FE5 		ldr	r3, .L14+40
+ 2406 0448 0020A0E3 		mov	r2, #0
+ 2407 044c B020C3E1 		strh	r2, [r3, #0]	@ movhi
+  99:../scaleEmulator.c ****         PDATB |= (3 << 9);                        // Apaga leds
+ 2408              		.loc 1 99 0
+ 2409 0450 4C309FE5 		ldr	r3, .L14+48
+ 2410 0454 48209FE5 		ldr	r2, .L14+48
+ 2411 0458 002092E5 		ldr	r2, [r2, #0]
+ 2412 045c 062C82E3 		orr	r2, r2, #1536
+ 2413 0460 002083E5 		str	r2, [r3, #0]
+ 2414              	.L10:
+ 100:../scaleEmulator.c ****     }
+ 101:../scaleEmulator.c **** }
+ 2415              		.loc 1 101 0
+ 2416 0464 1CD04BE2 		sub	sp, fp, #28
+ 2417 0468 0F689DE8 		ldmfd	sp, {r0, r1, r2, r3, fp, sp, lr}
+ 2418 046c 04C09DE4 		ldmfd	sp!, {ip}
+ 2419 0470 04F05EE2 		subs	pc, lr, #4
+ 2420              	.L15:
+ 2421              		.align	2
+ 2422              	.L14:
+ 2423 0474 0C00E001 		.word	31457292
+ 2424 0478 4800D501 		.word	30736456
+ 2425 047c 093D0000 		.word	15625
+ 2426 0480 0800D501 		.word	30736392
+ 2427 0484 40FF7F0C 		.word	209715008
+ 2428 0488 00000000 		.word	timer5_isr
+ 2429 048c 2400E001 		.word	31457316
+ 2430 0490 5400D201 		.word	30539860
+ 2431 0494 3C00D501 		.word	30736444
+ 2432 0498 4400D501 		.word	30736452
+ 2433 049c 00000000 		.word	weightTo
+ 2434 04a0 02000000 		.word	weightFrom
+ 2435 04a4 0C00D201 		.word	30539788
+ 2436              		.cfi_endproc
+ 2437              	.LFE2:
+ 2439              		.align	2
+ 2441              	timer5_isr:
+ 2442              	.LFB3:
+ 102:../scaleEmulator.c **** 
+ 103:../scaleEmulator.c **** static void timer5_isr( void )
+ 104:../scaleEmulator.c **** {
+ 2443              		.loc 1 104 0
+ 2444              		.cfi_startproc
+ 2445              		@ Interrupt Service Routine.
+ 2446              		@ args = 0, pretend = 0, frame = 0
+ 2447              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2448 04a8 04C02DE5 		str	ip, [sp, #-4]!
+ 2449 04ac 0DC0A0E1 		mov	ip, sp
+ 2450              	.LCFI6:
+ 2451              		.cfi_def_cfa_register 12
+ 2452 04b0 0CD82DE9 		stmfd	sp!, {r2, r3, fp, ip, lr, pc}
+ 2453 04b4 04B04CE2 		sub	fp, ip, #4
+ 2454              		.cfi_offset 14, -8
+ 2455              		.cfi_offset 13, -12
+ 2456              		.cfi_offset 11, -16
+ 2457              		.cfi_offset 3, -20
+ 2458              		.cfi_offset 2, -24
+ 2459              	.LCFI7:
+ 2460              		.cfi_def_cfa 11, 4
+ 105:../scaleEmulator.c ****     pISR_PB   = (uint32) pbs_isr;                 // Instala la funcion pbs_up_isr como RTI por dep
+ 2461              		.loc 1 105 0
+ 2462 04b8 4C309FE5 		ldr	r3, .L17
+ 2463 04bc 4C209FE5 		ldr	r2, .L17+4
+ 2464 04c0 002083E5 		str	r2, [r3, #0]
+ 106:../scaleEmulator.c ****     EXTINTPND = BIT_LEFTPB | BIT_RIGHTPB;         // Borra los bits de interrupción pendiente en el
+ 2465              		.loc 1 106 0
+ 2466 04c4 48309FE5 		ldr	r3, .L17+8
+ 2467 04c8 0C20A0E3 		mov	r2, #12
+ 2468 04cc 002083E5 		str	r2, [r3, #0]
+ 107:../scaleEmulator.c ****     I_ISPC    = BIT_PB;                           // Borra el bit de interrupción pendiente
+ 2469              		.loc 1 107 0
+ 2470 04d0 40309FE5 		ldr	r3, .L17+12
+ 2471 04d4 0226A0E3 		mov	r2, #2097152
+ 2472 04d8 002083E5 		str	r2, [r3, #0]
+ 108:../scaleEmulator.c ****     INTMSK   &= ~( BIT_GLOBAL | BIT_PB );         // Desenmascara la interrupción por presion de pu
+ 2473              		.loc 1 108 0
+ 2474 04dc 38309FE5 		ldr	r3, .L17+16
+ 2475 04e0 34209FE5 		ldr	r2, .L17+16
+ 2476 04e4 002092E5 		ldr	r2, [r2, #0]
+ 2477 04e8 4226C2E3 		bic	r2, r2, #69206016
+ 2478 04ec 002083E5 		str	r2, [r3, #0]
+ 109:../scaleEmulator.c **** 
+ 110:../scaleEmulator.c ****     I_ISPC  = BIT_TIMER5;                         // Borra el bit de interrupcion pendiente por fin
+ 2479              		.loc 1 110 0
+ 2480 04f0 20309FE5 		ldr	r3, .L17+12
+ 2481 04f4 012CA0E3 		mov	r2, #256
+ 2482 04f8 002083E5 		str	r2, [r3, #0]
+ 111:../scaleEmulator.c **** }
+ 2483              		.loc 1 111 0
+ 2484 04fc 14D04BE2 		sub	sp, fp, #20
+ 2485 0500 0C689DE8 		ldmfd	sp, {r2, r3, fp, sp, lr}
+ 2486 0504 04C09DE4 		ldmfd	sp!, {ip}
+ 2487 0508 04F05EE2 		subs	pc, lr, #4
+ 2488              	.L18:
+ 2489              		.align	2
+ 2490              	.L17:
+ 2491 050c 74FF7F0C 		.word	209715060
+ 2492 0510 00000000 		.word	pbs_isr
+ 2493 0514 5400D201 		.word	30539860
+ 2494 0518 2400E001 		.word	31457316
+ 2495 051c 0C00E001 		.word	31457292
+ 2496              		.cfi_endproc
+ 2497              	.LFE3:
+ 2499              		.align	2
+ 2501              	random:
+ 2502              	.LFB4:
+ 112:../scaleEmulator.c **** 
+ 113:../scaleEmulator.c **** static uint32 random( uint32 seed )
+ 114:../scaleEmulator.c **** {
+ 2503              		.loc 1 114 0
+ 2504              		.cfi_startproc
+ 2505              		@ Function supports interworking.
+ 2506              		@ args = 0, pretend = 0, frame = 16
+ 2507              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2508 0520 0DC0A0E1 		mov	ip, sp
+ 2509              	.LCFI8:
+ 2510              		.cfi_def_cfa_register 12
+ 2511 0524 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2512 0528 04B04CE2 		sub	fp, ip, #4
+ 2513              		.cfi_offset 14, -8
+ 2514              		.cfi_offset 13, -12
+ 2515              		.cfi_offset 11, -16
+ 2516              	.LCFI9:
+ 2517              		.cfi_def_cfa 11, 4
+ 2518 052c 10D04DE2 		sub	sp, sp, #16
+ 2519 0530 18000BE5 		str	r0, [fp, #-24]
+ 115:../scaleEmulator.c ****     static uint32 num;
+ 116:../scaleEmulator.c ****     uint32 bit;
+ 117:../scaleEmulator.c **** 
+ 118:../scaleEmulator.c ****     if( seed )
+ 2520              		.loc 1 118 0
+ 2521 0534 18301BE5 		ldr	r3, [fp, #-24]
+ 2522 0538 000053E3 		cmp	r3, #0
+ 2523 053c 0200000A 		beq	.L20
+ 119:../scaleEmulator.c ****         num = seed;
+ 2524              		.loc 1 119 0
+ 2525 0540 84309FE5 		ldr	r3, .L21
+ 2526 0544 18201BE5 		ldr	r2, [fp, #-24]
+ 2527 0548 002083E5 		str	r2, [r3, #0]
+ 2528              	.L20:
+ 120:../scaleEmulator.c ****     bit = 0x1 & ~((num >> 31) ^ (num >> 21) ^ (num >> 1) ^ num);
+ 2529              		.loc 1 120 0
+ 2530 054c 78309FE5 		ldr	r3, .L21
+ 2531 0550 003093E5 		ldr	r3, [r3, #0]
+ 2532 0554 A32FA0E1 		mov	r2, r3, lsr #31
+ 2533 0558 6C309FE5 		ldr	r3, .L21
+ 2534 055c 003093E5 		ldr	r3, [r3, #0]
+ 2535 0560 A33AA0E1 		mov	r3, r3, lsr #21
+ 2536 0564 032022E0 		eor	r2, r2, r3
+ 2537 0568 5C309FE5 		ldr	r3, .L21
+ 2538 056c 003093E5 		ldr	r3, [r3, #0]
+ 2539 0570 A330A0E1 		mov	r3, r3, lsr #1
+ 2540 0574 032022E0 		eor	r2, r2, r3
+ 2541 0578 4C309FE5 		ldr	r3, .L21
+ 2542 057c 003093E5 		ldr	r3, [r3, #0]
+ 2543 0580 033022E0 		eor	r3, r2, r3
+ 2544 0584 013003E2 		and	r3, r3, #1
+ 2545 0588 000053E3 		cmp	r3, #0
+ 2546 058c 0030A013 		movne	r3, #0
+ 2547 0590 0130A003 		moveq	r3, #1
+ 2548 0594 10300BE5 		str	r3, [fp, #-16]
+ 121:../scaleEmulator.c ****     num = (num << 1) | bit;
+ 2549              		.loc 1 121 0
+ 2550 0598 2C309FE5 		ldr	r3, .L21
+ 2551 059c 003093E5 		ldr	r3, [r3, #0]
+ 2552 05a0 8320A0E1 		mov	r2, r3, asl #1
+ 2553 05a4 10301BE5 		ldr	r3, [fp, #-16]
+ 2554 05a8 032082E1 		orr	r2, r2, r3
+ 2555 05ac 18309FE5 		ldr	r3, .L21
+ 2556 05b0 002083E5 		str	r2, [r3, #0]
+ 122:../scaleEmulator.c ****     return num;
+ 2557              		.loc 1 122 0
+ 2558 05b4 10309FE5 		ldr	r3, .L21
+ 2559 05b8 003093E5 		ldr	r3, [r3, #0]
+ 123:../scaleEmulator.c **** }
+ 2560              		.loc 1 123 0
+ 2561 05bc 0300A0E1 		mov	r0, r3
+ 2562 05c0 0CD04BE2 		sub	sp, fp, #12
+ 2563 05c4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2564 05c8 1EFF2FE1 		bx	lr
+ 2565              	.L22:
+ 2566              		.align	2
+ 2567              	.L21:
+ 2568 05cc 04000000 		.word	num.3980
+ 2569              		.cfi_endproc
+ 2570              	.LFE4:
+ 2572              		.bss
+ 2573              		.align	2
+ 2574              	num.3980:
+ 2575 0004 00000000 		.space	4
+ 2576              		.text
+ 2577              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 scaleEmulator.c
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2006   .bss:00000000 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2007   .bss:00000000 weightTo
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2010   .bss:00000002 weightFrom
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2013   .text:00000000 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2016   .text:00000000 scale_init
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2501   .text:00000520 random
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2161   .text:000001a8 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2275   .text:000002dc pbs_isr
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2183   .text:000001f4 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2186   .text:000001f4 scale_getWeight
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2266   .text:000002cc $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2273   .text:000002dc $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2423   .text:00000474 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2441   .text:000004a8 timer5_isr
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2439   .text:000004a8 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2491   .text:0000050c $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2499   .text:00000520 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2568   .text:000005cc $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccFqO6jZ.s:2574   .bss:00000004 num.3980
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

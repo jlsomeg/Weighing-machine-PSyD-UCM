@@ -1,0 +1,4613 @@
+   1              		.cpu arm7tdmi
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.file	"proyecto.c"
+  21              	.Ltext0:
+  22              		.file 1 "../proyecto.c"
+ 2232              		.align	2
+ 2233              	lcd_aux:
+ 2234 0000 00000000 		.space	38400
+ 2234      00000000 
+ 2234      00000000 
+ 2234      00000000 
+ 2234      00000000 
+ 2235              		.global	n_ticks
+ 2236              		.align	2
+ 2239              	n_ticks:
+ 2240 9600 00000000 		.space	4
+ 2241              		.global	countV
+ 2242              		.data
+ 2243              		.align	2
+ 2246              	countV:
+ 2247 0000 17000000 		.word	23
+ 2248              		.global	countF
+ 2249              		.align	2
+ 2252              	countF:
+ 2253 0004 17000000 		.word	23
+ 2254              		.global	verduras
+ 2255              		.align	2
+ 2258              	verduras:
+ 2259 0008 4163656C 		.ascii	"Acelgas\000"
+ 2259      67617300 
+ 2260 0010 00000000 		.space	12
+ 2260      00000000 
+ 2260      00000000 
+ 2261 001c 0004     		.short	1024
+ 2262 001e 416A6F73 		.ascii	"Ajos\000"
+ 2262      00
+ 2263 0023 00000000 		.space	15
+ 2263      00000000 
+ 2263      00000000 
+ 2263      000000
+ 2264 0032 6602     		.short	614
+ 2265 0034 416C6361 		.ascii	"Alcachofas\000"
+ 2265      63686F66 
+ 2265      617300
+ 2266 003f 00000000 		.space	9
+ 2266      00000000 
+ 2266      00
+ 2267 0048 CC08     		.short	2252
+ 2268 004a 42657265 		.ascii	"Berenjena\000"
+ 2268      6E6A656E 
+ 2268      6100
+ 2269 0054 00000000 		.space	10
+ 2269      00000000 
+ 2269      0000
+ 2270 005e 6604     		.short	1126
+ 2271 0060 42726F63 		.ascii	"Brocoli\000"
+ 2271      6F6C6900 
+ 2272 0068 00000000 		.space	12
+ 2272      00000000 
+ 2272      00000000 
+ 2273 0074 000A     		.short	2560
+ 2274 0076 43616C61 		.ascii	"Calabacin\000"
+ 2274      62616369 
+ 2274      6E00
+ 2275 0080 00000000 		.space	10
+ 2275      00000000 
+ 2275      0000
+ 2276 008a CC05     		.short	1484
+ 2277 008c 43616C61 		.ascii	"Calabaza\000"
+ 2277      62617A61 
+ 2277      00
+ 2278 0095 00000000 		.space	11
+ 2278      00000000 
+ 2278      000000
+ 2279 00a0 0004     		.short	1024
+ 2280 00a2 4365626F 		.ascii	"Cebolla\000"
+ 2280      6C6C6100 
+ 2281 00aa 00000000 		.space	12
+ 2281      00000000 
+ 2281      00000000 
+ 2282 00b6 CC08     		.short	2252
+ 2283 00b8 4D61697A 		.ascii	"Maiz\000"
+ 2283      00
+ 2284 00bd 00000000 		.space	15
+ 2284      00000000 
+ 2284      00000000 
+ 2284      000000
+ 2285 00cc 6604     		.short	1126
+ 2286 00ce 43686972 		.ascii	"Chirivia\000"
+ 2286      69766961 
+ 2286      00
+ 2287 00d7 00000000 		.space	11
+ 2287      00000000 
+ 2287      000000
+ 2288 00e2 9905     		.short	1433
+ 2289 00e4 436F676F 		.ascii	"Cogollos\000"
+ 2289      6C6C6F73 
+ 2289      00
+ 2290 00ed 00000000 		.space	11
+ 2290      00000000 
+ 2290      000000
+ 2291 00f8 0005     		.short	1280
+ 2292 00fa 436F6C20 		.ascii	"Col Lombarda\000"
+ 2292      4C6F6D62 
+ 2292      61726461 
+ 2292      00
+ 2293 0107 00000000 		.space	7
+ 2293      000000
+ 2294 010e 0006     		.short	1536
+ 2295 0110 436F6C69 		.ascii	"Coliflor\000"
+ 2295      666C6F72 
+ 2295      00
+ 2296 0119 00000000 		.space	11
+ 2296      00000000 
+ 2296      000000
+ 2297 0124 0006     		.short	1536
+ 2298 0126 45736361 		.ascii	"Escarola\000"
+ 2298      726F6C61 
+ 2298      00
+ 2299 012f 00000000 		.space	11
+ 2299      00000000 
+ 2299      000000
+ 2300 013a 3307     		.short	1843
+ 2301 013c 45737061 		.ascii	"Esparrago\000"
+ 2301      72726167 
+ 2301      6F00
+ 2302 0146 00000000 		.space	10
+ 2302      00000000 
+ 2302      0000
+ 2303 0150 CC08     		.short	2252
+ 2304 0152 45737069 		.ascii	"Espinacas\000"
+ 2304      6E616361 
+ 2304      7300
+ 2305 015c 00000000 		.space	10
+ 2305      00000000 
+ 2305      0000
+ 2306 0166 0004     		.short	1024
+ 2307 0168 4A756469 		.ascii	"Judias Verdes\000"
+ 2307      61732056 
+ 2307      65726465 
+ 2307      7300
+ 2308 0176 00000000 		.space	6
+ 2308      0000
+ 2309 017c 0005     		.short	1280
+ 2310 017e 4C656368 		.ascii	"Lechuga\000"
+ 2310      75676100 
+ 2311 0186 00000000 		.space	12
+ 2311      00000000 
+ 2311      00000000 
+ 2312 0192 C20A     		.short	2754
+ 2313 0194 4E61626F 		.ascii	"Nabo\000"
+ 2313      00
+ 2314 0199 00000000 		.space	15
+ 2314      00000000 
+ 2314      00000000 
+ 2314      000000
+ 2315 01a8 6603     		.short	870
+ 2316 01aa 50657069 		.ascii	"Pepino\000"
+ 2316      6E6F00
+ 2317 01b1 00000000 		.space	13
+ 2317      00000000 
+ 2317      00000000 
+ 2317      00
+ 2318 01be F503     		.short	1013
+ 2319 01c0 50696D69 		.ascii	"Pimiento\000"
+ 2319      656E746F 
+ 2319      00
+ 2320 01c9 00000000 		.space	11
+ 2320      00000000 
+ 2320      000000
+ 2321 01d4 6604     		.short	1126
+ 2322 01d6 50756572 		.ascii	"Puerro\000"
+ 2322      726F00
+ 2323 01dd 00000000 		.space	13
+ 2323      00000000 
+ 2323      00000000 
+ 2323      00
+ 2324 01ea 0006     		.short	1536
+ 2325 01ec 546F6D61 		.ascii	"Tomate\000"
+ 2325      746500
+ 2326 01f3 00000000 		.space	13
+ 2326      00000000 
+ 2326      00000000 
+ 2326      00
+ 2327 0200 E102     		.short	737
+ 2328 0202 5A616E61 		.ascii	"Zanahoria\000"
+ 2328      686F7269 
+ 2328      6100
+ 2329 020c 00000000 		.space	10
+ 2329      00000000 
+ 2329      0000
+ 2330 0216 0008     		.short	2048
+ 2331 0218 00000000 		.space	176
+ 2331      00000000 
+ 2331      00000000 
+ 2331      00000000 
+ 2331      00000000 
+ 2332              		.global	frutas
+ 2333              		.align	2
+ 2336              	frutas:
+ 2337 02c8 43686972 		.ascii	"Chirimoyas\000"
+ 2337      696D6F79 
+ 2337      617300
+ 2338 02d3 00000000 		.space	9
+ 2338      00000000 
+ 2338      00
+ 2339 02dc 000D     		.short	3328
+ 2340 02de 4C696D6F 		.ascii	"Limones\000"
+ 2340      6E657300 
+ 2341 02e6 00000000 		.space	12
+ 2341      00000000 
+ 2341      00000000 
+ 2342 02f2 0004     		.short	1024
+ 2343 02f4 4D616E64 		.ascii	"Mandarina \000"
+ 2343      6172696E 
+ 2343      612000
+ 2344 02ff 00000000 		.space	9
+ 2344      00000000 
+ 2344      00
+ 2345 0308 6604     		.short	1126
+ 2346 030a 4D616E7A 		.ascii	"Manzana \000"
+ 2346      616E6120 
+ 2346      00
+ 2347 0313 00000000 		.space	11
+ 2347      00000000 
+ 2347      000000
+ 2348 031e 3303     		.short	819
+ 2349 0320 4E617261 		.ascii	"Naranja\000"
+ 2349      6E6A6100 
+ 2350 0328 00000000 		.space	12
+ 2350      00000000 
+ 2350      00000000 
+ 2351 0334 7A03     		.short	890
+ 2352 0336 506C6174 		.ascii	"Platano\000"
+ 2352      616E6F00 
+ 2353 033e 00000000 		.space	12
+ 2353      00000000 
+ 2353      00000000 
+ 2354 034a CC02     		.short	716
+ 2355 034c 4869676F 		.ascii	"Higo\000"
+ 2355      00
+ 2356 0351 00000000 		.space	15
+ 2356      00000000 
+ 2356      00000000 
+ 2356      000000
+ 2357 0360 0009     		.short	2304
+ 2358 0362 43657265 		.ascii	"Cereza\000"
+ 2358      7A6100
+ 2359 0369 00000000 		.space	13
+ 2359      00000000 
+ 2359      00000000 
+ 2359      00
+ 2360 0376 0005     		.short	1280
+ 2361 0378 43697275 		.ascii	"Ciruelas\000"
+ 2361      656C6173 
+ 2361      00
+ 2362 0381 00000000 		.space	11
+ 2362      00000000 
+ 2362      000000
+ 2363 038c 990B     		.short	2969
+ 2364 038e 46726573 		.ascii	"Fresas\000"
+ 2364      617300
+ 2365 0395 00000000 		.space	13
+ 2365      00000000 
+ 2365      00000000 
+ 2365      00
+ 2366 03a2 000A     		.short	2560
+ 2367 03a4 4772616E 		.ascii	"Granada\000"
+ 2367      61646100 
+ 2368 03ac 00000000 		.space	12
+ 2368      00000000 
+ 2368      00000000 
+ 2369 03b8 0006     		.short	1536
+ 2370 03ba 4B616B69 		.ascii	"Kaki\000"
+ 2370      00
+ 2371 03bf 00000000 		.space	15
+ 2371      00000000 
+ 2371      00000000 
+ 2371      000000
+ 2372 03ce CC08     		.short	2252
+ 2373 03d0 50657273 		.ascii	"Persimon\000"
+ 2373      696D6F6E 
+ 2373      00
+ 2374 03d9 00000000 		.space	11
+ 2374      00000000 
+ 2374      000000
+ 2375 03e4 9907     		.short	1945
+ 2376 03e6 4B697769 		.ascii	"Kiwi\000"
+ 2376      00
+ 2377 03eb 00000000 		.space	15
+ 2377      00000000 
+ 2377      00000000 
+ 2377      000000
+ 2378 03fa CC09     		.short	2508
+ 2379 03fc 4C696D61 		.ascii	"Lima\000"
+ 2379      00
+ 2380 0401 00000000 		.space	15
+ 2380      00000000 
+ 2380      00000000 
+ 2380      000000
+ 2381 0410 CC05     		.short	1484
+ 2382 0412 4D656C6F 		.ascii	"Melon\000"
+ 2382      6E00
+ 2383 0418 00000000 		.space	14
+ 2383      00000000 
+ 2383      00000000 
+ 2383      0000
+ 2384 0426 000C     		.short	3072
+ 2385 0428 50617061 		.ascii	"Papaya\000"
+ 2385      796100
+ 2386 042f 00000000 		.space	13
+ 2386      00000000 
+ 2386      00000000 
+ 2386      00
+ 2387 043c 000A     		.short	2560
+ 2388 043e 5069F161 		.ascii	"Pi\361a\000"
+ 2388      00
+ 2389 0443 00000000 		.space	15
+ 2389      00000000 
+ 2389      00000000 
+ 2389      000000
+ 2390 0452 C20A     		.short	2754
+ 2391 0454 53616E64 		.ascii	"Sandia\000"
+ 2391      696100
+ 2392 045b 00000000 		.space	13
+ 2392      00000000 
+ 2392      00000000 
+ 2392      00
+ 2393 0468 9904     		.short	1177
+ 2394 046a 55766173 		.ascii	"Uvas\000"
+ 2394      00
+ 2395 046f 00000000 		.space	15
+ 2395      00000000 
+ 2395      00000000 
+ 2395      000000
+ 2396 047e 3309     		.short	2355
+ 2397 0480 4D656C6F 		.ascii	"Melocoton\000"
+ 2397      636F746F 
+ 2397      6E00
+ 2398 048a 00000000 		.space	10
+ 2398      00000000 
+ 2398      0000
+ 2399 0494 CC08     		.short	2252
+ 2400 0496 4EED7370 		.ascii	"N\355spero\000"
+ 2400      65726F00 
+ 2401 049e 00000000 		.space	12
+ 2401      00000000 
+ 2401      00000000 
+ 2402 04aa 0006     		.short	1536
+ 2403 04ac 506F6D65 		.ascii	"Pomelo\000"
+ 2403      6C6F00
+ 2404 04b3 00000000 		.space	13
+ 2404      00000000 
+ 2404      00000000 
+ 2404      00
+ 2405 04c0 E102     		.short	737
+ 2406 04c2 4E656374 		.ascii	"Nectarina\000"
+ 2406      6172696E 
+ 2406      6100
+ 2407 04cc 00000000 		.space	10
+ 2407      00000000 
+ 2407      0000
+ 2408 04d6 6604     		.short	1126
+ 2409 04d8 00000000 		.space	176
+ 2409      00000000 
+ 2409      00000000 
+ 2409      00000000 
+ 2409      00000000 
+ 2410              		.global	p
+ 2411              		.bss
+ 2412              		.align	2
+ 2415              	p:
+ 2416 9604 00000000 		.space	4
+ 2417              		.section	.rodata
+ 2418              		.align	2
+ 2419              	.LC0:
+ 2420 0000 2C00     		.ascii	",\000"
+ 2421              		.text
+ 2422              		.align	2
+ 2423              		.global	lcd_putfix
+ 2425              	lcd_putfix:
+ 2426              	.LFB0:
+   1:../proyecto.c **** #include <s3c44b0x.h>
+   2:../proyecto.c **** #include <s3cev40.h>
+   3:../proyecto.c **** #include <fix_types.h>
+   4:../proyecto.c **** #include <common_types.h>
+   5:../proyecto.c **** #include <system.h>
+   6:../proyecto.c **** #include <uart.h>
+   7:../proyecto.c **** #include <keypad.h>
+   8:../proyecto.c **** #include <lcd.h>
+   9:../proyecto.c **** #include <timers.h>
+  10:../proyecto.c **** #include "scaleEmulator.h"
+  11:../proyecto.c **** #include <pbs.h>
+  12:../proyecto.c **** 
+  13:../proyecto.c **** 
+  14:../proyecto.c **** #define QM 10;
+  15:../proyecto.c **** #define FRUTA      ((uint8 *)0x0c210000)
+  16:../proyecto.c **** #define VERDURA    ((uint8 *)0x0c220000)
+  17:../proyecto.c **** #define MENU 	   ((uint8 *)0x0c230000)
+  18:../proyecto.c **** #define SP1  	   ((uint8 *)0x0c240000)
+  19:../proyecto.c **** #define SP2 	   ((uint8 *)0x0c250000)
+  20:../proyecto.c **** 
+  21:../proyecto.c **** static uint8 lcd_aux[LCD_BUFFER_SIZE];
+  22:../proyecto.c **** 
+  23:../proyecto.c **** void isr_timer( void ) __attribute__ ((interrupt ("IRQ")));
+  24:../proyecto.c **** int n_ticks = 0;
+  25:../proyecto.c **** 
+  26:../proyecto.c **** typedef struct {
+  27:../proyecto.c **** 	char nombre[20];
+  28:../proyecto.c **** 	fix16 precio;
+  29:../proyecto.c **** } tAlimentos;
+  30:../proyecto.c **** 
+  31:../proyecto.c **** 
+  32:../proyecto.c **** int writelist_verduras( int num_list, int movelist);
+  33:../proyecto.c **** int writelist_frutas(int num_list, int movelist);
+  34:../proyecto.c **** int frutas_verduras();
+  35:../proyecto.c **** void pantalla_peso(fix16 precio);
+  36:../proyecto.c **** void funcion_peso(tAlimentos *alimentos);
+  37:../proyecto.c **** void isr_keypad (void);
+  38:../proyecto.c **** int countV = 23;
+  39:../proyecto.c **** int countF = 23;
+  40:../proyecto.c **** 
+  41:../proyecto.c **** 
+  42:../proyecto.c **** tAlimentos verduras[4][8] ={
+  43:../proyecto.c **** 		{{"Acelgas", TOFIX( fix16, 1.00, 10)},{"Ajos",TOFIX( fix16,0.60, 10)},{"Alcachofas",TOFIX( fix16,
+  44:../proyecto.c **** 		{{"Maiz",TOFIX( fix16,1.10, 10)},{"Chirivia",TOFIX( fix16,1.40, 10)},{"Cogollos",TOFIX( fix16,1.2
+  45:../proyecto.c **** 		{{"Judias Verdes",TOFIX( fix16,1.25, 10)},{"Lechuga",TOFIX( fix16,2.69, 10)},{"Nabo",TOFIX( fix16
+  46:../proyecto.c **** 
+  47:../proyecto.c **** };
+  48:../proyecto.c **** 
+  49:../proyecto.c **** tAlimentos frutas[4][8] ={
+  50:../proyecto.c **** 		{{"Chirimoyas",TOFIX( fix16,3.25, 10)},{"Limones",TOFIX( fix16,1.00, 10)},{"Mandarina ",TOFIX( fi
+  51:../proyecto.c **** 		{{"Ciruelas",TOFIX( fix16,2.90, 10)},{"Fresas",TOFIX( fix16,2.50, 10)},{"Granada",TOFIX( fix16,1.
+  52:../proyecto.c **** 		{{"Papaya",TOFIX( fix16,2.50, 10)},{"Piña",TOFIX( fix16,2.69, 10)},{"Sandia",TOFIX( fix16,1.15, 1
+  53:../proyecto.c **** 
+  54:../proyecto.c **** };
+  55:../proyecto.c **** tAlimentos *p = NULL;
+  56:../proyecto.c **** 
+  57:../proyecto.c **** 
+  58:../proyecto.c **** void lcd_putfix( uint16 a, uint16 b, uint8 color, fix16 i ){
+ 2427              		.loc 1 58 0
+ 2428              		.cfi_startproc
+ 2429              		@ Function supports interworking.
+ 2430              		@ args = 0, pretend = 0, frame = 32
+ 2431              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2432 0000 0DC0A0E1 		mov	ip, sp
+ 2433              	.LCFI0:
+ 2434              		.cfi_def_cfa_register 12
+ 2435 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2436 0008 04B04CE2 		sub	fp, ip, #4
+ 2437              		.cfi_offset 14, -8
+ 2438              		.cfi_offset 13, -12
+ 2439              		.cfi_offset 11, -16
+ 2440              	.LCFI1:
+ 2441              		.cfi_def_cfa 11, 4
+ 2442 000c 20D04DE2 		sub	sp, sp, #32
+ 2443 0010 B6024BE1 		strh	r0, [fp, #-38]	@ movhi
+ 2444 0014 B8124BE1 		strh	r1, [fp, #-40]	@ movhi
+ 2445 0018 29204BE5 		strb	r2, [fp, #-41]
+ 2446 001c BC324BE1 		strh	r3, [fp, #-44]	@ movhi
+  59:../proyecto.c **** 	int parte_entera;
+  60:../proyecto.c **** 	int parte_decimal;
+  61:../proyecto.c **** 	fix16 diez = 1010 << 10;
+ 2447              		.loc 1 61 0
+ 2448 0020 323BA0E3 		mov	r3, #51200
+ 2449 0024 B6314BE1 		strh	r3, [fp, #-22]	@ movhi
+  62:../proyecto.c **** 	int num_digitos = 1;
+ 2450              		.loc 1 62 0
+ 2451 0028 0130A0E3 		mov	r3, #1
+ 2452 002c 14300BE5 		str	r3, [fp, #-20]
+  63:../proyecto.c **** 	uint16 x = a;
+ 2453              		.loc 1 63 0
+ 2454 0030 B6325BE1 		ldrh	r3, [fp, #-38]	@ movhi
+ 2455 0034 B8314BE1 		strh	r3, [fp, #-24]	@ movhi
+  64:../proyecto.c **** 	uint16 y = b;
+ 2456              		.loc 1 64 0
+ 2457 0038 B8325BE1 		ldrh	r3, [fp, #-40]	@ movhi
+ 2458 003c BA314BE1 		strh	r3, [fp, #-26]	@ movhi
+  65:../proyecto.c **** 
+  66:../proyecto.c **** 	parte_entera = i >> 10;
+ 2459              		.loc 1 66 0
+ 2460 0040 FC325BE1 		ldrsh	r3, [fp, #-44]
+ 2461 0044 4335A0E1 		mov	r3, r3, asr #10
+ 2462 0048 0338A0E1 		mov	r3, r3, asl #16
+ 2463 004c 2338A0E1 		mov	r3, r3, lsr #16
+ 2464 0050 0338A0E1 		mov	r3, r3, asl #16
+ 2465 0054 4338A0E1 		mov	r3, r3, asr #16
+ 2466 0058 10300BE5 		str	r3, [fp, #-16]
+  67:../proyecto.c **** 	lcd_putint_x3(x,y,color,parte_entera);
+ 2467              		.loc 1 67 0
+ 2468 005c B8115BE1 		ldrh	r1, [fp, #-24]
+ 2469 0060 BA215BE1 		ldrh	r2, [fp, #-26]
+ 2470 0064 29305BE5 		ldrb	r3, [fp, #-41]	@ zero_extendqisi2
+ 2471 0068 0100A0E1 		mov	r0, r1
+ 2472 006c 0210A0E1 		mov	r1, r2
+ 2473 0070 0320A0E1 		mov	r2, r3
+ 2474 0074 10301BE5 		ldr	r3, [fp, #-16]
+ 2475 0078 FEFFFFEB 		bl	lcd_putint_x3
+  68:../proyecto.c **** 
+  69:../proyecto.c **** 
+  70:../proyecto.c **** 	while (parte_entera > 10){
+ 2476              		.loc 1 70 0
+ 2477 007c 090000EA 		b	.L2
+ 2478              	.L3:
+  71:../proyecto.c **** 		parte_entera = parte_entera/10;
+ 2479              		.loc 1 71 0
+ 2480 0080 10301BE5 		ldr	r3, [fp, #-16]
+ 2481 0084 3C219FE5 		ldr	r2, .L4
+ 2482 0088 9312C2E0 		smull	r1, r2, r3, r2
+ 2483 008c 4221A0E1 		mov	r2, r2, asr #2
+ 2484 0090 C33FA0E1 		mov	r3, r3, asr #31
+ 2485 0094 023063E0 		rsb	r3, r3, r2
+ 2486 0098 10300BE5 		str	r3, [fp, #-16]
+  72:../proyecto.c **** 		num_digitos++;
+ 2487              		.loc 1 72 0
+ 2488 009c 14301BE5 		ldr	r3, [fp, #-20]
+ 2489 00a0 013083E2 		add	r3, r3, #1
+ 2490 00a4 14300BE5 		str	r3, [fp, #-20]
+ 2491              	.L2:
+  70:../proyecto.c **** 	while (parte_entera > 10){
+ 2492              		.loc 1 70 0 discriminator 1
+ 2493 00a8 10301BE5 		ldr	r3, [fp, #-16]
+ 2494 00ac 0A0053E3 		cmp	r3, #10
+ 2495 00b0 F2FFFFCA 		bgt	.L3
+  73:../proyecto.c **** 	}
+  74:../proyecto.c **** 
+  75:../proyecto.c **** 	x = x + (num_digitos*24);
+ 2496              		.loc 1 75 0
+ 2497 00b4 14301BE5 		ldr	r3, [fp, #-20]
+ 2498 00b8 0338A0E1 		mov	r3, r3, asl #16
+ 2499 00bc 2338A0E1 		mov	r3, r3, lsr #16
+ 2500 00c0 0320A0E1 		mov	r2, r3	@ movhi
+ 2501 00c4 8220A0E1 		mov	r2, r2, asl #1
+ 2502 00c8 033082E0 		add	r3, r2, r3
+ 2503 00cc 8331A0E1 		mov	r3, r3, asl #3
+ 2504 00d0 0338A0E1 		mov	r3, r3, asl #16
+ 2505 00d4 2328A0E1 		mov	r2, r3, lsr #16
+ 2506 00d8 B8315BE1 		ldrh	r3, [fp, #-24]	@ movhi
+ 2507 00dc 033082E0 		add	r3, r2, r3
+ 2508 00e0 B8314BE1 		strh	r3, [fp, #-24]	@ movhi
+  76:../proyecto.c **** 
+  77:../proyecto.c **** 	lcd_puts_x3(x,y,color,",");
+ 2509              		.loc 1 77 0
+ 2510 00e4 B8115BE1 		ldrh	r1, [fp, #-24]
+ 2511 00e8 BA215BE1 		ldrh	r2, [fp, #-26]
+ 2512 00ec 29305BE5 		ldrb	r3, [fp, #-41]	@ zero_extendqisi2
+ 2513 00f0 0100A0E1 		mov	r0, r1
+ 2514 00f4 0210A0E1 		mov	r1, r2
+ 2515 00f8 0320A0E1 		mov	r2, r3
+ 2516 00fc C8309FE5 		ldr	r3, .L4+4
+ 2517 0100 FEFFFFEB 		bl	lcd_puts_x3
+  78:../proyecto.c **** 	x = x+24;
+ 2518              		.loc 1 78 0
+ 2519 0104 B8315BE1 		ldrh	r3, [fp, #-24]	@ movhi
+ 2520 0108 183083E2 		add	r3, r3, #24
+ 2521 010c B8314BE1 		strh	r3, [fp, #-24]	@ movhi
+  79:../proyecto.c **** 
+  80:../proyecto.c **** 	i &= 0x3FF; //solo se queda la parte decimal
+ 2522              		.loc 1 80 0
+ 2523 0110 BC325BE1 		ldrh	r3, [fp, #-44]	@ movhi
+ 2524 0114 033BA0E1 		mov	r3, r3, asl #22
+ 2525 0118 233BA0E1 		mov	r3, r3, lsr #22
+ 2526 011c BC324BE1 		strh	r3, [fp, #-44]	@ movhi
+  81:../proyecto.c **** 	parte_decimal = FMULI( 10, (fix32)i); //multiplicamos por 10
+ 2527              		.loc 1 81 0
+ 2528 0120 FC225BE1 		ldrsh	r2, [fp, #-44]
+ 2529 0124 0230A0E1 		mov	r3, r2
+ 2530 0128 0331A0E1 		mov	r3, r3, asl #2
+ 2531 012c 023083E0 		add	r3, r3, r2
+ 2532 0130 8330A0E1 		mov	r3, r3, asl #1
+ 2533 0134 20300BE5 		str	r3, [fp, #-32]
+  82:../proyecto.c **** 	lcd_putint_x3(x,y,color, parte_decimal >>10);
+ 2534              		.loc 1 82 0
+ 2535 0138 20301BE5 		ldr	r3, [fp, #-32]
+ 2536 013c 4335A0E1 		mov	r3, r3, asr #10
+ 2537 0140 B8015BE1 		ldrh	r0, [fp, #-24]
+ 2538 0144 BA115BE1 		ldrh	r1, [fp, #-26]
+ 2539 0148 29205BE5 		ldrb	r2, [fp, #-41]	@ zero_extendqisi2
+ 2540 014c FEFFFFEB 		bl	lcd_putint_x3
+  83:../proyecto.c **** 	x = x+24;
+ 2541              		.loc 1 83 0
+ 2542 0150 B8315BE1 		ldrh	r3, [fp, #-24]	@ movhi
+ 2543 0154 183083E2 		add	r3, r3, #24
+ 2544 0158 B8314BE1 		strh	r3, [fp, #-24]	@ movhi
+  84:../proyecto.c **** 
+  85:../proyecto.c **** 	i = FMULI( 10, (fix32)i);
+ 2545              		.loc 1 85 0
+ 2546 015c BC325BE1 		ldrh	r3, [fp, #-44]
+ 2547 0160 0320A0E1 		mov	r2, r3	@ movhi
+ 2548 0164 0221A0E1 		mov	r2, r2, asl #2
+ 2549 0168 033082E0 		add	r3, r2, r3
+ 2550 016c 8330A0E1 		mov	r3, r3, asl #1
+ 2551 0170 0338A0E1 		mov	r3, r3, asl #16
+ 2552 0174 2338A0E1 		mov	r3, r3, lsr #16
+ 2553 0178 BC324BE1 		strh	r3, [fp, #-44]	@ movhi
+  86:../proyecto.c **** 
+  87:../proyecto.c **** 	i &= 0x3FF; //solo se queda la parte decimal
+ 2554              		.loc 1 87 0
+ 2555 017c BC325BE1 		ldrh	r3, [fp, #-44]	@ movhi
+ 2556 0180 033BA0E1 		mov	r3, r3, asl #22
+ 2557 0184 233BA0E1 		mov	r3, r3, lsr #22
+ 2558 0188 BC324BE1 		strh	r3, [fp, #-44]	@ movhi
+  88:../proyecto.c **** 	parte_decimal = FMULI( 10, (fix32)i); //multiplicamos por 10
+ 2559              		.loc 1 88 0
+ 2560 018c FC225BE1 		ldrsh	r2, [fp, #-44]
+ 2561 0190 0230A0E1 		mov	r3, r2
+ 2562 0194 0331A0E1 		mov	r3, r3, asl #2
+ 2563 0198 023083E0 		add	r3, r3, r2
+ 2564 019c 8330A0E1 		mov	r3, r3, asl #1
+ 2565 01a0 20300BE5 		str	r3, [fp, #-32]
+  89:../proyecto.c **** 	lcd_putint_x3(x,y,color, parte_decimal >> 10);
+ 2566              		.loc 1 89 0
+ 2567 01a4 20301BE5 		ldr	r3, [fp, #-32]
+ 2568 01a8 4335A0E1 		mov	r3, r3, asr #10
+ 2569 01ac B8015BE1 		ldrh	r0, [fp, #-24]
+ 2570 01b0 BA115BE1 		ldrh	r1, [fp, #-26]
+ 2571 01b4 29205BE5 		ldrb	r2, [fp, #-41]	@ zero_extendqisi2
+ 2572 01b8 FEFFFFEB 		bl	lcd_putint_x3
+  90:../proyecto.c **** 
+  91:../proyecto.c **** }
+ 2573              		.loc 1 91 0
+ 2574 01bc 0CD04BE2 		sub	sp, fp, #12
+ 2575 01c0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2576 01c4 1EFF2FE1 		bx	lr
+ 2577              	.L5:
+ 2578              		.align	2
+ 2579              	.L4:
+ 2580 01c8 67666666 		.word	1717986919
+ 2581 01cc 00000000 		.word	.LC0
+ 2582              		.cfi_endproc
+ 2583              	.LFE0:
+ 2585              		.section	.rodata
+ 2586 0002 0000     		.align	2
+ 2587              	.LC1:
+ 2588 0004 20202020 		.ascii	"              \000"
+ 2588      20202020 
+ 2588      20202020 
+ 2588      202000
+ 2589 0013 00       		.align	2
+ 2590              	.LC2:
+ 2591 0014 20202020 		.ascii	"             \000"
+ 2591      20202020 
+ 2591      20202020 
+ 2591      2000
+ 2592              		.text
+ 2593              		.align	2
+ 2594              		.global	writelist_verduras
+ 2596              	writelist_verduras:
+ 2597              	.LFB1:
+  92:../proyecto.c **** 
+  93:../proyecto.c **** int writelist_verduras( int num_list, int movelist){
+ 2598              		.loc 1 93 0
+ 2599              		.cfi_startproc
+ 2600              		@ Function supports interworking.
+ 2601              		@ args = 0, pretend = 0, frame = 32
+ 2602              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2603 01d0 0DC0A0E1 		mov	ip, sp
+ 2604              	.LCFI2:
+ 2605              		.cfi_def_cfa_register 12
+ 2606 01d4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2607 01d8 04B04CE2 		sub	fp, ip, #4
+ 2608              		.cfi_offset 14, -8
+ 2609              		.cfi_offset 13, -12
+ 2610              		.cfi_offset 11, -16
+ 2611              	.LCFI3:
+ 2612              		.cfi_def_cfa 11, 4
+ 2613 01dc 20D04DE2 		sub	sp, sp, #32
+ 2614 01e0 28000BE5 		str	r0, [fp, #-40]
+ 2615 01e4 2C100BE5 		str	r1, [fp, #-44]
+  94:../proyecto.c **** 
+  95:../proyecto.c **** 	int j = 7, i=0, posicion_movelist = 0,move = movelist;
+ 2616              		.loc 1 95 0
+ 2617 01e8 0730A0E3 		mov	r3, #7
+ 2618 01ec 10300BE5 		str	r3, [fp, #-16]
+ 2619 01f0 0030A0E3 		mov	r3, #0
+ 2620 01f4 14300BE5 		str	r3, [fp, #-20]
+ 2621 01f8 0030A0E3 		mov	r3, #0
+ 2622 01fc 18300BE5 		str	r3, [fp, #-24]
+ 2623 0200 2C301BE5 		ldr	r3, [fp, #-44]
+ 2624 0204 20300BE5 		str	r3, [fp, #-32]
+  96:../proyecto.c **** 	uint8 scancode;
+  97:../proyecto.c **** 
+  98:../proyecto.c **** 	scancode = KEYPAD_KEYA;
+ 2625              		.loc 1 98 0
+ 2626 0208 0A30A0E3 		mov	r3, #10
+ 2627 020c 19304BE5 		strb	r3, [fp, #-25]
+  99:../proyecto.c **** 
+ 100:../proyecto.c **** 	while( i < 4){
+ 2628              		.loc 1 100 0
+ 2629 0210 270000EA 		b	.L7
+ 2630              	.L9:
+ 101:../proyecto.c **** 
+ 102:../proyecto.c **** 		if( i == move )
+ 2631              		.loc 1 102 0
+ 2632 0214 14201BE5 		ldr	r2, [fp, #-20]
+ 2633 0218 20301BE5 		ldr	r3, [fp, #-32]
+ 2634 021c 030052E1 		cmp	r2, r3
+ 2635 0220 0100001A 		bne	.L8
+ 103:../proyecto.c **** 			posicion_movelist = j;
+ 2636              		.loc 1 103 0
+ 2637 0224 10301BE5 		ldr	r3, [fp, #-16]
+ 2638 0228 18300BE5 		str	r3, [fp, #-24]
+ 2639              	.L8:
+ 104:../proyecto.c **** 
+ 105:../proyecto.c **** 		lcd_puts( 50, 20+j, BLACK, verduras[num_list][i].nombre ); // he cambiado verduras por alimentos
+ 2640              		.loc 1 105 0
+ 2641 022c 10301BE5 		ldr	r3, [fp, #-16]
+ 2642 0230 0338A0E1 		mov	r3, r3, asl #16
+ 2643 0234 2338A0E1 		mov	r3, r3, lsr #16
+ 2644 0238 143083E2 		add	r3, r3, #20
+ 2645 023c 0338A0E1 		mov	r3, r3, asl #16
+ 2646 0240 23C8A0E1 		mov	ip, r3, lsr #16
+ 2647 0244 14301BE5 		ldr	r3, [fp, #-20]
+ 2648 0248 0320A0E1 		mov	r2, r3
+ 2649 024c 0221A0E1 		mov	r2, r2, asl #2
+ 2650 0250 032082E0 		add	r2, r2, r3
+ 2651 0254 8220A0E1 		mov	r2, r2, asl #1
+ 2652 0258 032082E0 		add	r2, r2, r3
+ 2653 025c 8230A0E1 		mov	r3, r2, asl #1
+ 2654 0260 0320A0E1 		mov	r2, r3
+ 2655 0264 28101BE5 		ldr	r1, [fp, #-40]
+ 2656 0268 0130A0E1 		mov	r3, r1
+ 2657 026c 0331A0E1 		mov	r3, r3, asl #2
+ 2658 0270 013083E0 		add	r3, r3, r1
+ 2659 0274 8330A0E1 		mov	r3, r3, asl #1
+ 2660 0278 013083E0 		add	r3, r3, r1
+ 2661 027c 0332A0E1 		mov	r3, r3, asl #4
+ 2662 0280 032082E0 		add	r2, r2, r3
+ 2663 0284 C0339FE5 		ldr	r3, .L28
+ 2664 0288 033082E0 		add	r3, r2, r3
+ 2665 028c 3200A0E3 		mov	r0, #50
+ 2666 0290 0C10A0E1 		mov	r1, ip
+ 2667 0294 0F20A0E3 		mov	r2, #15
+ 2668 0298 FEFFFFEB 		bl	lcd_puts
+ 106:../proyecto.c **** 		i++;
+ 2669              		.loc 1 106 0
+ 2670 029c 14301BE5 		ldr	r3, [fp, #-20]
+ 2671 02a0 013083E2 		add	r3, r3, #1
+ 2672 02a4 14300BE5 		str	r3, [fp, #-20]
+ 107:../proyecto.c **** 		j=j+43;
+ 2673              		.loc 1 107 0
+ 2674 02a8 10301BE5 		ldr	r3, [fp, #-16]
+ 2675 02ac 2B3083E2 		add	r3, r3, #43
+ 2676 02b0 10300BE5 		str	r3, [fp, #-16]
+ 2677              	.L7:
+ 100:../proyecto.c **** 	while( i < 4){
+ 2678              		.loc 1 100 0 discriminator 1
+ 2679 02b4 14301BE5 		ldr	r3, [fp, #-20]
+ 2680 02b8 030053E3 		cmp	r3, #3
+ 2681 02bc D4FFFFDA 		ble	.L9
+ 108:../proyecto.c **** 	}
+ 109:../proyecto.c **** 
+ 110:../proyecto.c **** 	j=7;
+ 2682              		.loc 1 110 0
+ 2683 02c0 0730A0E3 		mov	r3, #7
+ 2684 02c4 10300BE5 		str	r3, [fp, #-16]
+ 111:../proyecto.c **** 
+ 112:../proyecto.c **** 	while( i < 8 ){
+ 2685              		.loc 1 112 0
+ 2686 02c8 270000EA 		b	.L10
+ 2687              	.L12:
+ 113:../proyecto.c **** 		if (i == move)
+ 2688              		.loc 1 113 0
+ 2689 02cc 14201BE5 		ldr	r2, [fp, #-20]
+ 2690 02d0 20301BE5 		ldr	r3, [fp, #-32]
+ 2691 02d4 030052E1 		cmp	r2, r3
+ 2692 02d8 0100001A 		bne	.L11
+ 114:../proyecto.c **** 			posicion_movelist = j;
+ 2693              		.loc 1 114 0
+ 2694 02dc 10301BE5 		ldr	r3, [fp, #-16]
+ 2695 02e0 18300BE5 		str	r3, [fp, #-24]
+ 2696              	.L11:
+ 115:../proyecto.c **** 		lcd_puts( 200, 20+j, BLACK, verduras[num_list][i].nombre ); // lo mismo que arriba :D
+ 2697              		.loc 1 115 0
+ 2698 02e4 10301BE5 		ldr	r3, [fp, #-16]
+ 2699 02e8 0338A0E1 		mov	r3, r3, asl #16
+ 2700 02ec 2338A0E1 		mov	r3, r3, lsr #16
+ 2701 02f0 143083E2 		add	r3, r3, #20
+ 2702 02f4 0338A0E1 		mov	r3, r3, asl #16
+ 2703 02f8 23C8A0E1 		mov	ip, r3, lsr #16
+ 2704 02fc 14301BE5 		ldr	r3, [fp, #-20]
+ 2705 0300 0320A0E1 		mov	r2, r3
+ 2706 0304 0221A0E1 		mov	r2, r2, asl #2
+ 2707 0308 032082E0 		add	r2, r2, r3
+ 2708 030c 8220A0E1 		mov	r2, r2, asl #1
+ 2709 0310 032082E0 		add	r2, r2, r3
+ 2710 0314 8230A0E1 		mov	r3, r2, asl #1
+ 2711 0318 0320A0E1 		mov	r2, r3
+ 2712 031c 28101BE5 		ldr	r1, [fp, #-40]
+ 2713 0320 0130A0E1 		mov	r3, r1
+ 2714 0324 0331A0E1 		mov	r3, r3, asl #2
+ 2715 0328 013083E0 		add	r3, r3, r1
+ 2716 032c 8330A0E1 		mov	r3, r3, asl #1
+ 2717 0330 013083E0 		add	r3, r3, r1
+ 2718 0334 0332A0E1 		mov	r3, r3, asl #4
+ 2719 0338 032082E0 		add	r2, r2, r3
+ 2720 033c 08339FE5 		ldr	r3, .L28
+ 2721 0340 033082E0 		add	r3, r2, r3
+ 2722 0344 C800A0E3 		mov	r0, #200
+ 2723 0348 0C10A0E1 		mov	r1, ip
+ 2724 034c 0F20A0E3 		mov	r2, #15
+ 2725 0350 FEFFFFEB 		bl	lcd_puts
+ 116:../proyecto.c **** 		i++;
+ 2726              		.loc 1 116 0
+ 2727 0354 14301BE5 		ldr	r3, [fp, #-20]
+ 2728 0358 013083E2 		add	r3, r3, #1
+ 2729 035c 14300BE5 		str	r3, [fp, #-20]
+ 117:../proyecto.c **** 		j=j+43;
+ 2730              		.loc 1 117 0
+ 2731 0360 10301BE5 		ldr	r3, [fp, #-16]
+ 2732 0364 2B3083E2 		add	r3, r3, #43
+ 2733 0368 10300BE5 		str	r3, [fp, #-16]
+ 2734              	.L10:
+ 112:../proyecto.c **** 	while( i < 8 ){
+ 2735              		.loc 1 112 0 discriminator 1
+ 2736 036c 14301BE5 		ldr	r3, [fp, #-20]
+ 2737 0370 070053E3 		cmp	r3, #7
+ 2738 0374 D4FFFFDA 		ble	.L12
+ 118:../proyecto.c **** 	}
+ 119:../proyecto.c **** 
+ 120:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 2739              		.loc 1 120 0
+ 2740 0378 680000EA 		b	.L13
+ 2741              	.L20:
+ 121:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 122:../proyecto.c **** 
+ 123:../proyecto.c **** 		if(move <= 3)
+ 2742              		.loc 1 123 0
+ 2743 037c 20301BE5 		ldr	r3, [fp, #-32]
+ 2744 0380 030053E3 		cmp	r3, #3
+ 2745 0384 1C0000CA 		bgt	.L14
+ 124:../proyecto.c **** 			lcd_puts( 50, 20+posicion_movelist, BLACK, verduras[num_list][move].nombre ); //mas de lo mismo
+ 2746              		.loc 1 124 0
+ 2747 0388 18301BE5 		ldr	r3, [fp, #-24]
+ 2748 038c 0338A0E1 		mov	r3, r3, asl #16
+ 2749 0390 2338A0E1 		mov	r3, r3, lsr #16
+ 2750 0394 143083E2 		add	r3, r3, #20
+ 2751 0398 0338A0E1 		mov	r3, r3, asl #16
+ 2752 039c 23C8A0E1 		mov	ip, r3, lsr #16
+ 2753 03a0 20301BE5 		ldr	r3, [fp, #-32]
+ 2754 03a4 0320A0E1 		mov	r2, r3
+ 2755 03a8 0221A0E1 		mov	r2, r2, asl #2
+ 2756 03ac 032082E0 		add	r2, r2, r3
+ 2757 03b0 8220A0E1 		mov	r2, r2, asl #1
+ 2758 03b4 032082E0 		add	r2, r2, r3
+ 2759 03b8 8230A0E1 		mov	r3, r2, asl #1
+ 2760 03bc 0320A0E1 		mov	r2, r3
+ 2761 03c0 28101BE5 		ldr	r1, [fp, #-40]
+ 2762 03c4 0130A0E1 		mov	r3, r1
+ 2763 03c8 0331A0E1 		mov	r3, r3, asl #2
+ 2764 03cc 013083E0 		add	r3, r3, r1
+ 2765 03d0 8330A0E1 		mov	r3, r3, asl #1
+ 2766 03d4 013083E0 		add	r3, r3, r1
+ 2767 03d8 0332A0E1 		mov	r3, r3, asl #4
+ 2768 03dc 032082E0 		add	r2, r2, r3
+ 2769 03e0 64329FE5 		ldr	r3, .L28
+ 2770 03e4 033082E0 		add	r3, r2, r3
+ 2771 03e8 3200A0E3 		mov	r0, #50
+ 2772 03ec 0C10A0E1 		mov	r1, ip
+ 2773 03f0 0F20A0E3 		mov	r2, #15
+ 2774 03f4 FEFFFFEB 		bl	lcd_puts
+ 2775 03f8 1B0000EA 		b	.L15
+ 2776              	.L14:
+ 125:../proyecto.c **** 		else
+ 126:../proyecto.c **** 			lcd_puts( 200, 20+posicion_movelist, BLACK, verduras[num_list][move].nombre ); //mas de lo mismo
+ 2777              		.loc 1 126 0
+ 2778 03fc 18301BE5 		ldr	r3, [fp, #-24]
+ 2779 0400 0338A0E1 		mov	r3, r3, asl #16
+ 2780 0404 2338A0E1 		mov	r3, r3, lsr #16
+ 2781 0408 143083E2 		add	r3, r3, #20
+ 2782 040c 0338A0E1 		mov	r3, r3, asl #16
+ 2783 0410 23C8A0E1 		mov	ip, r3, lsr #16
+ 2784 0414 20301BE5 		ldr	r3, [fp, #-32]
+ 2785 0418 0320A0E1 		mov	r2, r3
+ 2786 041c 0221A0E1 		mov	r2, r2, asl #2
+ 2787 0420 032082E0 		add	r2, r2, r3
+ 2788 0424 8220A0E1 		mov	r2, r2, asl #1
+ 2789 0428 032082E0 		add	r2, r2, r3
+ 2790 042c 8230A0E1 		mov	r3, r2, asl #1
+ 2791 0430 0320A0E1 		mov	r2, r3
+ 2792 0434 28101BE5 		ldr	r1, [fp, #-40]
+ 2793 0438 0130A0E1 		mov	r3, r1
+ 2794 043c 0331A0E1 		mov	r3, r3, asl #2
+ 2795 0440 013083E0 		add	r3, r3, r1
+ 2796 0444 8330A0E1 		mov	r3, r3, asl #1
+ 2797 0448 013083E0 		add	r3, r3, r1
+ 2798 044c 0332A0E1 		mov	r3, r3, asl #4
+ 2799 0450 032082E0 		add	r2, r2, r3
+ 2800 0454 F0319FE5 		ldr	r3, .L28
+ 2801 0458 033082E0 		add	r3, r2, r3
+ 2802 045c C800A0E3 		mov	r0, #200
+ 2803 0460 0C10A0E1 		mov	r1, ip
+ 2804 0464 0F20A0E3 		mov	r2, #15
+ 2805 0468 FEFFFFEB 		bl	lcd_puts
+ 2806              	.L15:
+ 127:../proyecto.c **** 
+ 128:../proyecto.c **** 		scancode = keypad_scan();
+ 2807              		.loc 1 128 0
+ 2808 046c FEFFFFEB 		bl	keypad_scan
+ 2809 0470 0030A0E1 		mov	r3, r0
+ 2810 0474 19304BE5 		strb	r3, [fp, #-25]
+ 129:../proyecto.c **** 		sw_delay_ms(250);
+ 2811              		.loc 1 129 0
+ 2812 0478 FA00A0E3 		mov	r0, #250
+ 2813 047c FEFFFFEB 		bl	sw_delay_ms
+ 130:../proyecto.c **** 		scancode = keypad_scan();
+ 2814              		.loc 1 130 0
+ 2815 0480 FEFFFFEB 		bl	keypad_scan
+ 2816 0484 0030A0E1 		mov	r3, r0
+ 2817 0488 19304BE5 		strb	r3, [fp, #-25]
+ 131:../proyecto.c **** 
+ 132:../proyecto.c **** 		if(move < 3 || move == 3)
+ 2818              		.loc 1 132 0
+ 2819 048c 20301BE5 		ldr	r3, [fp, #-32]
+ 2820 0490 020053E3 		cmp	r3, #2
+ 2821 0494 020000DA 		ble	.L16
+ 2822              		.loc 1 132 0 is_stmt 0 discriminator 1
+ 2823 0498 20301BE5 		ldr	r3, [fp, #-32]
+ 2824 049c 030053E3 		cmp	r3, #3
+ 2825 04a0 0B00001A 		bne	.L17
+ 2826              	.L16:
+ 133:../proyecto.c **** 			lcd_puts( 50, 20+posicion_movelist, BLACK, "              ");
+ 2827              		.loc 1 133 0 is_stmt 1
+ 2828 04a4 18301BE5 		ldr	r3, [fp, #-24]
+ 2829 04a8 0338A0E1 		mov	r3, r3, asl #16
+ 2830 04ac 2338A0E1 		mov	r3, r3, lsr #16
+ 2831 04b0 143083E2 		add	r3, r3, #20
+ 2832 04b4 0338A0E1 		mov	r3, r3, asl #16
+ 2833 04b8 2338A0E1 		mov	r3, r3, lsr #16
+ 2834 04bc 3200A0E3 		mov	r0, #50
+ 2835 04c0 0310A0E1 		mov	r1, r3
+ 2836 04c4 0F20A0E3 		mov	r2, #15
+ 2837 04c8 80319FE5 		ldr	r3, .L28+4
+ 2838 04cc FEFFFFEB 		bl	lcd_puts
+ 2839 04d0 0A0000EA 		b	.L18
+ 2840              	.L17:
+ 134:../proyecto.c **** 		else
+ 135:../proyecto.c **** 			lcd_puts( 200, 20+posicion_movelist, BLACK, "             " );
+ 2841              		.loc 1 135 0
+ 2842 04d4 18301BE5 		ldr	r3, [fp, #-24]
+ 2843 04d8 0338A0E1 		mov	r3, r3, asl #16
+ 2844 04dc 2338A0E1 		mov	r3, r3, lsr #16
+ 2845 04e0 143083E2 		add	r3, r3, #20
+ 2846 04e4 0338A0E1 		mov	r3, r3, asl #16
+ 2847 04e8 2338A0E1 		mov	r3, r3, lsr #16
+ 2848 04ec C800A0E3 		mov	r0, #200
+ 2849 04f0 0310A0E1 		mov	r1, r3
+ 2850 04f4 0F20A0E3 		mov	r2, #15
+ 2851 04f8 54319FE5 		ldr	r3, .L28+8
+ 2852 04fc FEFFFFEB 		bl	lcd_puts
+ 2853              	.L18:
+ 136:../proyecto.c **** 
+ 137:../proyecto.c **** 		scancode = keypad_scan();
+ 2854              		.loc 1 137 0
+ 2855 0500 FEFFFFEB 		bl	keypad_scan
+ 2856 0504 0030A0E1 		mov	r3, r0
+ 2857 0508 19304BE5 		strb	r3, [fp, #-25]
+ 138:../proyecto.c **** 		sw_delay_ms(250);
+ 2858              		.loc 1 138 0
+ 2859 050c FA00A0E3 		mov	r0, #250
+ 2860 0510 FEFFFFEB 		bl	sw_delay_ms
+ 139:../proyecto.c **** 		scancode = keypad_scan();
+ 2861              		.loc 1 139 0
+ 2862 0514 FEFFFFEB 		bl	keypad_scan
+ 2863 0518 0030A0E1 		mov	r3, r0
+ 2864 051c 19304BE5 		strb	r3, [fp, #-25]
+ 2865              	.L13:
+ 120:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 2866              		.loc 1 120 0 discriminator 1
+ 2867 0520 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2868 0524 0E0053E3 		cmp	r3, #14
+ 2869 0528 0E00000A 		beq	.L19
+ 120:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 2870              		.loc 1 120 0 is_stmt 0 discriminator 2
+ 2871 052c 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2872 0530 0C0053E3 		cmp	r3, #12
+ 2873 0534 0B00000A 		beq	.L19
+ 120:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 2874              		.loc 1 120 0 discriminator 1
+ 2875 0538 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2876 053c 0D0053E3 		cmp	r3, #13
+ 2877 0540 0800000A 		beq	.L19
+ 121:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 2878              		.loc 1 121 0 is_stmt 1
+ 2879 0544 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2880 0548 0F0053E3 		cmp	r3, #15
+ 2881 054c 0500000A 		beq	.L19
+ 121:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 2882              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 2883 0550 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2884 0554 000053E3 		cmp	r3, #0
+ 2885 0558 0200000A 		beq	.L19
+ 2886 055c 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2887 0560 010053E3 		cmp	r3, #1
+ 2888 0564 84FFFF1A 		bne	.L20
+ 2889              	.L19:
+ 140:../proyecto.c **** 	}
+ 141:../proyecto.c **** 
+ 142:../proyecto.c **** 
+ 143:../proyecto.c **** 	if(scancode == KEYPAD_KEYC){  //pulsa anterior
+ 2890              		.loc 1 143 0 is_stmt 1
+ 2891 0568 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2892 056c 0C0053E3 		cmp	r3, #12
+ 2893 0570 0100001A 		bne	.L21
+ 144:../proyecto.c **** 		return 1;
+ 2894              		.loc 1 144 0
+ 2895 0574 0130A0E3 		mov	r3, #1
+ 2896 0578 2F0000EA 		b	.L22
+ 2897              	.L21:
+ 145:../proyecto.c **** 	}
+ 146:../proyecto.c **** 	if(scancode == KEYPAD_KEYD){ //pulsa cancelar
+ 2898              		.loc 1 146 0
+ 2899 057c 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2900 0580 0D0053E3 		cmp	r3, #13
+ 2901 0584 0100001A 		bne	.L23
+ 147:../proyecto.c **** 		return 0;
+ 2902              		.loc 1 147 0
+ 2903 0588 0030A0E3 		mov	r3, #0
+ 2904 058c 2A0000EA 		b	.L22
+ 2905              	.L23:
+ 148:../proyecto.c **** 	}
+ 149:../proyecto.c **** 	if(scancode == KEYPAD_KEYE){ //Pulsa aceptar
+ 2906              		.loc 1 149 0
+ 2907 0590 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2908 0594 0E0053E3 		cmp	r3, #14
+ 2909 0598 1500001A 		bne	.L24
+ 150:../proyecto.c **** 		funcion_peso(&verduras[num_list][move]);
+ 2910              		.loc 1 150 0
+ 2911 059c A8109FE5 		ldr	r1, .L28
+ 2912 05a0 28201BE5 		ldr	r2, [fp, #-40]
+ 2913 05a4 0230A0E1 		mov	r3, r2
+ 2914 05a8 0331A0E1 		mov	r3, r3, asl #2
+ 2915 05ac 023083E0 		add	r3, r3, r2
+ 2916 05b0 8330A0E1 		mov	r3, r3, asl #1
+ 2917 05b4 023083E0 		add	r3, r3, r2
+ 2918 05b8 0332A0E1 		mov	r3, r3, asl #4
+ 2919 05bc 0300A0E1 		mov	r0, r3
+ 2920 05c0 20201BE5 		ldr	r2, [fp, #-32]
+ 2921 05c4 0230A0E1 		mov	r3, r2
+ 2922 05c8 0331A0E1 		mov	r3, r3, asl #2
+ 2923 05cc 023083E0 		add	r3, r3, r2
+ 2924 05d0 8330A0E1 		mov	r3, r3, asl #1
+ 2925 05d4 023083E0 		add	r3, r3, r2
+ 2926 05d8 8330A0E1 		mov	r3, r3, asl #1
+ 2927 05dc 033080E0 		add	r3, r0, r3
+ 2928 05e0 033081E0 		add	r3, r1, r3
+ 2929 05e4 0300A0E1 		mov	r0, r3
+ 2930 05e8 FEFFFFEB 		bl	funcion_peso
+ 151:../proyecto.c **** 		return 4;
+ 2931              		.loc 1 151 0
+ 2932 05ec 0430A0E3 		mov	r3, #4
+ 2933 05f0 110000EA 		b	.L22
+ 2934              	.L24:
+ 152:../proyecto.c **** 	}
+ 153:../proyecto.c **** 	if(scancode == KEYPAD_KEYF){ //Pulsa siguiente
+ 2935              		.loc 1 153 0
+ 2936 05f4 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2937 05f8 0F0053E3 		cmp	r3, #15
+ 2938 05fc 0100001A 		bne	.L25
+ 154:../proyecto.c **** 		return 2;
+ 2939              		.loc 1 154 0
+ 2940 0600 0230A0E3 		mov	r3, #2
+ 2941 0604 0C0000EA 		b	.L22
+ 2942              	.L25:
+ 155:../proyecto.c **** 	}
+ 156:../proyecto.c **** 	if(scancode == KEYPAD_KEY0){  //pulsa pantalla anterior
+ 2943              		.loc 1 156 0
+ 2944 0608 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2945 060c 000053E3 		cmp	r3, #0
+ 2946 0610 0200001A 		bne	.L26
+ 157:../proyecto.c **** 		lcd_clear();
+ 2947              		.loc 1 157 0
+ 2948 0614 FEFFFFEB 		bl	lcd_clear
+ 158:../proyecto.c **** 		return 5;
+ 2949              		.loc 1 158 0
+ 2950 0618 0530A0E3 		mov	r3, #5
+ 2951 061c 060000EA 		b	.L22
+ 2952              	.L26:
+ 159:../proyecto.c **** 	}
+ 160:../proyecto.c **** 	if(scancode == KEYPAD_KEY1){  //pulsa pantalla siguiente
+ 2953              		.loc 1 160 0
+ 2954 0620 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 2955 0624 010053E3 		cmp	r3, #1
+ 2956 0628 0200001A 		bne	.L27
+ 161:../proyecto.c **** 		lcd_clear();
+ 2957              		.loc 1 161 0
+ 2958 062c FEFFFFEB 		bl	lcd_clear
+ 162:../proyecto.c **** 		return 6;
+ 2959              		.loc 1 162 0
+ 2960 0630 0630A0E3 		mov	r3, #6
+ 2961 0634 000000EA 		b	.L22
+ 2962              	.L27:
+ 2963 0638 FFFFFFEA 		b	.L6
+ 2964              	.L22:
+ 2965              	.L6:
+ 163:../proyecto.c **** 	}
+ 164:../proyecto.c **** }
+ 2966              		.loc 1 164 0
+ 2967 063c 0300A0E1 		mov	r0, r3
+ 2968 0640 0CD04BE2 		sub	sp, fp, #12
+ 2969 0644 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2970 0648 1EFF2FE1 		bx	lr
+ 2971              	.L29:
+ 2972              		.align	2
+ 2973              	.L28:
+ 2974 064c 00000000 		.word	verduras
+ 2975 0650 04000000 		.word	.LC1
+ 2976 0654 14000000 		.word	.LC2
+ 2977              		.cfi_endproc
+ 2978              	.LFE1:
+ 2980              		.section	.rodata
+ 2981 0022 0000     		.align	2
+ 2982              	.LC3:
+ 2983 0024 20202020 		.ascii	"            \000"
+ 2983      20202020 
+ 2983      20202020 
+ 2983      00
+ 2984 0031 000000   		.align	2
+ 2985              	.LC4:
+ 2986 0034 20202020 		.ascii	"           \000"
+ 2986      20202020 
+ 2986      20202000 
+ 2987              		.text
+ 2988              		.align	2
+ 2989              		.global	writelist_frutas
+ 2991              	writelist_frutas:
+ 2992              	.LFB2:
+ 165:../proyecto.c **** 
+ 166:../proyecto.c **** int writelist_frutas( int num_list, int movelist){
+ 2993              		.loc 1 166 0
+ 2994              		.cfi_startproc
+ 2995              		@ Function supports interworking.
+ 2996              		@ args = 0, pretend = 0, frame = 32
+ 2997              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2998 0658 0DC0A0E1 		mov	ip, sp
+ 2999              	.LCFI4:
+ 3000              		.cfi_def_cfa_register 12
+ 3001 065c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3002 0660 04B04CE2 		sub	fp, ip, #4
+ 3003              		.cfi_offset 14, -8
+ 3004              		.cfi_offset 13, -12
+ 3005              		.cfi_offset 11, -16
+ 3006              	.LCFI5:
+ 3007              		.cfi_def_cfa 11, 4
+ 3008 0664 20D04DE2 		sub	sp, sp, #32
+ 3009 0668 28000BE5 		str	r0, [fp, #-40]
+ 3010 066c 2C100BE5 		str	r1, [fp, #-44]
+ 167:../proyecto.c **** 
+ 168:../proyecto.c **** 	int j = 7, i=0, posicion_movelist = 0,move = movelist;
+ 3011              		.loc 1 168 0
+ 3012 0670 0730A0E3 		mov	r3, #7
+ 3013 0674 10300BE5 		str	r3, [fp, #-16]
+ 3014 0678 0030A0E3 		mov	r3, #0
+ 3015 067c 14300BE5 		str	r3, [fp, #-20]
+ 3016 0680 0030A0E3 		mov	r3, #0
+ 3017 0684 18300BE5 		str	r3, [fp, #-24]
+ 3018 0688 2C301BE5 		ldr	r3, [fp, #-44]
+ 3019 068c 20300BE5 		str	r3, [fp, #-32]
+ 169:../proyecto.c **** 	uint8 scancode;
+ 170:../proyecto.c **** 
+ 171:../proyecto.c **** 	scancode = KEYPAD_KEYA;
+ 3020              		.loc 1 171 0
+ 3021 0690 0A30A0E3 		mov	r3, #10
+ 3022 0694 19304BE5 		strb	r3, [fp, #-25]
+ 172:../proyecto.c **** 
+ 173:../proyecto.c **** 	while( i < 4){
+ 3023              		.loc 1 173 0
+ 3024 0698 270000EA 		b	.L31
+ 3025              	.L33:
+ 174:../proyecto.c **** 
+ 175:../proyecto.c **** 		if( i == move )
+ 3026              		.loc 1 175 0
+ 3027 069c 14201BE5 		ldr	r2, [fp, #-20]
+ 3028 06a0 20301BE5 		ldr	r3, [fp, #-32]
+ 3029 06a4 030052E1 		cmp	r2, r3
+ 3030 06a8 0100001A 		bne	.L32
+ 176:../proyecto.c **** 			posicion_movelist = j;
+ 3031              		.loc 1 176 0
+ 3032 06ac 10301BE5 		ldr	r3, [fp, #-16]
+ 3033 06b0 18300BE5 		str	r3, [fp, #-24]
+ 3034              	.L32:
+ 177:../proyecto.c **** 
+ 178:../proyecto.c **** 		lcd_puts( 50, 20+j, BLACK, frutas[num_list][i].nombre ); // he cambiado verduras por alimentos
+ 3035              		.loc 1 178 0
+ 3036 06b4 10301BE5 		ldr	r3, [fp, #-16]
+ 3037 06b8 0338A0E1 		mov	r3, r3, asl #16
+ 3038 06bc 2338A0E1 		mov	r3, r3, lsr #16
+ 3039 06c0 143083E2 		add	r3, r3, #20
+ 3040 06c4 0338A0E1 		mov	r3, r3, asl #16
+ 3041 06c8 23C8A0E1 		mov	ip, r3, lsr #16
+ 3042 06cc 14301BE5 		ldr	r3, [fp, #-20]
+ 3043 06d0 0320A0E1 		mov	r2, r3
+ 3044 06d4 0221A0E1 		mov	r2, r2, asl #2
+ 3045 06d8 032082E0 		add	r2, r2, r3
+ 3046 06dc 8220A0E1 		mov	r2, r2, asl #1
+ 3047 06e0 032082E0 		add	r2, r2, r3
+ 3048 06e4 8230A0E1 		mov	r3, r2, asl #1
+ 3049 06e8 0320A0E1 		mov	r2, r3
+ 3050 06ec 28101BE5 		ldr	r1, [fp, #-40]
+ 3051 06f0 0130A0E1 		mov	r3, r1
+ 3052 06f4 0331A0E1 		mov	r3, r3, asl #2
+ 3053 06f8 013083E0 		add	r3, r3, r1
+ 3054 06fc 8330A0E1 		mov	r3, r3, asl #1
+ 3055 0700 013083E0 		add	r3, r3, r1
+ 3056 0704 0332A0E1 		mov	r3, r3, asl #4
+ 3057 0708 032082E0 		add	r2, r2, r3
+ 3058 070c C0339FE5 		ldr	r3, .L52
+ 3059 0710 033082E0 		add	r3, r2, r3
+ 3060 0714 3200A0E3 		mov	r0, #50
+ 3061 0718 0C10A0E1 		mov	r1, ip
+ 3062 071c 0F20A0E3 		mov	r2, #15
+ 3063 0720 FEFFFFEB 		bl	lcd_puts
+ 179:../proyecto.c **** 		i++;
+ 3064              		.loc 1 179 0
+ 3065 0724 14301BE5 		ldr	r3, [fp, #-20]
+ 3066 0728 013083E2 		add	r3, r3, #1
+ 3067 072c 14300BE5 		str	r3, [fp, #-20]
+ 180:../proyecto.c **** 		j=j+43;
+ 3068              		.loc 1 180 0
+ 3069 0730 10301BE5 		ldr	r3, [fp, #-16]
+ 3070 0734 2B3083E2 		add	r3, r3, #43
+ 3071 0738 10300BE5 		str	r3, [fp, #-16]
+ 3072              	.L31:
+ 173:../proyecto.c **** 	while( i < 4){
+ 3073              		.loc 1 173 0 discriminator 1
+ 3074 073c 14301BE5 		ldr	r3, [fp, #-20]
+ 3075 0740 030053E3 		cmp	r3, #3
+ 3076 0744 D4FFFFDA 		ble	.L33
+ 181:../proyecto.c **** 	}
+ 182:../proyecto.c **** 
+ 183:../proyecto.c **** 	j=7;
+ 3077              		.loc 1 183 0
+ 3078 0748 0730A0E3 		mov	r3, #7
+ 3079 074c 10300BE5 		str	r3, [fp, #-16]
+ 184:../proyecto.c **** 
+ 185:../proyecto.c **** 	while( i < 8 ){
+ 3080              		.loc 1 185 0
+ 3081 0750 270000EA 		b	.L34
+ 3082              	.L36:
+ 186:../proyecto.c **** 
+ 187:../proyecto.c **** 		if( i == move )
+ 3083              		.loc 1 187 0
+ 3084 0754 14201BE5 		ldr	r2, [fp, #-20]
+ 3085 0758 20301BE5 		ldr	r3, [fp, #-32]
+ 3086 075c 030052E1 		cmp	r2, r3
+ 3087 0760 0100001A 		bne	.L35
+ 188:../proyecto.c **** 			posicion_movelist = j;
+ 3088              		.loc 1 188 0
+ 3089 0764 10301BE5 		ldr	r3, [fp, #-16]
+ 3090 0768 18300BE5 		str	r3, [fp, #-24]
+ 3091              	.L35:
+ 189:../proyecto.c **** 
+ 190:../proyecto.c **** 		lcd_puts( 200, 20+j, BLACK, frutas[num_list][i].nombre ); // lo mismo que arriba :D
+ 3092              		.loc 1 190 0
+ 3093 076c 10301BE5 		ldr	r3, [fp, #-16]
+ 3094 0770 0338A0E1 		mov	r3, r3, asl #16
+ 3095 0774 2338A0E1 		mov	r3, r3, lsr #16
+ 3096 0778 143083E2 		add	r3, r3, #20
+ 3097 077c 0338A0E1 		mov	r3, r3, asl #16
+ 3098 0780 23C8A0E1 		mov	ip, r3, lsr #16
+ 3099 0784 14301BE5 		ldr	r3, [fp, #-20]
+ 3100 0788 0320A0E1 		mov	r2, r3
+ 3101 078c 0221A0E1 		mov	r2, r2, asl #2
+ 3102 0790 032082E0 		add	r2, r2, r3
+ 3103 0794 8220A0E1 		mov	r2, r2, asl #1
+ 3104 0798 032082E0 		add	r2, r2, r3
+ 3105 079c 8230A0E1 		mov	r3, r2, asl #1
+ 3106 07a0 0320A0E1 		mov	r2, r3
+ 3107 07a4 28101BE5 		ldr	r1, [fp, #-40]
+ 3108 07a8 0130A0E1 		mov	r3, r1
+ 3109 07ac 0331A0E1 		mov	r3, r3, asl #2
+ 3110 07b0 013083E0 		add	r3, r3, r1
+ 3111 07b4 8330A0E1 		mov	r3, r3, asl #1
+ 3112 07b8 013083E0 		add	r3, r3, r1
+ 3113 07bc 0332A0E1 		mov	r3, r3, asl #4
+ 3114 07c0 032082E0 		add	r2, r2, r3
+ 3115 07c4 08339FE5 		ldr	r3, .L52
+ 3116 07c8 033082E0 		add	r3, r2, r3
+ 3117 07cc C800A0E3 		mov	r0, #200
+ 3118 07d0 0C10A0E1 		mov	r1, ip
+ 3119 07d4 0F20A0E3 		mov	r2, #15
+ 3120 07d8 FEFFFFEB 		bl	lcd_puts
+ 191:../proyecto.c **** 		i++;
+ 3121              		.loc 1 191 0
+ 3122 07dc 14301BE5 		ldr	r3, [fp, #-20]
+ 3123 07e0 013083E2 		add	r3, r3, #1
+ 3124 07e4 14300BE5 		str	r3, [fp, #-20]
+ 192:../proyecto.c **** 		j=j+43;
+ 3125              		.loc 1 192 0
+ 3126 07e8 10301BE5 		ldr	r3, [fp, #-16]
+ 3127 07ec 2B3083E2 		add	r3, r3, #43
+ 3128 07f0 10300BE5 		str	r3, [fp, #-16]
+ 3129              	.L34:
+ 185:../proyecto.c **** 	while( i < 8 ){
+ 3130              		.loc 1 185 0 discriminator 1
+ 3131 07f4 14301BE5 		ldr	r3, [fp, #-20]
+ 3132 07f8 070053E3 		cmp	r3, #7
+ 3133 07fc D4FFFFDA 		ble	.L36
+ 193:../proyecto.c **** 	}
+ 194:../proyecto.c **** 
+ 195:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 3134              		.loc 1 195 0
+ 3135 0800 680000EA 		b	.L37
+ 3136              	.L44:
+ 196:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 197:../proyecto.c **** 
+ 198:../proyecto.c **** 		if(move <= 3)
+ 3137              		.loc 1 198 0
+ 3138 0804 20301BE5 		ldr	r3, [fp, #-32]
+ 3139 0808 030053E3 		cmp	r3, #3
+ 3140 080c 1C0000CA 		bgt	.L38
+ 199:../proyecto.c **** 			lcd_puts( 50, 20+posicion_movelist, BLACK, frutas[num_list][move].nombre ); //mas de lo mismo
+ 3141              		.loc 1 199 0
+ 3142 0810 18301BE5 		ldr	r3, [fp, #-24]
+ 3143 0814 0338A0E1 		mov	r3, r3, asl #16
+ 3144 0818 2338A0E1 		mov	r3, r3, lsr #16
+ 3145 081c 143083E2 		add	r3, r3, #20
+ 3146 0820 0338A0E1 		mov	r3, r3, asl #16
+ 3147 0824 23C8A0E1 		mov	ip, r3, lsr #16
+ 3148 0828 20301BE5 		ldr	r3, [fp, #-32]
+ 3149 082c 0320A0E1 		mov	r2, r3
+ 3150 0830 0221A0E1 		mov	r2, r2, asl #2
+ 3151 0834 032082E0 		add	r2, r2, r3
+ 3152 0838 8220A0E1 		mov	r2, r2, asl #1
+ 3153 083c 032082E0 		add	r2, r2, r3
+ 3154 0840 8230A0E1 		mov	r3, r2, asl #1
+ 3155 0844 0320A0E1 		mov	r2, r3
+ 3156 0848 28101BE5 		ldr	r1, [fp, #-40]
+ 3157 084c 0130A0E1 		mov	r3, r1
+ 3158 0850 0331A0E1 		mov	r3, r3, asl #2
+ 3159 0854 013083E0 		add	r3, r3, r1
+ 3160 0858 8330A0E1 		mov	r3, r3, asl #1
+ 3161 085c 013083E0 		add	r3, r3, r1
+ 3162 0860 0332A0E1 		mov	r3, r3, asl #4
+ 3163 0864 032082E0 		add	r2, r2, r3
+ 3164 0868 64329FE5 		ldr	r3, .L52
+ 3165 086c 033082E0 		add	r3, r2, r3
+ 3166 0870 3200A0E3 		mov	r0, #50
+ 3167 0874 0C10A0E1 		mov	r1, ip
+ 3168 0878 0F20A0E3 		mov	r2, #15
+ 3169 087c FEFFFFEB 		bl	lcd_puts
+ 3170 0880 1B0000EA 		b	.L39
+ 3171              	.L38:
+ 200:../proyecto.c **** 		else
+ 201:../proyecto.c **** 			lcd_puts( 200, 20+posicion_movelist, BLACK, frutas[num_list][move].nombre ); //mas de lo mismo
+ 3172              		.loc 1 201 0
+ 3173 0884 18301BE5 		ldr	r3, [fp, #-24]
+ 3174 0888 0338A0E1 		mov	r3, r3, asl #16
+ 3175 088c 2338A0E1 		mov	r3, r3, lsr #16
+ 3176 0890 143083E2 		add	r3, r3, #20
+ 3177 0894 0338A0E1 		mov	r3, r3, asl #16
+ 3178 0898 23C8A0E1 		mov	ip, r3, lsr #16
+ 3179 089c 20301BE5 		ldr	r3, [fp, #-32]
+ 3180 08a0 0320A0E1 		mov	r2, r3
+ 3181 08a4 0221A0E1 		mov	r2, r2, asl #2
+ 3182 08a8 032082E0 		add	r2, r2, r3
+ 3183 08ac 8220A0E1 		mov	r2, r2, asl #1
+ 3184 08b0 032082E0 		add	r2, r2, r3
+ 3185 08b4 8230A0E1 		mov	r3, r2, asl #1
+ 3186 08b8 0320A0E1 		mov	r2, r3
+ 3187 08bc 28101BE5 		ldr	r1, [fp, #-40]
+ 3188 08c0 0130A0E1 		mov	r3, r1
+ 3189 08c4 0331A0E1 		mov	r3, r3, asl #2
+ 3190 08c8 013083E0 		add	r3, r3, r1
+ 3191 08cc 8330A0E1 		mov	r3, r3, asl #1
+ 3192 08d0 013083E0 		add	r3, r3, r1
+ 3193 08d4 0332A0E1 		mov	r3, r3, asl #4
+ 3194 08d8 032082E0 		add	r2, r2, r3
+ 3195 08dc F0319FE5 		ldr	r3, .L52
+ 3196 08e0 033082E0 		add	r3, r2, r3
+ 3197 08e4 C800A0E3 		mov	r0, #200
+ 3198 08e8 0C10A0E1 		mov	r1, ip
+ 3199 08ec 0F20A0E3 		mov	r2, #15
+ 3200 08f0 FEFFFFEB 		bl	lcd_puts
+ 3201              	.L39:
+ 202:../proyecto.c **** 
+ 203:../proyecto.c **** 		scancode = keypad_scan();
+ 3202              		.loc 1 203 0
+ 3203 08f4 FEFFFFEB 		bl	keypad_scan
+ 3204 08f8 0030A0E1 		mov	r3, r0
+ 3205 08fc 19304BE5 		strb	r3, [fp, #-25]
+ 204:../proyecto.c **** 		sw_delay_ms(250);
+ 3206              		.loc 1 204 0
+ 3207 0900 FA00A0E3 		mov	r0, #250
+ 3208 0904 FEFFFFEB 		bl	sw_delay_ms
+ 205:../proyecto.c **** 		scancode = keypad_scan();
+ 3209              		.loc 1 205 0
+ 3210 0908 FEFFFFEB 		bl	keypad_scan
+ 3211 090c 0030A0E1 		mov	r3, r0
+ 3212 0910 19304BE5 		strb	r3, [fp, #-25]
+ 206:../proyecto.c **** 
+ 207:../proyecto.c **** 		if(move < 3 || move == 3)
+ 3213              		.loc 1 207 0
+ 3214 0914 20301BE5 		ldr	r3, [fp, #-32]
+ 3215 0918 020053E3 		cmp	r3, #2
+ 3216 091c 020000DA 		ble	.L40
+ 3217              		.loc 1 207 0 is_stmt 0 discriminator 1
+ 3218 0920 20301BE5 		ldr	r3, [fp, #-32]
+ 3219 0924 030053E3 		cmp	r3, #3
+ 3220 0928 0B00001A 		bne	.L41
+ 3221              	.L40:
+ 208:../proyecto.c **** 			lcd_puts( 50, 20+posicion_movelist, BLACK, "            ");
+ 3222              		.loc 1 208 0 is_stmt 1
+ 3223 092c 18301BE5 		ldr	r3, [fp, #-24]
+ 3224 0930 0338A0E1 		mov	r3, r3, asl #16
+ 3225 0934 2338A0E1 		mov	r3, r3, lsr #16
+ 3226 0938 143083E2 		add	r3, r3, #20
+ 3227 093c 0338A0E1 		mov	r3, r3, asl #16
+ 3228 0940 2338A0E1 		mov	r3, r3, lsr #16
+ 3229 0944 3200A0E3 		mov	r0, #50
+ 3230 0948 0310A0E1 		mov	r1, r3
+ 3231 094c 0F20A0E3 		mov	r2, #15
+ 3232 0950 80319FE5 		ldr	r3, .L52+4
+ 3233 0954 FEFFFFEB 		bl	lcd_puts
+ 3234 0958 0A0000EA 		b	.L42
+ 3235              	.L41:
+ 209:../proyecto.c **** 		else
+ 210:../proyecto.c **** 			lcd_puts( 200, 20+posicion_movelist, BLACK, "           " );
+ 3236              		.loc 1 210 0
+ 3237 095c 18301BE5 		ldr	r3, [fp, #-24]
+ 3238 0960 0338A0E1 		mov	r3, r3, asl #16
+ 3239 0964 2338A0E1 		mov	r3, r3, lsr #16
+ 3240 0968 143083E2 		add	r3, r3, #20
+ 3241 096c 0338A0E1 		mov	r3, r3, asl #16
+ 3242 0970 2338A0E1 		mov	r3, r3, lsr #16
+ 3243 0974 C800A0E3 		mov	r0, #200
+ 3244 0978 0310A0E1 		mov	r1, r3
+ 3245 097c 0F20A0E3 		mov	r2, #15
+ 3246 0980 54319FE5 		ldr	r3, .L52+8
+ 3247 0984 FEFFFFEB 		bl	lcd_puts
+ 3248              	.L42:
+ 211:../proyecto.c **** 
+ 212:../proyecto.c **** 		scancode = keypad_scan();
+ 3249              		.loc 1 212 0
+ 3250 0988 FEFFFFEB 		bl	keypad_scan
+ 3251 098c 0030A0E1 		mov	r3, r0
+ 3252 0990 19304BE5 		strb	r3, [fp, #-25]
+ 213:../proyecto.c **** 		sw_delay_ms(250);
+ 3253              		.loc 1 213 0
+ 3254 0994 FA00A0E3 		mov	r0, #250
+ 3255 0998 FEFFFFEB 		bl	sw_delay_ms
+ 214:../proyecto.c **** 		scancode = keypad_scan();
+ 3256              		.loc 1 214 0
+ 3257 099c FEFFFFEB 		bl	keypad_scan
+ 3258 09a0 0030A0E1 		mov	r3, r0
+ 3259 09a4 19304BE5 		strb	r3, [fp, #-25]
+ 3260              	.L37:
+ 195:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 3261              		.loc 1 195 0 discriminator 1
+ 3262 09a8 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3263 09ac 0E0053E3 		cmp	r3, #14
+ 3264 09b0 0E00000A 		beq	.L43
+ 195:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 3265              		.loc 1 195 0 is_stmt 0 discriminator 2
+ 3266 09b4 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3267 09b8 0C0053E3 		cmp	r3, #12
+ 3268 09bc 0B00000A 		beq	.L43
+ 195:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEYC && scancode != KEYPAD_KEYD
+ 3269              		.loc 1 195 0 discriminator 1
+ 3270 09c0 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3271 09c4 0D0053E3 		cmp	r3, #13
+ 3272 09c8 0800000A 		beq	.L43
+ 196:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 3273              		.loc 1 196 0 is_stmt 1
+ 3274 09cc 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3275 09d0 0F0053E3 		cmp	r3, #15
+ 3276 09d4 0500000A 		beq	.L43
+ 196:../proyecto.c **** 			&& scancode != KEYPAD_KEYF && scancode != KEYPAD_KEY0 && scancode != KEYPAD_KEY1 ){
+ 3277              		.loc 1 196 0 is_stmt 0 discriminator 1
+ 3278 09d8 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3279 09dc 000053E3 		cmp	r3, #0
+ 3280 09e0 0200000A 		beq	.L43
+ 3281 09e4 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3282 09e8 010053E3 		cmp	r3, #1
+ 3283 09ec 84FFFF1A 		bne	.L44
+ 3284              	.L43:
+ 215:../proyecto.c **** 	}
+ 216:../proyecto.c **** 
+ 217:../proyecto.c **** 
+ 218:../proyecto.c **** 	if(scancode == KEYPAD_KEYC){  //pulsa anterior
+ 3285              		.loc 1 218 0 is_stmt 1
+ 3286 09f0 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3287 09f4 0C0053E3 		cmp	r3, #12
+ 3288 09f8 0100001A 		bne	.L45
+ 219:../proyecto.c **** 		return 1;
+ 3289              		.loc 1 219 0
+ 3290 09fc 0130A0E3 		mov	r3, #1
+ 3291 0a00 2F0000EA 		b	.L46
+ 3292              	.L45:
+ 220:../proyecto.c **** 	}
+ 221:../proyecto.c **** 	if(scancode == KEYPAD_KEYD){ //pulsa cancelar
+ 3293              		.loc 1 221 0
+ 3294 0a04 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3295 0a08 0D0053E3 		cmp	r3, #13
+ 3296 0a0c 0100001A 		bne	.L47
+ 222:../proyecto.c **** 		return 0;
+ 3297              		.loc 1 222 0
+ 3298 0a10 0030A0E3 		mov	r3, #0
+ 3299 0a14 2A0000EA 		b	.L46
+ 3300              	.L47:
+ 223:../proyecto.c **** 	}
+ 224:../proyecto.c **** 	if(scancode == KEYPAD_KEYE){ //Pulsa aceptar
+ 3301              		.loc 1 224 0
+ 3302 0a18 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3303 0a1c 0E0053E3 		cmp	r3, #14
+ 3304 0a20 1500001A 		bne	.L48
+ 225:../proyecto.c **** 		funcion_peso(&frutas[num_list][move]);
+ 3305              		.loc 1 225 0
+ 3306 0a24 A8109FE5 		ldr	r1, .L52
+ 3307 0a28 28201BE5 		ldr	r2, [fp, #-40]
+ 3308 0a2c 0230A0E1 		mov	r3, r2
+ 3309 0a30 0331A0E1 		mov	r3, r3, asl #2
+ 3310 0a34 023083E0 		add	r3, r3, r2
+ 3311 0a38 8330A0E1 		mov	r3, r3, asl #1
+ 3312 0a3c 023083E0 		add	r3, r3, r2
+ 3313 0a40 0332A0E1 		mov	r3, r3, asl #4
+ 3314 0a44 0300A0E1 		mov	r0, r3
+ 3315 0a48 20201BE5 		ldr	r2, [fp, #-32]
+ 3316 0a4c 0230A0E1 		mov	r3, r2
+ 3317 0a50 0331A0E1 		mov	r3, r3, asl #2
+ 3318 0a54 023083E0 		add	r3, r3, r2
+ 3319 0a58 8330A0E1 		mov	r3, r3, asl #1
+ 3320 0a5c 023083E0 		add	r3, r3, r2
+ 3321 0a60 8330A0E1 		mov	r3, r3, asl #1
+ 3322 0a64 033080E0 		add	r3, r0, r3
+ 3323 0a68 033081E0 		add	r3, r1, r3
+ 3324 0a6c 0300A0E1 		mov	r0, r3
+ 3325 0a70 FEFFFFEB 		bl	funcion_peso
+ 226:../proyecto.c **** 		return 4;
+ 3326              		.loc 1 226 0
+ 3327 0a74 0430A0E3 		mov	r3, #4
+ 3328 0a78 110000EA 		b	.L46
+ 3329              	.L48:
+ 227:../proyecto.c **** 	}
+ 228:../proyecto.c **** 	if(scancode == KEYPAD_KEYF){ //Pulsa siguiente
+ 3330              		.loc 1 228 0
+ 3331 0a7c 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3332 0a80 0F0053E3 		cmp	r3, #15
+ 3333 0a84 0100001A 		bne	.L49
+ 229:../proyecto.c **** 		return 2;
+ 3334              		.loc 1 229 0
+ 3335 0a88 0230A0E3 		mov	r3, #2
+ 3336 0a8c 0C0000EA 		b	.L46
+ 3337              	.L49:
+ 230:../proyecto.c **** 	}
+ 231:../proyecto.c **** 	if(scancode == KEYPAD_KEY0){  //pulsa pantalla anterior
+ 3338              		.loc 1 231 0
+ 3339 0a90 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3340 0a94 000053E3 		cmp	r3, #0
+ 3341 0a98 0200001A 		bne	.L50
+ 232:../proyecto.c **** 		lcd_clear();
+ 3342              		.loc 1 232 0
+ 3343 0a9c FEFFFFEB 		bl	lcd_clear
+ 233:../proyecto.c **** 		return 5;
+ 3344              		.loc 1 233 0
+ 3345 0aa0 0530A0E3 		mov	r3, #5
+ 3346 0aa4 060000EA 		b	.L46
+ 3347              	.L50:
+ 234:../proyecto.c **** 	}
+ 235:../proyecto.c **** 	if(scancode == KEYPAD_KEY1){  //pulsa pantalla siguiente
+ 3348              		.loc 1 235 0
+ 3349 0aa8 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 3350 0aac 010053E3 		cmp	r3, #1
+ 3351 0ab0 0200001A 		bne	.L51
+ 236:../proyecto.c **** 		lcd_clear();
+ 3352              		.loc 1 236 0
+ 3353 0ab4 FEFFFFEB 		bl	lcd_clear
+ 237:../proyecto.c **** 		return 6;
+ 3354              		.loc 1 237 0
+ 3355 0ab8 0630A0E3 		mov	r3, #6
+ 3356 0abc 000000EA 		b	.L46
+ 3357              	.L51:
+ 3358 0ac0 FFFFFFEA 		b	.L30
+ 3359              	.L46:
+ 3360              	.L30:
+ 238:../proyecto.c **** 	}
+ 239:../proyecto.c **** 
+ 240:../proyecto.c **** }
+ 3361              		.loc 1 240 0
+ 3362 0ac4 0300A0E1 		mov	r0, r3
+ 3363 0ac8 0CD04BE2 		sub	sp, fp, #12
+ 3364 0acc 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 3365 0ad0 1EFF2FE1 		bx	lr
+ 3366              	.L53:
+ 3367              		.align	2
+ 3368              	.L52:
+ 3369 0ad4 00000000 		.word	frutas
+ 3370 0ad8 24000000 		.word	.LC3
+ 3371 0adc 34000000 		.word	.LC4
+ 3372              		.cfi_endproc
+ 3373              	.LFE2:
+ 3375              		.align	2
+ 3376              		.global	frutas_verduras
+ 3378              	frutas_verduras:
+ 3379              	.LFB3:
+ 241:../proyecto.c **** 
+ 242:../proyecto.c **** int frutas_verduras(){
+ 3380              		.loc 1 242 0
+ 3381              		.cfi_startproc
+ 3382              		@ Function supports interworking.
+ 3383              		@ args = 0, pretend = 0, frame = 8
+ 3384              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3385 0ae0 0DC0A0E1 		mov	ip, sp
+ 3386              	.LCFI6:
+ 3387              		.cfi_def_cfa_register 12
+ 3388 0ae4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3389 0ae8 04B04CE2 		sub	fp, ip, #4
+ 3390              		.cfi_offset 14, -8
+ 3391              		.cfi_offset 13, -12
+ 3392              		.cfi_offset 11, -16
+ 3393              	.LCFI7:
+ 3394              		.cfi_def_cfa 11, 4
+ 3395 0aec 08D04DE2 		sub	sp, sp, #8
+ 243:../proyecto.c **** 	int i = 0; // i = 0 -> Fruta; i= 1-> verdura; i = 2 -> modo admin;
+ 3396              		.loc 1 243 0
+ 3397 0af0 0030A0E3 		mov	r3, #0
+ 3398 0af4 10300BE5 		str	r3, [fp, #-16]
+ 244:../proyecto.c **** 	uint8 scancode;
+ 245:../proyecto.c **** 	lcd_putWallpaper( VERDURA );
+ 3399              		.loc 1 245 0
+ 3400 0af8 AC009FE5 		ldr	r0, .L62
+ 3401 0afc FEFFFFEB 		bl	lcd_putWallpaper
+ 246:../proyecto.c **** 	lcd_putWallpaper( FRUTA );
+ 3402              		.loc 1 246 0
+ 3403 0b00 A8009FE5 		ldr	r0, .L62+4
+ 3404 0b04 FEFFFFEB 		bl	lcd_putWallpaper
+ 247:../proyecto.c **** 	scancode = keypad_getchar();
+ 3405              		.loc 1 247 0
+ 3406 0b08 FEFFFFEB 		bl	keypad_getchar
+ 3407 0b0c 0030A0E1 		mov	r3, r0
+ 3408 0b10 11304BE5 		strb	r3, [fp, #-17]
+ 248:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEY0){ // scancode != ok o scandode != admin
+ 3409              		.loc 1 248 0
+ 3410 0b14 140000EA 		b	.L55
+ 3411              	.L60:
+ 249:../proyecto.c **** 		if(scancode == KEYPAD_KEYC || scancode== KEYPAD_KEYF){ //scancode == flechas
+ 3412              		.loc 1 249 0
+ 3413 0b18 11305BE5 		ldrb	r3, [fp, #-17]	@ zero_extendqisi2
+ 3414 0b1c 0C0053E3 		cmp	r3, #12
+ 3415 0b20 0200000A 		beq	.L56
+ 3416              		.loc 1 249 0 is_stmt 0 discriminator 1
+ 3417 0b24 11305BE5 		ldrb	r3, [fp, #-17]	@ zero_extendqisi2
+ 3418 0b28 0F0053E3 		cmp	r3, #15
+ 3419 0b2c 0B00001A 		bne	.L57
+ 3420              	.L56:
+ 250:../proyecto.c **** 			if(i == 0){
+ 3421              		.loc 1 250 0 is_stmt 1
+ 3422 0b30 10301BE5 		ldr	r3, [fp, #-16]
+ 3423 0b34 000053E3 		cmp	r3, #0
+ 3424 0b38 0400001A 		bne	.L58
+ 251:../proyecto.c **** 				i = 1;
+ 3425              		.loc 1 251 0
+ 3426 0b3c 0130A0E3 		mov	r3, #1
+ 3427 0b40 10300BE5 		str	r3, [fp, #-16]
+ 252:../proyecto.c **** 				lcd_putWallpaper( VERDURA );
+ 3428              		.loc 1 252 0
+ 3429 0b44 60009FE5 		ldr	r0, .L62
+ 3430 0b48 FEFFFFEB 		bl	lcd_putWallpaper
+ 3431 0b4c 030000EA 		b	.L57
+ 3432              	.L58:
+ 253:../proyecto.c **** 			}
+ 254:../proyecto.c **** 			else{
+ 255:../proyecto.c **** 				i = 0;
+ 3433              		.loc 1 255 0
+ 3434 0b50 0030A0E3 		mov	r3, #0
+ 3435 0b54 10300BE5 		str	r3, [fp, #-16]
+ 256:../proyecto.c **** 				lcd_putWallpaper( FRUTA );
+ 3436              		.loc 1 256 0
+ 3437 0b58 50009FE5 		ldr	r0, .L62+4
+ 3438 0b5c FEFFFFEB 		bl	lcd_putWallpaper
+ 3439              	.L57:
+ 257:../proyecto.c **** 			}
+ 258:../proyecto.c **** 		}
+ 259:../proyecto.c **** 		scancode = keypad_getchar();
+ 3440              		.loc 1 259 0
+ 3441 0b60 FEFFFFEB 		bl	keypad_getchar
+ 3442 0b64 0030A0E1 		mov	r3, r0
+ 3443 0b68 11304BE5 		strb	r3, [fp, #-17]
+ 3444              	.L55:
+ 248:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEY0){ // scancode != ok o scandode != admin
+ 3445              		.loc 1 248 0 discriminator 1
+ 3446 0b6c 11305BE5 		ldrb	r3, [fp, #-17]	@ zero_extendqisi2
+ 3447 0b70 0E0053E3 		cmp	r3, #14
+ 3448 0b74 0200000A 		beq	.L59
+ 248:../proyecto.c **** 	while(scancode != KEYPAD_KEYE && scancode != KEYPAD_KEY0){ // scancode != ok o scandode != admin
+ 3449              		.loc 1 248 0 is_stmt 0 discriminator 2
+ 3450 0b78 11305BE5 		ldrb	r3, [fp, #-17]	@ zero_extendqisi2
+ 3451 0b7c 000053E3 		cmp	r3, #0
+ 3452 0b80 E4FFFF1A 		bne	.L60
+ 3453              	.L59:
+ 260:../proyecto.c **** 	}
+ 261:../proyecto.c **** 	if (scancode == KEYPAD_KEY0)
+ 3454              		.loc 1 261 0 is_stmt 1
+ 3455 0b84 11305BE5 		ldrb	r3, [fp, #-17]	@ zero_extendqisi2
+ 3456 0b88 000053E3 		cmp	r3, #0
+ 3457 0b8c 0100001A 		bne	.L61
+ 262:../proyecto.c **** 		i = 2;
+ 3458              		.loc 1 262 0
+ 3459 0b90 0230A0E3 		mov	r3, #2
+ 3460 0b94 10300BE5 		str	r3, [fp, #-16]
+ 3461              	.L61:
+ 263:../proyecto.c **** 
+ 264:../proyecto.c **** 	return i;
+ 3462              		.loc 1 264 0
+ 3463 0b98 10301BE5 		ldr	r3, [fp, #-16]
+ 265:../proyecto.c **** }
+ 3464              		.loc 1 265 0
+ 3465 0b9c 0300A0E1 		mov	r0, r3
+ 3466 0ba0 0CD04BE2 		sub	sp, fp, #12
+ 3467 0ba4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 3468 0ba8 1EFF2FE1 		bx	lr
+ 3469              	.L63:
+ 3470              		.align	2
+ 3471              	.L62:
+ 3472 0bac 0000220C 		.word	203554816
+ 3473 0bb0 0000210C 		.word	203489280
+ 3474              		.cfi_endproc
+ 3475              	.LFE3:
+ 3477              		.section	.rodata
+ 3478              		.align	2
+ 3479              	.LC5:
+ 3480 0040 5065736F 		.ascii	"Peso:\000"
+ 3480      3A00
+ 3481 0046 0000     		.align	2
+ 3482              	.LC6:
+ 3483 0048 4B6700   		.ascii	"Kg\000"
+ 3484 004b 00       		.align	2
+ 3485              	.LC7:
+ 3486 004c 546F7461 		.ascii	"Total:\000"
+ 3486      6C3A00
+ 3487 0053 00       		.align	2
+ 3488              	.LC8:
+ 3489 0054 50726563 		.ascii	"Precio/Kg:\000"
+ 3489      696F2F4B 
+ 3489      673A00
+ 3490 005f 00       		.align	2
+ 3491              	.LC9:
+ 3492 0060 242F4B67 		.ascii	"$/Kg\000"
+ 3492      00
+ 3493 0065 000000   		.align	2
+ 3494              	.LC10:
+ 3495 0068 2400     		.ascii	"$\000"
+ 3496              		.text
+ 3497              		.align	2
+ 3498              		.global	pantalla_peso
+ 3500              	pantalla_peso:
+ 3501              	.LFB4:
+ 266:../proyecto.c **** 
+ 267:../proyecto.c **** void pantalla_peso(fix16 precio){//tAlimentos alimento){
+ 3502              		.loc 1 267 0
+ 3503              		.cfi_startproc
+ 3504              		@ Function supports interworking.
+ 3505              		@ args = 0, pretend = 0, frame = 8
+ 3506              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3507 0bb4 0DC0A0E1 		mov	ip, sp
+ 3508              	.LCFI8:
+ 3509              		.cfi_def_cfa_register 12
+ 3510 0bb8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3511 0bbc 04B04CE2 		sub	fp, ip, #4
+ 3512              		.cfi_offset 14, -8
+ 3513              		.cfi_offset 13, -12
+ 3514              		.cfi_offset 11, -16
+ 3515              	.LCFI9:
+ 3516              		.cfi_def_cfa 11, 4
+ 3517 0bc0 10D04DE2 		sub	sp, sp, #16
+ 3518 0bc4 0030A0E1 		mov	r3, r0
+ 3519 0bc8 BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+ 268:../proyecto.c **** 	lcd_clear();
+ 3520              		.loc 1 268 0
+ 3521 0bcc FEFFFFEB 		bl	lcd_clear
+ 269:../proyecto.c **** 	lcd_draw_box( 10, 10, 310, 230, BLACK, 5 );
+ 3522              		.loc 1 269 0
+ 3523 0bd0 0F30A0E3 		mov	r3, #15
+ 3524 0bd4 00308DE5 		str	r3, [sp, #0]
+ 3525 0bd8 0530A0E3 		mov	r3, #5
+ 3526 0bdc 04308DE5 		str	r3, [sp, #4]
+ 3527 0be0 0A00A0E3 		mov	r0, #10
+ 3528 0be4 0A10A0E3 		mov	r1, #10
+ 3529 0be8 D4209FE5 		ldr	r2, .L65
+ 3530 0bec E630A0E3 		mov	r3, #230
+ 3531 0bf0 FEFFFFEB 		bl	lcd_draw_box
+ 270:../proyecto.c **** 	lcd_draw_hline(10,310,115,BLACK,5);
+ 3532              		.loc 1 270 0
+ 3533 0bf4 0530A0E3 		mov	r3, #5
+ 3534 0bf8 00308DE5 		str	r3, [sp, #0]
+ 3535 0bfc 0A00A0E3 		mov	r0, #10
+ 3536 0c00 BC109FE5 		ldr	r1, .L65
+ 3537 0c04 7320A0E3 		mov	r2, #115
+ 3538 0c08 0F30A0E3 		mov	r3, #15
+ 3539 0c0c FEFFFFEB 		bl	lcd_draw_hline
+ 271:../proyecto.c **** 	lcd_draw_vline(115,230,155,BLACK,5);
+ 3540              		.loc 1 271 0
+ 3541 0c10 0530A0E3 		mov	r3, #5
+ 3542 0c14 00308DE5 		str	r3, [sp, #0]
+ 3543 0c18 7300A0E3 		mov	r0, #115
+ 3544 0c1c E610A0E3 		mov	r1, #230
+ 3545 0c20 9B20A0E3 		mov	r2, #155
+ 3546 0c24 0F30A0E3 		mov	r3, #15
+ 3547 0c28 FEFFFFEB 		bl	lcd_draw_vline
+ 272:../proyecto.c **** 	lcd_puts( 16, 3, BLACK, "Peso:" );
+ 3548              		.loc 1 272 0
+ 3549 0c2c 1000A0E3 		mov	r0, #16
+ 3550 0c30 0310A0E3 		mov	r1, #3
+ 3551 0c34 0F20A0E3 		mov	r2, #15
+ 3552 0c38 88309FE5 		ldr	r3, .L65+4
+ 3553 0c3c FEFFFFEB 		bl	lcd_puts
+ 273:../proyecto.c **** 	lcd_puts_x3( 240, 63, BLACK, "Kg" );
+ 3554              		.loc 1 273 0
+ 3555 0c40 F000A0E3 		mov	r0, #240
+ 3556 0c44 3F10A0E3 		mov	r1, #63
+ 3557 0c48 0F20A0E3 		mov	r2, #15
+ 3558 0c4c 78309FE5 		ldr	r3, .L65+8
+ 3559 0c50 FEFFFFEB 		bl	lcd_puts_x3
+ 274:../proyecto.c **** 	lcd_puts( 162, 108, BLACK, "Total:" );
+ 3560              		.loc 1 274 0
+ 3561 0c54 A200A0E3 		mov	r0, #162
+ 3562 0c58 6C10A0E3 		mov	r1, #108
+ 3563 0c5c 0F20A0E3 		mov	r2, #15
+ 3564 0c60 68309FE5 		ldr	r3, .L65+12
+ 3565 0c64 FEFFFFEB 		bl	lcd_puts
+ 275:../proyecto.c **** 	lcd_puts( 16, 108, BLACK, "Precio/Kg:" );
+ 3566              		.loc 1 275 0
+ 3567 0c68 1000A0E3 		mov	r0, #16
+ 3568 0c6c 6C10A0E3 		mov	r1, #108
+ 3569 0c70 0F20A0E3 		mov	r2, #15
+ 3570 0c74 58309FE5 		ldr	r3, .L65+16
+ 3571 0c78 FEFFFFEB 		bl	lcd_puts
+ 276:../proyecto.c **** 	lcd_putfix(24,145, BLACK, precio);
+ 3572              		.loc 1 276 0
+ 3573 0c7c FE305BE1 		ldrsh	r3, [fp, #-14]
+ 3574 0c80 1800A0E3 		mov	r0, #24
+ 3575 0c84 9110A0E3 		mov	r1, #145
+ 3576 0c88 0F20A0E3 		mov	r2, #15
+ 3577 0c8c FEFFFFEB 		bl	lcd_putfix
+ 277:../proyecto.c **** 	lcd_puts_x2(90,195, BLACK, "$/Kg" );
+ 3578              		.loc 1 277 0
+ 3579 0c90 5A00A0E3 		mov	r0, #90
+ 3580 0c94 C310A0E3 		mov	r1, #195
+ 3581 0c98 0F20A0E3 		mov	r2, #15
+ 3582 0c9c 34309FE5 		ldr	r3, .L65+20
+ 3583 0ca0 FEFFFFEB 		bl	lcd_puts_x2
+ 278:../proyecto.c **** 	lcd_puts_x2(290,195,BLACK,"$");
+ 3584              		.loc 1 278 0
+ 3585 0ca4 30009FE5 		ldr	r0, .L65+24
+ 3586 0ca8 C310A0E3 		mov	r1, #195
+ 3587 0cac 0F20A0E3 		mov	r2, #15
+ 3588 0cb0 28309FE5 		ldr	r3, .L65+28
+ 3589 0cb4 FEFFFFEB 		bl	lcd_puts_x2
+ 279:../proyecto.c **** 
+ 280:../proyecto.c **** }
+ 3590              		.loc 1 280 0
+ 3591 0cb8 0CD04BE2 		sub	sp, fp, #12
+ 3592 0cbc 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 3593 0cc0 1EFF2FE1 		bx	lr
+ 3594              	.L66:
+ 3595              		.align	2
+ 3596              	.L65:
+ 3597 0cc4 36010000 		.word	310
+ 3598 0cc8 40000000 		.word	.LC5
+ 3599 0ccc 48000000 		.word	.LC6
+ 3600 0cd0 4C000000 		.word	.LC7
+ 3601 0cd4 54000000 		.word	.LC8
+ 3602 0cd8 60000000 		.word	.LC9
+ 3603 0cdc 22010000 		.word	290
+ 3604 0ce0 68000000 		.word	.LC10
+ 3605              		.cfi_endproc
+ 3606              	.LFE4:
+ 3608              		.align	2
+ 3609              		.global	funcion_peso
+ 3611              	funcion_peso:
+ 3612              	.LFB5:
+ 281:../proyecto.c **** 
+ 282:../proyecto.c **** void funcion_peso(tAlimentos *alimentos){
+ 3613              		.loc 1 282 0
+ 3614              		.cfi_startproc
+ 3615              		@ Function supports interworking.
+ 3616              		@ args = 0, pretend = 0, frame = 16
+ 3617              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3618 0ce4 0DC0A0E1 		mov	ip, sp
+ 3619              	.LCFI10:
+ 3620              		.cfi_def_cfa_register 12
+ 3621 0ce8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3622 0cec 04B04CE2 		sub	fp, ip, #4
+ 3623              		.cfi_offset 14, -8
+ 3624              		.cfi_offset 13, -12
+ 3625              		.cfi_offset 11, -16
+ 3626              	.LCFI11:
+ 3627              		.cfi_def_cfa 11, 4
+ 3628 0cf0 10D04DE2 		sub	sp, sp, #16
+ 3629 0cf4 18000BE5 		str	r0, [fp, #-24]
+ 283:../proyecto.c **** 	ufix16 weight = 0;
+ 3630              		.loc 1 283 0
+ 3631 0cf8 0030A0E3 		mov	r3, #0
+ 3632 0cfc BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+ 284:../proyecto.c **** 	ufix16 lastWeight = 1;
+ 3633              		.loc 1 284 0
+ 3634 0d00 0130A0E3 		mov	r3, #1
+ 3635 0d04 B0314BE1 		strh	r3, [fp, #-16]	@ movhi
+ 285:../proyecto.c **** 
+ 286:../proyecto.c **** 	scale_init();
+ 3636              		.loc 1 286 0
+ 3637 0d08 FEFFFFEB 		bl	scale_init
+ 287:../proyecto.c **** 	lcd_clear();
+ 3638              		.loc 1 287 0
+ 3639 0d0c FEFFFFEB 		bl	lcd_clear
+ 288:../proyecto.c **** 	pbs_init();
+ 3640              		.loc 1 288 0
+ 3641 0d10 FEFFFFEB 		bl	pbs_init
+ 289:../proyecto.c **** 
+ 290:../proyecto.c **** 	pantalla_peso(alimentos->precio);
+ 3642              		.loc 1 290 0
+ 3643 0d14 18301BE5 		ldr	r3, [fp, #-24]
+ 3644 0d18 B431D3E1 		ldrh	r3, [r3, #20]
+ 3645 0d1c 0338A0E1 		mov	r3, r3, asl #16
+ 3646 0d20 4338A0E1 		mov	r3, r3, asr #16
+ 3647 0d24 0300A0E1 		mov	r0, r3
+ 3648 0d28 FEFFFFEB 		bl	pantalla_peso
+ 291:../proyecto.c **** 	lcd_putint_x2(110,70,BLACK, 0);
+ 3649              		.loc 1 291 0
+ 3650 0d2c 6E00A0E3 		mov	r0, #110
+ 3651 0d30 4610A0E3 		mov	r1, #70
+ 3652 0d34 0F20A0E3 		mov	r2, #15
+ 3653 0d38 0030A0E3 		mov	r3, #0
+ 3654 0d3c FEFFFFEB 		bl	lcd_putint_x2
+ 292:../proyecto.c **** 	timer3_delay_ms(200);
+ 3655              		.loc 1 292 0
+ 3656 0d40 C800A0E3 		mov	r0, #200
+ 3657 0d44 FEFFFFEB 		bl	timer3_delay_ms
+ 293:../proyecto.c **** 
+ 294:../proyecto.c **** 
+ 295:../proyecto.c **** 
+ 296:../proyecto.c **** 	pb_wait_any_keydown();
+ 3658              		.loc 1 296 0
+ 3659 0d48 FEFFFFEB 		bl	pb_wait_any_keydown
+ 297:../proyecto.c **** 	while( weight != lastWeight )
+ 3660              		.loc 1 297 0
+ 3661 0d4c 1C0000EA 		b	.L68
+ 3662              	.L69:
+ 298:../proyecto.c **** 	 {
+ 299:../proyecto.c **** 		timer3_delay_ms(250);
+ 3663              		.loc 1 299 0
+ 3664 0d50 FA00A0E3 		mov	r0, #250
+ 3665 0d54 FEFFFFEB 		bl	timer3_delay_ms
+ 300:../proyecto.c **** 		lastWeight = weight;
+ 3666              		.loc 1 300 0
+ 3667 0d58 BE305BE1 		ldrh	r3, [fp, #-14]	@ movhi
+ 3668 0d5c B0314BE1 		strh	r3, [fp, #-16]	@ movhi
+ 301:../proyecto.c **** 	    weight = scale_getWeight();                         // lee el sensor de peso
+ 3669              		.loc 1 301 0
+ 3670 0d60 FEFFFFEB 		bl	scale_getWeight
+ 3671 0d64 0030A0E1 		mov	r3, r0
+ 3672 0d68 BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+ 302:../proyecto.c **** 	    lcd_putfix(110,63,BLACK, weight);
+ 3673              		.loc 1 302 0
+ 3674 0d6c BE305BE1 		ldrh	r3, [fp, #-14]
+ 3675 0d70 0338A0E1 		mov	r3, r3, asl #16
+ 3676 0d74 4338A0E1 		mov	r3, r3, asr #16
+ 3677 0d78 6E00A0E3 		mov	r0, #110
+ 3678 0d7c 3F10A0E3 		mov	r1, #63
+ 3679 0d80 0F20A0E3 		mov	r2, #15
+ 3680 0d84 FEFFFFEB 		bl	lcd_putfix
+ 303:../proyecto.c **** 	    lcd_putfix(170,145,BLACK, FMUL(alimentos->precio, weight, 10));
+ 3681              		.loc 1 303 0
+ 3682 0d88 18301BE5 		ldr	r3, [fp, #-24]
+ 3683 0d8c B431D3E1 		ldrh	r3, [r3, #20]
+ 3684 0d90 0338A0E1 		mov	r3, r3, asl #16
+ 3685 0d94 4338A0E1 		mov	r3, r3, asr #16
+ 3686 0d98 BE205BE1 		ldrh	r2, [fp, #-14]
+ 3687 0d9c 920303E0 		mul	r3, r2, r3
+ 3688 0da0 4335A0E1 		mov	r3, r3, asr #10
+ 3689 0da4 0338A0E1 		mov	r3, r3, asl #16
+ 3690 0da8 2338A0E1 		mov	r3, r3, lsr #16
+ 3691 0dac 0338A0E1 		mov	r3, r3, asl #16
+ 3692 0db0 4338A0E1 		mov	r3, r3, asr #16
+ 3693 0db4 AA00A0E3 		mov	r0, #170
+ 3694 0db8 9110A0E3 		mov	r1, #145
+ 3695 0dbc 0F20A0E3 		mov	r2, #15
+ 3696 0dc0 FEFFFFEB 		bl	lcd_putfix
+ 3697              	.L68:
+ 297:../proyecto.c **** 	while( weight != lastWeight )
+ 3698              		.loc 1 297 0 discriminator 1
+ 3699 0dc4 BE205BE1 		ldrh	r2, [fp, #-14]
+ 3700 0dc8 B0315BE1 		ldrh	r3, [fp, #-16]
+ 3701 0dcc 030052E1 		cmp	r2, r3
+ 3702 0dd0 DEFFFF1A 		bne	.L69
+ 304:../proyecto.c **** 
+ 305:../proyecto.c **** 	 }
+ 306:../proyecto.c **** 	imprimeticket(alimentos->nombre, weight, alimentos->precio);
+ 3703              		.loc 1 306 0
+ 3704 0dd4 28309FE5 		ldr	r3, .L70
+ 3705 0dd8 18001BE5 		ldr	r0, [fp, #-24]
+ 3706 0ddc BE105BE1 		ldrh	r1, [fp, #-14]
+ 3707 0de0 18201BE5 		ldr	r2, [fp, #-24]
+ 3708 0de4 B421D2E1 		ldrh	r2, [r2, #20]
+ 3709 0de8 0228A0E1 		mov	r2, r2, asl #16
+ 3710 0dec 4228A0E1 		mov	r2, r2, asr #16
+ 3711 0df0 0FE0A0E1 		mov	lr, pc
+ 3712 0df4 13FF2FE1 		bx	r3
+ 307:../proyecto.c **** }
+ 3713              		.loc 1 307 0
+ 3714 0df8 0CD04BE2 		sub	sp, fp, #12
+ 3715 0dfc 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 3716 0e00 1EFF2FE1 		bx	lr
+ 3717              	.L71:
+ 3718              		.align	2
+ 3719              	.L70:
+ 3720 0e04 00000000 		.word	imprimeticket
+ 3721              		.cfi_endproc
+ 3722              	.LFE5:
+ 3724              		.align	2
+ 3725              		.global	strcpy
+ 3727              	strcpy:
+ 3728              	.LFB6:
+ 308:../proyecto.c **** 
+ 309:../proyecto.c **** char *strcpy(char *dest, const char *src)
+ 310:../proyecto.c **** {
+ 3729              		.loc 1 310 0
+ 3730              		.cfi_startproc
+ 3731              		@ Function supports interworking.
+ 3732              		@ args = 0, pretend = 0, frame = 16
+ 3733              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3734 0e08 0DC0A0E1 		mov	ip, sp
+ 3735              	.LCFI12:
+ 3736              		.cfi_def_cfa_register 12
+ 3737 0e0c 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3738 0e10 04B04CE2 		sub	fp, ip, #4
+ 3739              		.cfi_offset 14, -8
+ 3740              		.cfi_offset 13, -12
+ 3741              		.cfi_offset 11, -16
+ 3742              	.LCFI13:
+ 3743              		.cfi_def_cfa 11, 4
+ 3744 0e14 10D04DE2 		sub	sp, sp, #16
+ 3745 0e18 18000BE5 		str	r0, [fp, #-24]
+ 3746 0e1c 1C100BE5 		str	r1, [fp, #-28]
+ 311:../proyecto.c ****   unsigned i;
+ 312:../proyecto.c ****   for (i=0; src[i] != '\0'; ++i)
+ 3747              		.loc 1 312 0
+ 3748 0e20 0030A0E3 		mov	r3, #0
+ 3749 0e24 10300BE5 		str	r3, [fp, #-16]
+ 3750 0e28 0A0000EA 		b	.L73
+ 3751              	.L74:
+ 313:../proyecto.c ****     dest[i] = src[i];
+ 3752              		.loc 1 313 0 discriminator 2
+ 3753 0e2c 18201BE5 		ldr	r2, [fp, #-24]
+ 3754 0e30 10301BE5 		ldr	r3, [fp, #-16]
+ 3755 0e34 033082E0 		add	r3, r2, r3
+ 3756 0e38 1C101BE5 		ldr	r1, [fp, #-28]
+ 3757 0e3c 10201BE5 		ldr	r2, [fp, #-16]
+ 3758 0e40 022081E0 		add	r2, r1, r2
+ 3759 0e44 0020D2E5 		ldrb	r2, [r2, #0]	@ zero_extendqisi2
+ 3760 0e48 0020C3E5 		strb	r2, [r3, #0]
+ 312:../proyecto.c ****   for (i=0; src[i] != '\0'; ++i)
+ 3761              		.loc 1 312 0 discriminator 2
+ 3762 0e4c 10301BE5 		ldr	r3, [fp, #-16]
+ 3763 0e50 013083E2 		add	r3, r3, #1
+ 3764 0e54 10300BE5 		str	r3, [fp, #-16]
+ 3765              	.L73:
+ 312:../proyecto.c ****   for (i=0; src[i] != '\0'; ++i)
+ 3766              		.loc 1 312 0 is_stmt 0 discriminator 1
+ 3767 0e58 1C201BE5 		ldr	r2, [fp, #-28]
+ 3768 0e5c 10301BE5 		ldr	r3, [fp, #-16]
+ 3769 0e60 033082E0 		add	r3, r2, r3
+ 3770 0e64 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 3771 0e68 000053E3 		cmp	r3, #0
+ 3772 0e6c EEFFFF1A 		bne	.L74
+ 314:../proyecto.c ****   dest[i] = '\0';
+ 3773              		.loc 1 314 0 is_stmt 1
+ 3774 0e70 18201BE5 		ldr	r2, [fp, #-24]
+ 3775 0e74 10301BE5 		ldr	r3, [fp, #-16]
+ 3776 0e78 033082E0 		add	r3, r2, r3
+ 3777 0e7c 0020A0E3 		mov	r2, #0
+ 3778 0e80 0020C3E5 		strb	r2, [r3, #0]
+ 315:../proyecto.c ****   return dest;
+ 3779              		.loc 1 315 0
+ 3780 0e84 18301BE5 		ldr	r3, [fp, #-24]
+ 316:../proyecto.c **** }
+ 3781              		.loc 1 316 0
+ 3782 0e88 0300A0E1 		mov	r0, r3
+ 3783 0e8c 0CD04BE2 		sub	sp, fp, #12
+ 3784 0e90 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 3785 0e94 1EFF2FE1 		bx	lr
+ 3786              		.cfi_endproc
+ 3787              	.LFE6:
+ 3789              		.section	.rodata
+ 3790 006a 0000     		.align	2
+ 3791              	.LC11:
+ 3792 006c 45736372 		.ascii	"Escriba el Nombre del nuevo Producto: \000"
+ 3792      69626120 
+ 3792      656C204E 
+ 3792      6F6D6272 
+ 3792      65206465 
+ 3793 0093 00       		.align	2
+ 3794              	.LC12:
+ 3795 0094 45736372 		.ascii	"Escriba el Precio del nuevo Producto: \000"
+ 3795      69626120 
+ 3795      656C2050 
+ 3795      72656369 
+ 3795      6F206465 
+ 3796 00bb 00       		.align	2
+ 3797              	.LC13:
+ 3798 00bc 65736372 		.ascii	"escribiendo los dos decimales a continuacion del nu"
+ 3798      69626965 
+ 3798      6E646F20 
+ 3798      6C6F7320 
+ 3798      646F7320 
+ 3799 00ef 6D65726F 		.ascii	"mero\000"
+ 3799      00
+ 3800              		.align	2
+ 3801              	.LC14:
+ 3802 00f4 50453A20 		.ascii	"PE: 1e = 100; 2,23e = 223\000"
+ 3802      3165203D 
+ 3802      20313030 
+ 3802      3B20322C 
+ 3802      32336520 
+ 3803              		.global	__aeabi_i2f
+ 3804              		.global	__aeabi_fdiv
+ 3805              		.global	__aeabi_f2d
+ 3806              		.global	__aeabi_dmul
+ 3807              		.global	__aeabi_d2iz
+ 3808              		.text
+ 3809              		.align	2
+ 3810              		.global	nuevoAlimento
+ 3812              	nuevoAlimento:
+ 3813              	.LFB7:
+ 317:../proyecto.c **** 
+ 318:../proyecto.c **** tAlimentos nuevoAlimento(){
+ 3814              		.loc 1 318 0
+ 3815              		.cfi_startproc
+ 3816              		@ Function supports interworking.
+ 3817              		@ args = 0, pretend = 0, frame = 56
+ 3818              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3819 0e98 0DC0A0E1 		mov	ip, sp
+ 3820              	.LCFI14:
+ 3821              		.cfi_def_cfa_register 12
+ 3822 0e9c 30D82DE9 		stmfd	sp!, {r4, r5, fp, ip, lr, pc}
+ 3823 0ea0 04B04CE2 		sub	fp, ip, #4
+ 3824              		.cfi_offset 14, -8
+ 3825              		.cfi_offset 13, -12
+ 3826              		.cfi_offset 11, -16
+ 3827              		.cfi_offset 5, -20
+ 3828              		.cfi_offset 4, -24
+ 3829              	.LCFI15:
+ 3830              		.cfi_def_cfa 11, 4
+ 3831 0ea4 38D04DE2 		sub	sp, sp, #56
+ 3832 0ea8 0050A0E1 		mov	r5, r0
+ 319:../proyecto.c **** 	tAlimentos nuevo;
+ 320:../proyecto.c **** 	char   new_name[20];
+ 321:../proyecto.c **** 	int32 i;
+ 322:../proyecto.c **** 	fix16 new_precio;
+ 323:../proyecto.c **** 	fix16 cien = TOFIX(fix16, 100, 10);
+ 3833              		.loc 1 323 0
+ 3834 0eac 0239E0E3 		mvn	r3, #32768
+ 3835 0eb0 B6314BE1 		strh	r3, [fp, #-22]	@ movhi
+ 324:../proyecto.c **** 	uart0_puts( "Escriba el Nombre del nuevo Producto: " );
+ 3836              		.loc 1 324 0
+ 3837 0eb4 F4009FE5 		ldr	r0, .L76
+ 3838 0eb8 FEFFFFEB 		bl	uart0_puts
+ 325:../proyecto.c **** 	uart0_gets( new_name );
+ 3839              		.loc 1 325 0
+ 3840 0ebc 48304BE2 		sub	r3, fp, #72
+ 3841 0ec0 0300A0E1 		mov	r0, r3
+ 3842 0ec4 FEFFFFEB 		bl	uart0_gets
+ 326:../proyecto.c **** 	uart0_putchar( '\n' );
+ 3843              		.loc 1 326 0
+ 3844 0ec8 0A00A0E3 		mov	r0, #10
+ 3845 0ecc FEFFFFEB 		bl	uart0_putchar
+ 327:../proyecto.c **** 	strcpy(nuevo.nombre, new_name);
+ 3846              		.loc 1 327 0
+ 3847 0ed0 34204BE2 		sub	r2, fp, #52
+ 3848 0ed4 48304BE2 		sub	r3, fp, #72
+ 3849 0ed8 0200A0E1 		mov	r0, r2
+ 3850 0edc 0310A0E1 		mov	r1, r3
+ 3851 0ee0 FEFFFFEB 		bl	strcpy
+ 328:../proyecto.c **** 	uart0_puts( "Escriba el Precio del nuevo Producto: " );
+ 3852              		.loc 1 328 0
+ 3853 0ee4 C8009FE5 		ldr	r0, .L76+4
+ 3854 0ee8 FEFFFFEB 		bl	uart0_puts
+ 329:../proyecto.c **** 	uart0_putchar( '\n' );
+ 3855              		.loc 1 329 0
+ 3856 0eec 0A00A0E3 		mov	r0, #10
+ 3857 0ef0 FEFFFFEB 		bl	uart0_putchar
+ 330:../proyecto.c **** 	uart0_puts("escribiendo los dos decimales a continuacion del numero");
+ 3858              		.loc 1 330 0
+ 3859 0ef4 BC009FE5 		ldr	r0, .L76+8
+ 3860 0ef8 FEFFFFEB 		bl	uart0_puts
+ 331:../proyecto.c **** 	uart0_putchar( '\n' );
+ 3861              		.loc 1 331 0
+ 3862 0efc 0A00A0E3 		mov	r0, #10
+ 3863 0f00 FEFFFFEB 		bl	uart0_putchar
+ 332:../proyecto.c **** 	uart0_puts("PE: 1e = 100; 2,23e = 223"); uart0_putchar( '\n' );
+ 3864              		.loc 1 332 0
+ 3865 0f04 B0009FE5 		ldr	r0, .L76+12
+ 3866 0f08 FEFFFFEB 		bl	uart0_puts
+ 3867 0f0c 0A00A0E3 		mov	r0, #10
+ 3868 0f10 FEFFFFEB 		bl	uart0_putchar
+ 333:../proyecto.c **** 	i = uart0_getint();
+ 3869              		.loc 1 333 0
+ 3870 0f14 FEFFFFEB 		bl	uart0_getint
+ 3871 0f18 1C000BE5 		str	r0, [fp, #-28]
+ 334:../proyecto.c **** 
+ 335:../proyecto.c **** 	new_precio = TOFIX(fix16, (float)i/100, 10);
+ 3872              		.loc 1 335 0
+ 3873 0f1c 1C001BE5 		ldr	r0, [fp, #-28]
+ 3874 0f20 FEFFFFEB 		bl	__aeabi_i2f
+ 3875 0f24 0030A0E1 		mov	r3, r0
+ 3876 0f28 0300A0E1 		mov	r0, r3
+ 3877 0f2c 8C109FE5 		ldr	r1, .L76+16	@ float
+ 3878 0f30 FEFFFFEB 		bl	__aeabi_fdiv
+ 3879 0f34 0030A0E1 		mov	r3, r0
+ 3880 0f38 0300A0E1 		mov	r0, r3
+ 3881 0f3c FEFFFFEB 		bl	__aeabi_f2d
+ 3882 0f40 0030A0E1 		mov	r3, r0
+ 3883 0f44 0140A0E1 		mov	r4, r1
+ 3884 0f48 0300A0E1 		mov	r0, r3
+ 3885 0f4c 0410A0E1 		mov	r1, r4
+ 3886 0f50 0020A0E3 		mov	r2, #0
+ 3887 0f54 0131A0E3 		mov	r3, #1073741824
+ 3888 0f58 093683E2 		add	r3, r3, #9437184
+ 3889 0f5c FEFFFFEB 		bl	__aeabi_dmul
+ 3890 0f60 0030A0E1 		mov	r3, r0
+ 3891 0f64 0140A0E1 		mov	r4, r1
+ 3892 0f68 0300A0E1 		mov	r0, r3
+ 3893 0f6c 0410A0E1 		mov	r1, r4
+ 3894 0f70 FEFFFFEB 		bl	__aeabi_d2iz
+ 3895 0f74 0030A0E1 		mov	r3, r0
+ 3896 0f78 BE314BE1 		strh	r3, [fp, #-30]	@ movhi
+ 336:../proyecto.c **** 	//new_precio = FDIV(new_precio, cien,10);
+ 337:../proyecto.c **** 	nuevo.precio = new_precio;
+ 3897              		.loc 1 337 0
+ 3898 0f7c BE315BE1 		ldrh	r3, [fp, #-30]	@ movhi
+ 3899 0f80 B0324BE1 		strh	r3, [fp, #-32]	@ movhi
+ 338:../proyecto.c **** 	return nuevo;
+ 3900              		.loc 1 338 0
+ 3901 0f84 0510A0E1 		mov	r1, r5
+ 3902 0f88 34204BE2 		sub	r2, fp, #52
+ 3903 0f8c 1630A0E3 		mov	r3, #22
+ 3904 0f90 0100A0E1 		mov	r0, r1
+ 3905 0f94 0210A0E1 		mov	r1, r2
+ 3906 0f98 0320A0E1 		mov	r2, r3
+ 3907 0f9c FEFFFFEB 		bl	memcpy
+ 339:../proyecto.c **** }
+ 3908              		.loc 1 339 0
+ 3909 0fa0 0500A0E1 		mov	r0, r5
+ 3910 0fa4 14D04BE2 		sub	sp, fp, #20
+ 3911 0fa8 30689DE8 		ldmfd	sp, {r4, r5, fp, sp, lr}
+ 3912 0fac 1EFF2FE1 		bx	lr
+ 3913              	.L77:
+ 3914              		.align	2
+ 3915              	.L76:
+ 3916 0fb0 6C000000 		.word	.LC11
+ 3917 0fb4 94000000 		.word	.LC12
+ 3918 0fb8 BC000000 		.word	.LC13
+ 3919 0fbc F4000000 		.word	.LC14
+ 3920 0fc0 0000C842 		.word	1120403456
+ 3921              		.cfi_endproc
+ 3922              	.LFE7:
+ 3924              		.section	.rodata
+ 3925 010e 0000     		.align	2
+ 3926              	.LC15:
+ 3927 0110 2030202D 		.ascii	" 0 - Frutas\000"
+ 3927      20467275 
+ 3927      74617300 
+ 3928              		.align	2
+ 3929              	.LC16:
+ 3930 011c 2031202D 		.ascii	" 1 - Verdura\000"
+ 3930      20566572 
+ 3930      64757261 
+ 3930      00
+ 3931 0129 000000   		.align	2
+ 3932              	.LC17:
+ 3933 012c 2032202D 		.ascii	" 2 - Cancelar\000"
+ 3933      2043616E 
+ 3933      63656C61 
+ 3933      7200
+ 3934 013a 0000     		.align	2
+ 3935              	.LC18:
+ 3936 013c 202D2D2D 		.ascii	" ---------------------------------- \000"
+ 3936      2D2D2D2D 
+ 3936      2D2D2D2D 
+ 3936      2D2D2D2D 
+ 3936      2D2D2D2D 
+ 3937 0161 000000   		.align	2
+ 3938              	.LC19:
+ 3939 0164 7C202020 		.ascii	"|      A\321ADIR NUEVO PRODUCTO       |\000"
+ 3939      20202041 
+ 3939      D1414449 
+ 3939      52204E55 
+ 3939      45564F20 
+ 3940 0189 000000   		.align	2
+ 3941              	.LC20:
+ 3942 018c 2D2D2D2D 		.ascii	"-------Producto a\361adido--------\000"
+ 3942      2D2D2D50 
+ 3942      726F6475 
+ 3942      63746F20 
+ 3942      61F16164 
+ 3943              		.align	2
+ 3944              	.LC21:
+ 3945 01ac 2D2D2D2D 		.ascii	"----------Cancelado-----------\000"
+ 3945      2D2D2D2D 
+ 3945      2D2D4361 
+ 3945      6E63656C 
+ 3945      61646F2D 
+ 3946              		.text
+ 3947              		.align	2
+ 3948              		.global	anadir
+ 3950              	anadir:
+ 3951              	.LFB8:
+ 340:../proyecto.c **** 
+ 341:../proyecto.c **** void anadir(){
+ 3952              		.loc 1 341 0
+ 3953              		.cfi_startproc
+ 3954              		@ Function supports interworking.
+ 3955              		@ args = 0, pretend = 0, frame = 48
+ 3956              		@ frame_needed = 1, uses_anonymous_args = 0
+ 3957 0fc4 0DC0A0E1 		mov	ip, sp
+ 3958              	.LCFI16:
+ 3959              		.cfi_def_cfa_register 12
+ 3960 0fc8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 3961 0fcc 04B04CE2 		sub	fp, ip, #4
+ 3962              		.cfi_offset 14, -8
+ 3963              		.cfi_offset 13, -12
+ 3964              		.cfi_offset 11, -16
+ 3965              	.LCFI17:
+ 3966              		.cfi_def_cfa 11, 4
+ 3967 0fd0 30D04DE2 		sub	sp, sp, #48
+ 342:../proyecto.c **** 	lcd_clear();
+ 3968              		.loc 1 342 0
+ 3969 0fd4 FEFFFFEB 		bl	lcd_clear
+ 343:../proyecto.c **** 	//mostrar por lcd:
+ 344:../proyecto.c **** 	uint8 scancode;
+ 345:../proyecto.c **** 	tAlimentos nuevo;
+ 346:../proyecto.c **** 
+ 347:../proyecto.c **** 	lcd_puts_x2(70, 50,BLACK," 0 - Frutas");
+ 3970              		.loc 1 347 0
+ 3971 0fd8 4600A0E3 		mov	r0, #70
+ 3972 0fdc 3210A0E3 		mov	r1, #50
+ 3973 0fe0 0F20A0E3 		mov	r2, #15
+ 3974 0fe4 78339FE5 		ldr	r3, .L85
+ 3975 0fe8 FEFFFFEB 		bl	lcd_puts_x2
+ 348:../proyecto.c **** 	lcd_puts_x2(70,110,BLACK," 1 - Verdura");
+ 3976              		.loc 1 348 0
+ 3977 0fec 4600A0E3 		mov	r0, #70
+ 3978 0ff0 6E10A0E3 		mov	r1, #110
+ 3979 0ff4 0F20A0E3 		mov	r2, #15
+ 3980 0ff8 68339FE5 		ldr	r3, .L85+4
+ 3981 0ffc FEFFFFEB 		bl	lcd_puts_x2
+ 349:../proyecto.c **** 	lcd_puts_x2(70,170,BLACK," 2 - Cancelar");
+ 3982              		.loc 1 349 0
+ 3983 1000 4600A0E3 		mov	r0, #70
+ 3984 1004 AA10A0E3 		mov	r1, #170
+ 3985 1008 0F20A0E3 		mov	r2, #15
+ 3986 100c 58339FE5 		ldr	r3, .L85+8
+ 3987 1010 FEFFFFEB 		bl	lcd_puts_x2
+ 350:../proyecto.c **** 
+ 351:../proyecto.c **** 	uart0_puts( " ---------------------------------- " );uart0_putchar( '\n' );
+ 3988              		.loc 1 351 0
+ 3989 1014 54039FE5 		ldr	r0, .L85+12
+ 3990 1018 FEFFFFEB 		bl	uart0_puts
+ 3991 101c 0A00A0E3 		mov	r0, #10
+ 3992 1020 FEFFFFEB 		bl	uart0_putchar
+ 352:../proyecto.c **** 	uart0_puts( "|      AÑADIR NUEVO PRODUCTO       |" );uart0_putchar( '\n' );
+ 3993              		.loc 1 352 0
+ 3994 1024 48039FE5 		ldr	r0, .L85+16
+ 3995 1028 FEFFFFEB 		bl	uart0_puts
+ 3996 102c 0A00A0E3 		mov	r0, #10
+ 3997 1030 FEFFFFEB 		bl	uart0_putchar
+ 353:../proyecto.c **** 	uart0_puts( " ---------------------------------- " );uart0_putchar( '\n' );
+ 3998              		.loc 1 353 0
+ 3999 1034 34039FE5 		ldr	r0, .L85+12
+ 4000 1038 FEFFFFEB 		bl	uart0_puts
+ 4001 103c 0A00A0E3 		mov	r0, #10
+ 4002 1040 FEFFFFEB 		bl	uart0_putchar
+ 4003 1044 000000EA 		b	.L83
+ 4004              	.L84:
+ 354:../proyecto.c **** 
+ 355:../proyecto.c **** 	while (1){
+ 356:../proyecto.c **** 		scancode = keypad_getchar();
+ 357:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 358:../proyecto.c **** 			lcd_clear();
+ 359:../proyecto.c **** 			countF++; //nueva fruta
+ 360:../proyecto.c **** 			nuevo = nuevoAlimento();
+ 361:../proyecto.c **** 			strcpy(frutas[countF/8][countF%8].nombre, nuevo.nombre);
+ 362:../proyecto.c **** 			frutas[countF/8][countF%8].precio = nuevo.precio;
+ 363:../proyecto.c **** 			uart0_puts( "-------Producto añadido--------" );uart0_putchar( '\n' );
+ 364:../proyecto.c **** 			return;
+ 365:../proyecto.c **** 		}
+ 366:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 367:../proyecto.c **** 			lcd_clear();
+ 368:../proyecto.c **** 			countV++; //nueva verdura
+ 369:../proyecto.c **** 			nuevo = nuevoAlimento();
+ 370:../proyecto.c **** 			strcpy(verduras[countV/8][countV%8].nombre, nuevo.nombre);
+ 371:../proyecto.c **** 			verduras[countV/8][countV%8].precio = nuevo.precio;
+ 372:../proyecto.c **** 			uart0_puts( "-------Producto añadido--------" );uart0_putchar( '\n' );
+ 373:../proyecto.c **** 			return;
+ 374:../proyecto.c **** 		}
+ 375:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2){
+ 376:../proyecto.c **** 			uart0_puts( "----------Cancelado-----------" );uart0_putchar( '\n' );
+ 377:../proyecto.c **** 			return;
+ 378:../proyecto.c **** 		}
+ 379:../proyecto.c **** 	}
+ 4005              		.loc 1 379 0
+ 4006 1048 0000A0E1 		mov	r0, r0	@ nop
+ 4007              	.L83:
+ 356:../proyecto.c **** 		scancode = keypad_getchar();
+ 4008              		.loc 1 356 0
+ 4009 104c FEFFFFEB 		bl	keypad_getchar
+ 4010 1050 0030A0E1 		mov	r3, r0
+ 4011 1054 0D304BE5 		strb	r3, [fp, #-13]
+ 357:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 4012              		.loc 1 357 0
+ 4013 1058 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4014 105c 000053E3 		cmp	r3, #0
+ 4015 1060 5800001A 		bne	.L79
+ 358:../proyecto.c **** 			lcd_clear();
+ 4016              		.loc 1 358 0
+ 4017 1064 FEFFFFEB 		bl	lcd_clear
+ 359:../proyecto.c **** 			countF++; //nueva fruta
+ 4018              		.loc 1 359 0
+ 4019 1068 08339FE5 		ldr	r3, .L85+20
+ 4020 106c 003093E5 		ldr	r3, [r3, #0]
+ 4021 1070 012083E2 		add	r2, r3, #1
+ 4022 1074 FC329FE5 		ldr	r3, .L85+20
+ 4023 1078 002083E5 		str	r2, [r3, #0]
+ 360:../proyecto.c **** 			nuevo = nuevoAlimento();
+ 4024              		.loc 1 360 0
+ 4025 107c 3C304BE2 		sub	r3, fp, #60
+ 4026 1080 0300A0E1 		mov	r0, r3
+ 4027 1084 FEFFFFEB 		bl	nuevoAlimento
+ 4028 1088 24104BE2 		sub	r1, fp, #36
+ 4029 108c 3C204BE2 		sub	r2, fp, #60
+ 4030 1090 1630A0E3 		mov	r3, #22
+ 4031 1094 0100A0E1 		mov	r0, r1
+ 4032 1098 0210A0E1 		mov	r1, r2
+ 4033 109c 0320A0E1 		mov	r2, r3
+ 4034 10a0 FEFFFFEB 		bl	memcpy
+ 361:../proyecto.c **** 			strcpy(frutas[countF/8][countF%8].nombre, nuevo.nombre);
+ 4035              		.loc 1 361 0
+ 4036 10a4 CC329FE5 		ldr	r3, .L85+20
+ 4037 10a8 003093E5 		ldr	r3, [r3, #0]
+ 4038 10ac 072083E2 		add	r2, r3, #7
+ 4039 10b0 000053E3 		cmp	r3, #0
+ 4040 10b4 0230A0B1 		movlt	r3, r2
+ 4041 10b8 C331A0E1 		mov	r3, r3, asr #3
+ 4042 10bc 0310A0E1 		mov	r1, r3
+ 4043 10c0 B0329FE5 		ldr	r3, .L85+20
+ 4044 10c4 002093E5 		ldr	r2, [r3, #0]
+ 4045 10c8 C23FA0E1 		mov	r3, r2, asr #31
+ 4046 10cc A33EA0E1 		mov	r3, r3, lsr #29
+ 4047 10d0 032082E0 		add	r2, r2, r3
+ 4048 10d4 072002E2 		and	r2, r2, #7
+ 4049 10d8 023063E0 		rsb	r3, r3, r2
+ 4050 10dc 0320A0E1 		mov	r2, r3
+ 4051 10e0 0221A0E1 		mov	r2, r2, asl #2
+ 4052 10e4 032082E0 		add	r2, r2, r3
+ 4053 10e8 8220A0E1 		mov	r2, r2, asl #1
+ 4054 10ec 032082E0 		add	r2, r2, r3
+ 4055 10f0 8230A0E1 		mov	r3, r2, asl #1
+ 4056 10f4 0320A0E1 		mov	r2, r3
+ 4057 10f8 0130A0E1 		mov	r3, r1
+ 4058 10fc 0331A0E1 		mov	r3, r3, asl #2
+ 4059 1100 013083E0 		add	r3, r3, r1
+ 4060 1104 8330A0E1 		mov	r3, r3, asl #1
+ 4061 1108 013083E0 		add	r3, r3, r1
+ 4062 110c 0332A0E1 		mov	r3, r3, asl #4
+ 4063 1110 032082E0 		add	r2, r2, r3
+ 4064 1114 60329FE5 		ldr	r3, .L85+24
+ 4065 1118 032082E0 		add	r2, r2, r3
+ 4066 111c 24304BE2 		sub	r3, fp, #36
+ 4067 1120 0200A0E1 		mov	r0, r2
+ 4068 1124 0310A0E1 		mov	r1, r3
+ 4069 1128 FEFFFFEB 		bl	strcpy
+ 362:../proyecto.c **** 			frutas[countF/8][countF%8].precio = nuevo.precio;
+ 4070              		.loc 1 362 0
+ 4071 112c 44329FE5 		ldr	r3, .L85+20
+ 4072 1130 003093E5 		ldr	r3, [r3, #0]
+ 4073 1134 072083E2 		add	r2, r3, #7
+ 4074 1138 000053E3 		cmp	r3, #0
+ 4075 113c 0230A0B1 		movlt	r3, r2
+ 4076 1140 C331A0E1 		mov	r3, r3, asr #3
+ 4077 1144 0310A0E1 		mov	r1, r3
+ 4078 1148 28329FE5 		ldr	r3, .L85+20
+ 4079 114c 002093E5 		ldr	r2, [r3, #0]
+ 4080 1150 C23FA0E1 		mov	r3, r2, asr #31
+ 4081 1154 A33EA0E1 		mov	r3, r3, lsr #29
+ 4082 1158 032082E0 		add	r2, r2, r3
+ 4083 115c 072002E2 		and	r2, r2, #7
+ 4084 1160 023063E0 		rsb	r3, r3, r2
+ 4085 1164 B0015BE1 		ldrh	r0, [fp, #-16]
+ 4086 1168 0CE29FE5 		ldr	lr, .L85+24
+ 4087 116c 10C0A0E3 		mov	ip, #16
+ 4088 1170 0320A0E1 		mov	r2, r3
+ 4089 1174 0221A0E1 		mov	r2, r2, asl #2
+ 4090 1178 032082E0 		add	r2, r2, r3
+ 4091 117c 8220A0E1 		mov	r2, r2, asl #1
+ 4092 1180 032082E0 		add	r2, r2, r3
+ 4093 1184 8230A0E1 		mov	r3, r2, asl #1
+ 4094 1188 0320A0E1 		mov	r2, r3
+ 4095 118c 0130A0E1 		mov	r3, r1
+ 4096 1190 0331A0E1 		mov	r3, r3, asl #2
+ 4097 1194 013083E0 		add	r3, r3, r1
+ 4098 1198 8330A0E1 		mov	r3, r3, asl #1
+ 4099 119c 013083E0 		add	r3, r3, r1
+ 4100 11a0 0332A0E1 		mov	r3, r3, asl #4
+ 4101 11a4 033082E0 		add	r3, r2, r3
+ 4102 11a8 03308EE0 		add	r3, lr, r3
+ 4103 11ac 0C3083E0 		add	r3, r3, ip
+ 4104 11b0 B400C3E1 		strh	r0, [r3, #4]	@ movhi
+ 363:../proyecto.c **** 			uart0_puts( "-------Producto añadido--------" );uart0_putchar( '\n' );
+ 4105              		.loc 1 363 0
+ 4106 11b4 C4019FE5 		ldr	r0, .L85+28
+ 4107 11b8 FEFFFFEB 		bl	uart0_puts
+ 4108 11bc 0A00A0E3 		mov	r0, #10
+ 4109 11c0 FEFFFFEB 		bl	uart0_putchar
+ 364:../proyecto.c **** 			return;
+ 4110              		.loc 1 364 0
+ 4111 11c4 630000EA 		b	.L78
+ 4112              	.L79:
+ 366:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 4113              		.loc 1 366 0
+ 4114 11c8 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4115 11cc 010053E3 		cmp	r3, #1
+ 4116 11d0 5800001A 		bne	.L81
+ 367:../proyecto.c **** 			lcd_clear();
+ 4117              		.loc 1 367 0
+ 4118 11d4 FEFFFFEB 		bl	lcd_clear
+ 368:../proyecto.c **** 			countV++; //nueva verdura
+ 4119              		.loc 1 368 0
+ 4120 11d8 A4319FE5 		ldr	r3, .L85+32
+ 4121 11dc 003093E5 		ldr	r3, [r3, #0]
+ 4122 11e0 012083E2 		add	r2, r3, #1
+ 4123 11e4 98319FE5 		ldr	r3, .L85+32
+ 4124 11e8 002083E5 		str	r2, [r3, #0]
+ 369:../proyecto.c **** 			nuevo = nuevoAlimento();
+ 4125              		.loc 1 369 0
+ 4126 11ec 3C304BE2 		sub	r3, fp, #60
+ 4127 11f0 0300A0E1 		mov	r0, r3
+ 4128 11f4 FEFFFFEB 		bl	nuevoAlimento
+ 4129 11f8 24104BE2 		sub	r1, fp, #36
+ 4130 11fc 3C204BE2 		sub	r2, fp, #60
+ 4131 1200 1630A0E3 		mov	r3, #22
+ 4132 1204 0100A0E1 		mov	r0, r1
+ 4133 1208 0210A0E1 		mov	r1, r2
+ 4134 120c 0320A0E1 		mov	r2, r3
+ 4135 1210 FEFFFFEB 		bl	memcpy
+ 370:../proyecto.c **** 			strcpy(verduras[countV/8][countV%8].nombre, nuevo.nombre);
+ 4136              		.loc 1 370 0
+ 4137 1214 68319FE5 		ldr	r3, .L85+32
+ 4138 1218 003093E5 		ldr	r3, [r3, #0]
+ 4139 121c 072083E2 		add	r2, r3, #7
+ 4140 1220 000053E3 		cmp	r3, #0
+ 4141 1224 0230A0B1 		movlt	r3, r2
+ 4142 1228 C331A0E1 		mov	r3, r3, asr #3
+ 4143 122c 0310A0E1 		mov	r1, r3
+ 4144 1230 4C319FE5 		ldr	r3, .L85+32
+ 4145 1234 002093E5 		ldr	r2, [r3, #0]
+ 4146 1238 C23FA0E1 		mov	r3, r2, asr #31
+ 4147 123c A33EA0E1 		mov	r3, r3, lsr #29
+ 4148 1240 032082E0 		add	r2, r2, r3
+ 4149 1244 072002E2 		and	r2, r2, #7
+ 4150 1248 023063E0 		rsb	r3, r3, r2
+ 4151 124c 0320A0E1 		mov	r2, r3
+ 4152 1250 0221A0E1 		mov	r2, r2, asl #2
+ 4153 1254 032082E0 		add	r2, r2, r3
+ 4154 1258 8220A0E1 		mov	r2, r2, asl #1
+ 4155 125c 032082E0 		add	r2, r2, r3
+ 4156 1260 8230A0E1 		mov	r3, r2, asl #1
+ 4157 1264 0320A0E1 		mov	r2, r3
+ 4158 1268 0130A0E1 		mov	r3, r1
+ 4159 126c 0331A0E1 		mov	r3, r3, asl #2
+ 4160 1270 013083E0 		add	r3, r3, r1
+ 4161 1274 8330A0E1 		mov	r3, r3, asl #1
+ 4162 1278 013083E0 		add	r3, r3, r1
+ 4163 127c 0332A0E1 		mov	r3, r3, asl #4
+ 4164 1280 032082E0 		add	r2, r2, r3
+ 4165 1284 FC309FE5 		ldr	r3, .L85+36
+ 4166 1288 032082E0 		add	r2, r2, r3
+ 4167 128c 24304BE2 		sub	r3, fp, #36
+ 4168 1290 0200A0E1 		mov	r0, r2
+ 4169 1294 0310A0E1 		mov	r1, r3
+ 4170 1298 FEFFFFEB 		bl	strcpy
+ 371:../proyecto.c **** 			verduras[countV/8][countV%8].precio = nuevo.precio;
+ 4171              		.loc 1 371 0
+ 4172 129c E0309FE5 		ldr	r3, .L85+32
+ 4173 12a0 003093E5 		ldr	r3, [r3, #0]
+ 4174 12a4 072083E2 		add	r2, r3, #7
+ 4175 12a8 000053E3 		cmp	r3, #0
+ 4176 12ac 0230A0B1 		movlt	r3, r2
+ 4177 12b0 C331A0E1 		mov	r3, r3, asr #3
+ 4178 12b4 0310A0E1 		mov	r1, r3
+ 4179 12b8 C4309FE5 		ldr	r3, .L85+32
+ 4180 12bc 002093E5 		ldr	r2, [r3, #0]
+ 4181 12c0 C23FA0E1 		mov	r3, r2, asr #31
+ 4182 12c4 A33EA0E1 		mov	r3, r3, lsr #29
+ 4183 12c8 032082E0 		add	r2, r2, r3
+ 4184 12cc 072002E2 		and	r2, r2, #7
+ 4185 12d0 023063E0 		rsb	r3, r3, r2
+ 4186 12d4 B0015BE1 		ldrh	r0, [fp, #-16]
+ 4187 12d8 A8E09FE5 		ldr	lr, .L85+36
+ 4188 12dc 10C0A0E3 		mov	ip, #16
+ 4189 12e0 0320A0E1 		mov	r2, r3
+ 4190 12e4 0221A0E1 		mov	r2, r2, asl #2
+ 4191 12e8 032082E0 		add	r2, r2, r3
+ 4192 12ec 8220A0E1 		mov	r2, r2, asl #1
+ 4193 12f0 032082E0 		add	r2, r2, r3
+ 4194 12f4 8230A0E1 		mov	r3, r2, asl #1
+ 4195 12f8 0320A0E1 		mov	r2, r3
+ 4196 12fc 0130A0E1 		mov	r3, r1
+ 4197 1300 0331A0E1 		mov	r3, r3, asl #2
+ 4198 1304 013083E0 		add	r3, r3, r1
+ 4199 1308 8330A0E1 		mov	r3, r3, asl #1
+ 4200 130c 013083E0 		add	r3, r3, r1
+ 4201 1310 0332A0E1 		mov	r3, r3, asl #4
+ 4202 1314 033082E0 		add	r3, r2, r3
+ 4203 1318 03308EE0 		add	r3, lr, r3
+ 4204 131c 0C3083E0 		add	r3, r3, ip
+ 4205 1320 B400C3E1 		strh	r0, [r3, #4]	@ movhi
+ 372:../proyecto.c **** 			uart0_puts( "-------Producto añadido--------" );uart0_putchar( '\n' );
+ 4206              		.loc 1 372 0
+ 4207 1324 54009FE5 		ldr	r0, .L85+28
+ 4208 1328 FEFFFFEB 		bl	uart0_puts
+ 4209 132c 0A00A0E3 		mov	r0, #10
+ 4210 1330 FEFFFFEB 		bl	uart0_putchar
+ 373:../proyecto.c **** 			return;
+ 4211              		.loc 1 373 0
+ 4212 1334 070000EA 		b	.L78
+ 4213              	.L81:
+ 375:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2){
+ 4214              		.loc 1 375 0
+ 4215 1338 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4216 133c 020053E3 		cmp	r3, #2
+ 4217 1340 40FFFF1A 		bne	.L84
+ 376:../proyecto.c **** 			uart0_puts( "----------Cancelado-----------" );uart0_putchar( '\n' );
+ 4218              		.loc 1 376 0
+ 4219 1344 40009FE5 		ldr	r0, .L85+40
+ 4220 1348 FEFFFFEB 		bl	uart0_puts
+ 4221 134c 0A00A0E3 		mov	r0, #10
+ 4222 1350 FEFFFFEB 		bl	uart0_putchar
+ 377:../proyecto.c **** 			return;
+ 4223              		.loc 1 377 0
+ 4224 1354 0000A0E1 		mov	r0, r0	@ nop
+ 4225              	.L78:
+ 380:../proyecto.c **** }
+ 4226              		.loc 1 380 0
+ 4227 1358 0CD04BE2 		sub	sp, fp, #12
+ 4228 135c 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 4229 1360 1EFF2FE1 		bx	lr
+ 4230              	.L86:
+ 4231              		.align	2
+ 4232              	.L85:
+ 4233 1364 10010000 		.word	.LC15
+ 4234 1368 1C010000 		.word	.LC16
+ 4235 136c 2C010000 		.word	.LC17
+ 4236 1370 3C010000 		.word	.LC18
+ 4237 1374 64010000 		.word	.LC19
+ 4238 1378 00000000 		.word	countF
+ 4239 137c 00000000 		.word	frutas
+ 4240 1380 8C010000 		.word	.LC20
+ 4241 1384 00000000 		.word	countV
+ 4242 1388 00000000 		.word	verduras
+ 4243 138c AC010000 		.word	.LC21
+ 4244              		.cfi_endproc
+ 4245              	.LFE8:
+ 4247              		.align	2
+ 4248              		.global	uart0_putfix
+ 4250              	uart0_putfix:
+ 4251              	.LFB9:
+ 381:../proyecto.c **** 
+ 382:../proyecto.c **** void uart0_putfix(fix16 num){
+ 4252              		.loc 1 382 0
+ 4253              		.cfi_startproc
+ 4254              		@ Function supports interworking.
+ 4255              		@ args = 0, pretend = 0, frame = 24
+ 4256              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4257 1390 0DC0A0E1 		mov	ip, sp
+ 4258              	.LCFI18:
+ 4259              		.cfi_def_cfa_register 12
+ 4260 1394 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4261 1398 04B04CE2 		sub	fp, ip, #4
+ 4262              		.cfi_offset 14, -8
+ 4263              		.cfi_offset 13, -12
+ 4264              		.cfi_offset 11, -16
+ 4265              	.LCFI19:
+ 4266              		.cfi_def_cfa 11, 4
+ 4267 139c 18D04DE2 		sub	sp, sp, #24
+ 4268 13a0 0030A0E1 		mov	r3, r0
+ 4269 13a4 BE314BE1 		strh	r3, [fp, #-30]	@ movhi
+ 383:../proyecto.c **** 	int parte_entera;
+ 384:../proyecto.c **** 	int parte_decimal;
+ 385:../proyecto.c **** 	fix16 diez = 1010 << 10;
+ 4270              		.loc 1 385 0
+ 4271 13a8 323BA0E3 		mov	r3, #51200
+ 4272 13ac BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+ 386:../proyecto.c **** 
+ 387:../proyecto.c **** 
+ 388:../proyecto.c **** 	parte_entera = num >> 10;
+ 4273              		.loc 1 388 0
+ 4274 13b0 FE315BE1 		ldrsh	r3, [fp, #-30]
+ 4275 13b4 4335A0E1 		mov	r3, r3, asr #10
+ 4276 13b8 0338A0E1 		mov	r3, r3, asl #16
+ 4277 13bc 2338A0E1 		mov	r3, r3, lsr #16
+ 4278 13c0 0338A0E1 		mov	r3, r3, asl #16
+ 4279 13c4 4338A0E1 		mov	r3, r3, asr #16
+ 4280 13c8 14300BE5 		str	r3, [fp, #-20]
+ 389:../proyecto.c **** 	uart0_putint(parte_entera);
+ 4281              		.loc 1 389 0
+ 4282 13cc 14001BE5 		ldr	r0, [fp, #-20]
+ 4283 13d0 FEFFFFEB 		bl	uart0_putint
+ 390:../proyecto.c **** 
+ 391:../proyecto.c **** 	uart0_puts( "," );//poner la coma
+ 4284              		.loc 1 391 0
+ 4285 13d4 4C009FE5 		ldr	r0, .L88
+ 4286 13d8 FEFFFFEB 		bl	uart0_puts
+ 392:../proyecto.c **** 
+ 393:../proyecto.c **** 	num &= 0x3FF; //solo se queda la parte decimal
+ 4287              		.loc 1 393 0
+ 4288 13dc BE315BE1 		ldrh	r3, [fp, #-30]	@ movhi
+ 4289 13e0 033BA0E1 		mov	r3, r3, asl #22
+ 4290 13e4 233BA0E1 		mov	r3, r3, lsr #22
+ 4291 13e8 BE314BE1 		strh	r3, [fp, #-30]	@ movhi
+ 394:../proyecto.c **** 	parte_decimal = FMULI( 100, (fix32)num); //multiplicamos por 100 (dos decimales)
+ 4292              		.loc 1 394 0
+ 4293 13ec FE215BE1 		ldrsh	r2, [fp, #-30]
+ 4294 13f0 0230A0E1 		mov	r3, r2
+ 4295 13f4 0331A0E1 		mov	r3, r3, asl #2
+ 4296 13f8 023083E0 		add	r3, r3, r2
+ 4297 13fc 0321A0E1 		mov	r2, r3, asl #2
+ 4298 1400 023083E0 		add	r3, r3, r2
+ 4299 1404 0331A0E1 		mov	r3, r3, asl #2
+ 4300 1408 18300BE5 		str	r3, [fp, #-24]
+ 395:../proyecto.c **** 	uart0_putint(parte_decimal >> 10);
+ 4301              		.loc 1 395 0
+ 4302 140c 18301BE5 		ldr	r3, [fp, #-24]
+ 4303 1410 4335A0E1 		mov	r3, r3, asr #10
+ 4304 1414 0300A0E1 		mov	r0, r3
+ 4305 1418 FEFFFFEB 		bl	uart0_putint
+ 396:../proyecto.c **** }
+ 4306              		.loc 1 396 0
+ 4307 141c 0CD04BE2 		sub	sp, fp, #12
+ 4308 1420 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 4309 1424 1EFF2FE1 		bx	lr
+ 4310              	.L89:
+ 4311              		.align	2
+ 4312              	.L88:
+ 4313 1428 00000000 		.word	.LC0
+ 4314              		.cfi_endproc
+ 4315              	.LFE9:
+ 4317              		.section	.rodata
+ 4318 01cb 00       		.align	2
+ 4319              	.LC22:
+ 4320 01cc 202D2D2D 		.ascii	" -----------------------------\000"
+ 4320      2D2D2D2D 
+ 4320      2D2D2D2D 
+ 4320      2D2D2D2D 
+ 4320      2D2D2D2D 
+ 4321 01eb 00       		.align	2
+ 4322              	.LC23:
+ 4323 01ec 7C202020 		.ascii	"|     TICKET DE COMPRA        |\000"
+ 4323      20205449 
+ 4323      434B4554 
+ 4323      20444520 
+ 4323      434F4D50 
+ 4324              		.align	2
+ 4325              	.LC24:
+ 4326 020c 202D2D2D 		.ascii	" ----------------------------- \000"
+ 4326      2D2D2D2D 
+ 4326      2D2D2D2D 
+ 4326      2D2D2D2D 
+ 4326      2D2D2D2D 
+ 4327              		.align	2
+ 4328              	.LC25:
+ 4329 022c 4E4F4D42 		.ascii	"NOMBRE                        e/Kg\000"
+ 4329      52452020 
+ 4329      20202020 
+ 4329      20202020 
+ 4329      20202020 
+ 4330 024f 00       		.align	2
+ 4331              	.LC26:
+ 4332 0250 5F5F5F5F 		.ascii	"__________________\000"
+ 4332      5F5F5F5F 
+ 4332      5F5F5F5F 
+ 4332      5F5F5F5F 
+ 4332      5F5F00
+ 4333 0263 00       		.align	2
+ 4334              	.LC27:
+ 4335 0264 2D202054 		.ascii	"-  TOTAL:\000"
+ 4335      4F54414C 
+ 4335      3A00
+ 4336              		.text
+ 4337              		.align	2
+ 4338              		.global	imprimeticket
+ 4340              	imprimeticket:
+ 4341              	.LFB10:
+ 397:../proyecto.c **** 
+ 398:../proyecto.c **** void imprimeticket(char *nombre, fix16 peso, fix16 precio){
+ 4342              		.loc 1 398 0
+ 4343              		.cfi_startproc
+ 4344              		@ Function supports interworking.
+ 4345              		@ args = 0, pretend = 0, frame = 8
+ 4346              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4347 142c 0DC0A0E1 		mov	ip, sp
+ 4348              	.LCFI20:
+ 4349              		.cfi_def_cfa_register 12
+ 4350 1430 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4351 1434 04B04CE2 		sub	fp, ip, #4
+ 4352              		.cfi_offset 14, -8
+ 4353              		.cfi_offset 13, -12
+ 4354              		.cfi_offset 11, -16
+ 4355              	.LCFI21:
+ 4356              		.cfi_def_cfa 11, 4
+ 4357 1438 08D04DE2 		sub	sp, sp, #8
+ 4358 143c 10000BE5 		str	r0, [fp, #-16]
+ 4359 1440 0230A0E1 		mov	r3, r2
+ 4360 1444 B2114BE1 		strh	r1, [fp, #-18]	@ movhi
+ 4361 1448 B4314BE1 		strh	r3, [fp, #-20]	@ movhi
+ 399:../proyecto.c **** 	uart0_puts( " -----------------------------" );uart0_putchar( '\n' );
+ 4362              		.loc 1 399 0
+ 4363 144c A0009FE5 		ldr	r0, .L91
+ 4364 1450 FEFFFFEB 		bl	uart0_puts
+ 4365 1454 0A00A0E3 		mov	r0, #10
+ 4366 1458 FEFFFFEB 		bl	uart0_putchar
+ 400:../proyecto.c **** 	uart0_puts( "|     TICKET DE COMPRA        |" );uart0_putchar( '\n' );
+ 4367              		.loc 1 400 0
+ 4368 145c 94009FE5 		ldr	r0, .L91+4
+ 4369 1460 FEFFFFEB 		bl	uart0_puts
+ 4370 1464 0A00A0E3 		mov	r0, #10
+ 4371 1468 FEFFFFEB 		bl	uart0_putchar
+ 401:../proyecto.c **** 	uart0_puts( " ----------------------------- " );uart0_putchar( '\n' );
+ 4372              		.loc 1 401 0
+ 4373 146c 88009FE5 		ldr	r0, .L91+8
+ 4374 1470 FEFFFFEB 		bl	uart0_puts
+ 4375 1474 0A00A0E3 		mov	r0, #10
+ 4376 1478 FEFFFFEB 		bl	uart0_putchar
+ 402:../proyecto.c **** 	uart0_puts("NOMBRE                        e/Kg");uart0_putchar( '\n' );
+ 4377              		.loc 1 402 0
+ 4378 147c 7C009FE5 		ldr	r0, .L91+12
+ 4379 1480 FEFFFFEB 		bl	uart0_puts
+ 4380 1484 0A00A0E3 		mov	r0, #10
+ 4381 1488 FEFFFFEB 		bl	uart0_putchar
+ 403:../proyecto.c **** 	uart0_puts(nombre);
+ 4382              		.loc 1 403 0
+ 4383 148c 10001BE5 		ldr	r0, [fp, #-16]
+ 4384 1490 FEFFFFEB 		bl	uart0_puts
+ 404:../proyecto.c **** 	uart0_puts("__________________");
+ 4385              		.loc 1 404 0
+ 4386 1494 68009FE5 		ldr	r0, .L91+16
+ 4387 1498 FEFFFFEB 		bl	uart0_puts
+ 405:../proyecto.c **** 	uart0_putfix(precio);
+ 4388              		.loc 1 405 0
+ 4389 149c F4315BE1 		ldrsh	r3, [fp, #-20]
+ 4390 14a0 0300A0E1 		mov	r0, r3
+ 4391 14a4 FEFFFFEB 		bl	uart0_putfix
+ 406:../proyecto.c **** 	uart0_putchar( '\n' );
+ 4392              		.loc 1 406 0
+ 4393 14a8 0A00A0E3 		mov	r0, #10
+ 4394 14ac FEFFFFEB 		bl	uart0_putchar
+ 407:../proyecto.c **** 	uart0_puts("-  TOTAL:");uart0_putchar( '\n' );
+ 4395              		.loc 1 407 0
+ 4396 14b0 50009FE5 		ldr	r0, .L91+20
+ 4397 14b4 FEFFFFEB 		bl	uart0_puts
+ 4398 14b8 0A00A0E3 		mov	r0, #10
+ 4399 14bc FEFFFFEB 		bl	uart0_putchar
+ 408:../proyecto.c **** 
+ 409:../proyecto.c **** 	uart0_putfix(FMUL(precio,peso,10));
+ 4400              		.loc 1 409 0
+ 4401 14c0 F4315BE1 		ldrsh	r3, [fp, #-20]
+ 4402 14c4 F2215BE1 		ldrsh	r2, [fp, #-18]
+ 4403 14c8 920303E0 		mul	r3, r2, r3
+ 4404 14cc 4335A0E1 		mov	r3, r3, asr #10
+ 4405 14d0 0338A0E1 		mov	r3, r3, asl #16
+ 4406 14d4 2338A0E1 		mov	r3, r3, lsr #16
+ 4407 14d8 0338A0E1 		mov	r3, r3, asl #16
+ 4408 14dc 4338A0E1 		mov	r3, r3, asr #16
+ 4409 14e0 0300A0E1 		mov	r0, r3
+ 4410 14e4 FEFFFFEB 		bl	uart0_putfix
+ 410:../proyecto.c **** }
+ 4411              		.loc 1 410 0
+ 4412 14e8 0CD04BE2 		sub	sp, fp, #12
+ 4413 14ec 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 4414 14f0 1EFF2FE1 		bx	lr
+ 4415              	.L92:
+ 4416              		.align	2
+ 4417              	.L91:
+ 4418 14f4 CC010000 		.word	.LC22
+ 4419 14f8 EC010000 		.word	.LC23
+ 4420 14fc 0C020000 		.word	.LC24
+ 4421 1500 2C020000 		.word	.LC25
+ 4422 1504 50020000 		.word	.LC26
+ 4423 1508 64020000 		.word	.LC27
+ 4424              		.cfi_endproc
+ 4425              	.LFE10:
+ 4427              		.align	2
+ 4428              		.global	strcmp
+ 4430              	strcmp:
+ 4431              	.LFB11:
+ 411:../proyecto.c **** 
+ 412:../proyecto.c **** strcmp(const char *s1, const char *s2)
+ 413:../proyecto.c **** {
+ 4432              		.loc 1 413 0
+ 4433              		.cfi_startproc
+ 4434              		@ Function supports interworking.
+ 4435              		@ args = 0, pretend = 0, frame = 8
+ 4436              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4437 150c 0DC0A0E1 		mov	ip, sp
+ 4438              	.LCFI22:
+ 4439              		.cfi_def_cfa_register 12
+ 4440 1510 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4441 1514 04B04CE2 		sub	fp, ip, #4
+ 4442              		.cfi_offset 14, -8
+ 4443              		.cfi_offset 13, -12
+ 4444              		.cfi_offset 11, -16
+ 4445              	.LCFI23:
+ 4446              		.cfi_def_cfa 11, 4
+ 4447 1518 08D04DE2 		sub	sp, sp, #8
+ 4448 151c 10000BE5 		str	r0, [fp, #-16]
+ 4449 1520 14100BE5 		str	r1, [fp, #-20]
+ 414:../proyecto.c ****     for ( ; *s1 == *s2; s1++, s2++)
+ 4450              		.loc 1 414 0
+ 4451 1524 0B0000EA 		b	.L94
+ 4452              	.L97:
+ 415:../proyecto.c **** 	if (*s1 == '\0')
+ 4453              		.loc 1 415 0
+ 4454 1528 10301BE5 		ldr	r3, [fp, #-16]
+ 4455 152c 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 4456 1530 000053E3 		cmp	r3, #0
+ 4457 1534 0100001A 		bne	.L95
+ 416:../proyecto.c **** 	    return 0;
+ 4458              		.loc 1 416 0
+ 4459 1538 0030A0E3 		mov	r3, #0
+ 4460 153c 140000EA 		b	.L96
+ 4461              	.L95:
+ 414:../proyecto.c ****     for ( ; *s1 == *s2; s1++, s2++)
+ 4462              		.loc 1 414 0
+ 4463 1540 10301BE5 		ldr	r3, [fp, #-16]
+ 4464 1544 013083E2 		add	r3, r3, #1
+ 4465 1548 10300BE5 		str	r3, [fp, #-16]
+ 4466 154c 14301BE5 		ldr	r3, [fp, #-20]
+ 4467 1550 013083E2 		add	r3, r3, #1
+ 4468 1554 14300BE5 		str	r3, [fp, #-20]
+ 4469              	.L94:
+ 414:../proyecto.c ****     for ( ; *s1 == *s2; s1++, s2++)
+ 4470              		.loc 1 414 0 is_stmt 0 discriminator 1
+ 4471 1558 10301BE5 		ldr	r3, [fp, #-16]
+ 4472 155c 0020D3E5 		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 4473 1560 14301BE5 		ldr	r3, [fp, #-20]
+ 4474 1564 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 4475 1568 030052E1 		cmp	r2, r3
+ 4476 156c EDFFFF0A 		beq	.L97
+ 417:../proyecto.c ****     return ((*(unsigned char *)s1 < *(unsigned char *)s2) ? -1 : +1);
+ 4477              		.loc 1 417 0 is_stmt 1
+ 4478 1570 10301BE5 		ldr	r3, [fp, #-16]
+ 4479 1574 0020D3E5 		ldrb	r2, [r3, #0]	@ zero_extendqisi2
+ 4480 1578 14301BE5 		ldr	r3, [fp, #-20]
+ 4481 157c 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 4482 1580 030052E1 		cmp	r2, r3
+ 4483 1584 0100002A 		bcs	.L98
+ 4484              		.loc 1 417 0 is_stmt 0 discriminator 1
+ 4485 1588 0030E0E3 		mvn	r3, #0
+ 4486 158c 000000EA 		b	.L99
+ 4487              	.L98:
+ 4488              		.loc 1 417 0 discriminator 2
+ 4489 1590 0130A0E3 		mov	r3, #1
+ 4490              	.L99:
+ 4491              	.L96:
+ 418:../proyecto.c **** }
+ 4492              		.loc 1 418 0 is_stmt 1
+ 4493 1594 0300A0E1 		mov	r0, r3
+ 4494 1598 0CD04BE2 		sub	sp, fp, #12
+ 4495 159c 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 4496 15a0 1EFF2FE1 		bx	lr
+ 4497              		.cfi_endproc
+ 4498              	.LFE11:
+ 4500              		.section	.rodata
+ 4501 026e 0000     		.align	2
+ 4502              	.LC28:
+ 4503 0270 202D2D2D 		.ascii	" ------------------------------ \000"
+ 4503      2D2D2D2D 
+ 4503      2D2D2D2D 
+ 4503      2D2D2D2D 
+ 4503      2D2D2D2D 
+ 4504 0291 000000   		.align	2
+ 4505              	.LC29:
+ 4506 0294 7C090942 		.ascii	"|\011\011BORRAR UN PRODUCTO\011\011|\000"
+ 4506      4F525241 
+ 4506      5220554E 
+ 4506      2050524F 
+ 4506      44554354 
+ 4507 02ad 000000   		.align	2
+ 4508              	.LC30:
+ 4509 02b0 202D2D2D 		.ascii	" ------------------------------\000"
+ 4509      2D2D2D2D 
+ 4509      2D2D2D2D 
+ 4509      2D2D2D2D 
+ 4509      2D2D2D2D 
+ 4510              		.align	2
+ 4511              	.LC31:
+ 4512 02d0 45736372 		.ascii	"Escriba el Nombre del Producto a borrar: \000"
+ 4512      69626120 
+ 4512      656C204E 
+ 4512      6F6D6272 
+ 4512      65206465 
+ 4513 02fa 0000     		.align	2
+ 4514              	.LC32:
+ 4515 02fc 2000     		.ascii	" \000"
+ 4516 02fe 0000     		.align	2
+ 4517              	.LC33:
+ 4518 0300 2D2D2D2D 		.ascii	"-------Producto Borrado--------\000"
+ 4518      2D2D2D50 
+ 4518      726F6475 
+ 4518      63746F20 
+ 4518      426F7272 
+ 4519              		.align	2
+ 4520              	.LC34:
+ 4521 0320 2D2D2D2D 		.ascii	"-----Producto no encontrado------\000"
+ 4521      2D50726F 
+ 4521      64756374 
+ 4521      6F206E6F 
+ 4521      20656E63 
+ 4522              		.text
+ 4523              		.align	2
+ 4524              		.global	borrar
+ 4526              	borrar:
+ 4527              	.LFB12:
+ 419:../proyecto.c **** 
+ 420:../proyecto.c **** void borrar(){
+ 4528              		.loc 1 420 0
+ 4529              		.cfi_startproc
+ 4530              		@ Function supports interworking.
+ 4531              		@ args = 0, pretend = 0, frame = 56
+ 4532              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4533 15a4 0DC0A0E1 		mov	ip, sp
+ 4534              	.LCFI24:
+ 4535              		.cfi_def_cfa_register 12
+ 4536 15a8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4537 15ac 04B04CE2 		sub	fp, ip, #4
+ 4538              		.cfi_offset 14, -8
+ 4539              		.cfi_offset 13, -12
+ 4540              		.cfi_offset 11, -16
+ 4541              	.LCFI25:
+ 4542              		.cfi_def_cfa 11, 4
+ 4543 15b0 38D04DE2 		sub	sp, sp, #56
+ 421:../proyecto.c **** 	lcd_clear();
+ 4544              		.loc 1 421 0
+ 4545 15b4 FEFFFFEB 		bl	lcd_clear
+ 422:../proyecto.c **** 	//mostrar por lcd:
+ 423:../proyecto.c **** 	uint8 scancode;
+ 424:../proyecto.c **** 	char nombrelista [20];
+ 425:../proyecto.c **** 	char nombre[20];
+ 426:../proyecto.c **** 	boolean encontrado = 0;
+ 4546              		.loc 1 426 0
+ 4547 15b8 0030A0E3 		mov	r3, #0
+ 4548 15bc 0D304BE5 		strb	r3, [fp, #-13]
+ 427:../proyecto.c **** 	int i=0;
+ 4549              		.loc 1 427 0
+ 4550 15c0 0030A0E3 		mov	r3, #0
+ 4551 15c4 14300BE5 		str	r3, [fp, #-20]
+ 428:../proyecto.c **** 	int j= 0;
+ 4552              		.loc 1 428 0
+ 4553 15c8 0030A0E3 		mov	r3, #0
+ 4554 15cc 18300BE5 		str	r3, [fp, #-24]
+ 429:../proyecto.c **** 
+ 430:../proyecto.c **** 	lcd_puts_x2(70, 50,BLACK," 0 - Frutas");
+ 4555              		.loc 1 430 0
+ 4556 15d0 4600A0E3 		mov	r0, #70
+ 4557 15d4 3210A0E3 		mov	r1, #50
+ 4558 15d8 0F20A0E3 		mov	r2, #15
+ 4559 15dc D0389FE5 		ldr	r3, .L125
+ 4560 15e0 FEFFFFEB 		bl	lcd_puts_x2
+ 431:../proyecto.c **** 	lcd_puts_x2(70,110,BLACK," 1 - Verdura");
+ 4561              		.loc 1 431 0
+ 4562 15e4 4600A0E3 		mov	r0, #70
+ 4563 15e8 6E10A0E3 		mov	r1, #110
+ 4564 15ec 0F20A0E3 		mov	r2, #15
+ 4565 15f0 C0389FE5 		ldr	r3, .L125+4
+ 4566 15f4 FEFFFFEB 		bl	lcd_puts_x2
+ 432:../proyecto.c **** 	lcd_puts_x2(70,170,BLACK," 2 - Cancelar");
+ 4567              		.loc 1 432 0
+ 4568 15f8 4600A0E3 		mov	r0, #70
+ 4569 15fc AA10A0E3 		mov	r1, #170
+ 4570 1600 0F20A0E3 		mov	r2, #15
+ 4571 1604 B0389FE5 		ldr	r3, .L125+8
+ 4572 1608 FEFFFFEB 		bl	lcd_puts_x2
+ 433:../proyecto.c **** 
+ 434:../proyecto.c **** 	uart0_puts( " ------------------------------ " );uart0_putchar( '\n' );
+ 4573              		.loc 1 434 0
+ 4574 160c AC089FE5 		ldr	r0, .L125+12
+ 4575 1610 FEFFFFEB 		bl	uart0_puts
+ 4576 1614 0A00A0E3 		mov	r0, #10
+ 4577 1618 FEFFFFEB 		bl	uart0_putchar
+ 435:../proyecto.c **** 	uart0_puts( "|		BORRAR UN PRODUCTO		|" );uart0_putchar( '\n' );
+ 4578              		.loc 1 435 0
+ 4579 161c A0089FE5 		ldr	r0, .L125+16
+ 4580 1620 FEFFFFEB 		bl	uart0_puts
+ 4581 1624 0A00A0E3 		mov	r0, #10
+ 4582 1628 FEFFFFEB 		bl	uart0_putchar
+ 436:../proyecto.c **** 	uart0_puts( " ------------------------------" );uart0_putchar( '\n' );
+ 4583              		.loc 1 436 0
+ 4584 162c 94089FE5 		ldr	r0, .L125+20
+ 4585 1630 FEFFFFEB 		bl	uart0_puts
+ 4586 1634 0A00A0E3 		mov	r0, #10
+ 4587 1638 FEFFFFEB 		bl	uart0_putchar
+ 4588 163c 000000EA 		b	.L123
+ 4589              	.L124:
+ 437:../proyecto.c **** 
+ 438:../proyecto.c **** 	while (1){
+ 439:../proyecto.c **** 		scancode = keypad_getchar();
+ 440:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 441:../proyecto.c **** 			lcd_clear();
+ 442:../proyecto.c **** 
+ 443:../proyecto.c **** 			uart0_puts( "Escriba el Nombre del Producto a borrar: " );uart0_putchar( '\n' );
+ 444:../proyecto.c **** 			uart0_gets( nombre );
+ 445:../proyecto.c **** 
+ 446:../proyecto.c **** 			//buscar
+ 447:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 448:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 449:../proyecto.c **** 					 strcpy(nombrelista, frutas[i][j].nombre);
+ 450:../proyecto.c **** 					 if ((strcmp(nombre,nombrelista)) == 0){
+ 451:../proyecto.c **** 					    encontrado = 1;
+ 452:../proyecto.c **** 						i--;
+ 453:../proyecto.c **** 						j--;
+ 454:../proyecto.c **** 					 }
+ 455:../proyecto.c **** 				}
+ 456:../proyecto.c **** 			if (encontrado == 1){
+ 457:../proyecto.c **** 
+ 458:../proyecto.c **** 				strcpy(frutas[i][j].nombre, frutas[countF/8][countF%8].nombre); //copiamos el nombre
+ 459:../proyecto.c **** 				frutas[i][j].precio = frutas[countF/8][countF%8].precio; //copiamos el precio
+ 460:../proyecto.c **** 				strcpy(frutas[countF/8][countF%8].nombre, " "); //Esperemos que no pete D:
+ 461:../proyecto.c **** 				frutas[countF/8][countF%8].precio = 0;
+ 462:../proyecto.c **** 				countF--;
+ 463:../proyecto.c **** 				uart0_puts( "-------Producto Borrado--------" );uart0_putchar( '\n' );
+ 464:../proyecto.c **** 			}
+ 465:../proyecto.c **** 			else
+ 466:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 467:../proyecto.c **** 			return;
+ 468:../proyecto.c **** 		}
+ 469:../proyecto.c **** 
+ 470:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 471:../proyecto.c **** 			lcd_clear();
+ 472:../proyecto.c **** 
+ 473:../proyecto.c **** 			uart0_puts( "Escriba el Nombre del nuevo Producto: " );uart0_putchar( '\n' );
+ 474:../proyecto.c **** 			uart0_gets( nombre );
+ 475:../proyecto.c **** 
+ 476:../proyecto.c **** 			//buscar
+ 477:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 478:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 479:../proyecto.c **** 					strcpy(nombrelista, verduras[i][j].nombre);
+ 480:../proyecto.c **** 					if ((strcmp(nombre,nombrelista)) == 0){
+ 481:../proyecto.c **** 						encontrado = 1;
+ 482:../proyecto.c **** 						i--;
+ 483:../proyecto.c **** 						j--;
+ 484:../proyecto.c **** 					}
+ 485:../proyecto.c **** 				}
+ 486:../proyecto.c **** 			if (encontrado == 1){
+ 487:../proyecto.c **** 				strcpy(verduras[i][j].nombre, verduras[countV/8][countV%8].nombre); //copiamos el nombre
+ 488:../proyecto.c **** 				verduras[i][j].precio = verduras[countV/8][countV%8].precio; //copiamos el precio
+ 489:../proyecto.c **** 				strcpy(verduras[countV/8][countV%8].nombre, " "); //Esperemos que no pete D:
+ 490:../proyecto.c **** 				verduras[countV/8][countV%8].precio = 0;
+ 491:../proyecto.c **** 				countV--;
+ 492:../proyecto.c **** 				uart0_puts( "-------Producto Borrado--------" );uart0_putchar( '\n' );
+ 493:../proyecto.c **** 			}
+ 494:../proyecto.c **** 			else
+ 495:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 496:../proyecto.c **** 			return;
+ 497:../proyecto.c **** 		}
+ 498:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2){
+ 499:../proyecto.c **** 			uart0_puts( "----------Cancelado-----------" );uart0_putchar( '\n' );
+ 500:../proyecto.c **** 			return;
+ 501:../proyecto.c **** 		}
+ 502:../proyecto.c **** 	}//while
+ 4590              		.loc 1 502 0
+ 4591 1640 0000A0E1 		mov	r0, r0	@ nop
+ 4592              	.L123:
+ 439:../proyecto.c **** 		scancode = keypad_getchar();
+ 4593              		.loc 1 439 0
+ 4594 1644 FEFFFFEB 		bl	keypad_getchar
+ 4595 1648 0030A0E1 		mov	r3, r0
+ 4596 164c 19304BE5 		strb	r3, [fp, #-25]
+ 440:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 4597              		.loc 1 440 0
+ 4598 1650 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 4599 1654 000053E3 		cmp	r3, #0
+ 4600 1658 0301001A 		bne	.L101
+ 441:../proyecto.c **** 			lcd_clear();
+ 4601              		.loc 1 441 0
+ 4602 165c FEFFFFEB 		bl	lcd_clear
+ 443:../proyecto.c **** 			uart0_puts( "Escriba el Nombre del Producto a borrar: " );uart0_putchar( '\n' );
+ 4603              		.loc 1 443 0
+ 4604 1660 64089FE5 		ldr	r0, .L125+24
+ 4605 1664 FEFFFFEB 		bl	uart0_puts
+ 4606 1668 0A00A0E3 		mov	r0, #10
+ 4607 166c FEFFFFEB 		bl	uart0_putchar
+ 444:../proyecto.c **** 			uart0_gets( nombre );
+ 4608              		.loc 1 444 0
+ 4609 1670 44304BE2 		sub	r3, fp, #68
+ 4610 1674 0300A0E1 		mov	r0, r3
+ 4611 1678 FEFFFFEB 		bl	uart0_gets
+ 447:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4612              		.loc 1 447 0
+ 4613 167c 0030A0E3 		mov	r3, #0
+ 4614 1680 14300BE5 		str	r3, [fp, #-20]
+ 4615 1684 340000EA 		b	.L102
+ 4616              	.L108:
+ 448:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4617              		.loc 1 448 0
+ 4618 1688 0030A0E3 		mov	r3, #0
+ 4619 168c 18300BE5 		str	r3, [fp, #-24]
+ 4620 1690 280000EA 		b	.L103
+ 4621              	.L106:
+ 449:../proyecto.c **** 					 strcpy(nombrelista, frutas[i][j].nombre);
+ 4622              		.loc 1 449 0
+ 4623 1694 18301BE5 		ldr	r3, [fp, #-24]
+ 4624 1698 0320A0E1 		mov	r2, r3
+ 4625 169c 0221A0E1 		mov	r2, r2, asl #2
+ 4626 16a0 032082E0 		add	r2, r2, r3
+ 4627 16a4 8220A0E1 		mov	r2, r2, asl #1
+ 4628 16a8 032082E0 		add	r2, r2, r3
+ 4629 16ac 8230A0E1 		mov	r3, r2, asl #1
+ 4630 16b0 0320A0E1 		mov	r2, r3
+ 4631 16b4 14101BE5 		ldr	r1, [fp, #-20]
+ 4632 16b8 0130A0E1 		mov	r3, r1
+ 4633 16bc 0331A0E1 		mov	r3, r3, asl #2
+ 4634 16c0 013083E0 		add	r3, r3, r1
+ 4635 16c4 8330A0E1 		mov	r3, r3, asl #1
+ 4636 16c8 013083E0 		add	r3, r3, r1
+ 4637 16cc 0332A0E1 		mov	r3, r3, asl #4
+ 4638 16d0 032082E0 		add	r2, r2, r3
+ 4639 16d4 F4379FE5 		ldr	r3, .L125+28
+ 4640 16d8 033082E0 		add	r3, r2, r3
+ 4641 16dc 30204BE2 		sub	r2, fp, #48
+ 4642 16e0 0200A0E1 		mov	r0, r2
+ 4643 16e4 0310A0E1 		mov	r1, r3
+ 4644 16e8 FEFFFFEB 		bl	strcpy
+ 450:../proyecto.c **** 					 if ((strcmp(nombre,nombrelista)) == 0){
+ 4645              		.loc 1 450 0
+ 4646 16ec 44204BE2 		sub	r2, fp, #68
+ 4647 16f0 30304BE2 		sub	r3, fp, #48
+ 4648 16f4 0200A0E1 		mov	r0, r2
+ 4649 16f8 0310A0E1 		mov	r1, r3
+ 4650 16fc FEFFFFEB 		bl	strcmp
+ 4651 1700 0030A0E1 		mov	r3, r0
+ 4652 1704 000053E3 		cmp	r3, #0
+ 4653 1708 0700001A 		bne	.L104
+ 451:../proyecto.c **** 					    encontrado = 1;
+ 4654              		.loc 1 451 0
+ 4655 170c 0130A0E3 		mov	r3, #1
+ 4656 1710 0D304BE5 		strb	r3, [fp, #-13]
+ 452:../proyecto.c **** 						i--;
+ 4657              		.loc 1 452 0
+ 4658 1714 14301BE5 		ldr	r3, [fp, #-20]
+ 4659 1718 013043E2 		sub	r3, r3, #1
+ 4660 171c 14300BE5 		str	r3, [fp, #-20]
+ 453:../proyecto.c **** 						j--;
+ 4661              		.loc 1 453 0
+ 4662 1720 18301BE5 		ldr	r3, [fp, #-24]
+ 4663 1724 013043E2 		sub	r3, r3, #1
+ 4664 1728 18300BE5 		str	r3, [fp, #-24]
+ 4665              	.L104:
+ 448:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4666              		.loc 1 448 0
+ 4667 172c 18301BE5 		ldr	r3, [fp, #-24]
+ 4668 1730 013083E2 		add	r3, r3, #1
+ 4669 1734 18300BE5 		str	r3, [fp, #-24]
+ 4670              	.L103:
+ 448:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4671              		.loc 1 448 0 is_stmt 0 discriminator 1
+ 4672 1738 18301BE5 		ldr	r3, [fp, #-24]
+ 4673 173c 070053E3 		cmp	r3, #7
+ 4674 1740 020000CA 		bgt	.L105
+ 448:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4675              		.loc 1 448 0 discriminator 2
+ 4676 1744 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4677 1748 000053E3 		cmp	r3, #0
+ 4678 174c D0FFFF0A 		beq	.L106
+ 4679              	.L105:
+ 447:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4680              		.loc 1 447 0 is_stmt 1
+ 4681 1750 14301BE5 		ldr	r3, [fp, #-20]
+ 4682 1754 013083E2 		add	r3, r3, #1
+ 4683 1758 14300BE5 		str	r3, [fp, #-20]
+ 4684              	.L102:
+ 447:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4685              		.loc 1 447 0 is_stmt 0 discriminator 1
+ 4686 175c 14301BE5 		ldr	r3, [fp, #-20]
+ 4687 1760 030053E3 		cmp	r3, #3
+ 4688 1764 020000CA 		bgt	.L107
+ 447:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4689              		.loc 1 447 0 discriminator 2
+ 4690 1768 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4691 176c 000053E3 		cmp	r3, #0
+ 4692 1770 C4FFFF0A 		beq	.L108
+ 4693              	.L107:
+ 456:../proyecto.c **** 			if (encontrado == 1){
+ 4694              		.loc 1 456 0 is_stmt 1
+ 4695 1774 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4696 1778 010053E3 		cmp	r3, #1
+ 4697 177c B500001A 		bne	.L109
+ 458:../proyecto.c **** 				strcpy(frutas[i][j].nombre, frutas[countF/8][countF%8].nombre); //copiamos el nombre
+ 4698              		.loc 1 458 0
+ 4699 1780 18301BE5 		ldr	r3, [fp, #-24]
+ 4700 1784 0320A0E1 		mov	r2, r3
+ 4701 1788 0221A0E1 		mov	r2, r2, asl #2
+ 4702 178c 032082E0 		add	r2, r2, r3
+ 4703 1790 8220A0E1 		mov	r2, r2, asl #1
+ 4704 1794 032082E0 		add	r2, r2, r3
+ 4705 1798 8230A0E1 		mov	r3, r2, asl #1
+ 4706 179c 0320A0E1 		mov	r2, r3
+ 4707 17a0 14101BE5 		ldr	r1, [fp, #-20]
+ 4708 17a4 0130A0E1 		mov	r3, r1
+ 4709 17a8 0331A0E1 		mov	r3, r3, asl #2
+ 4710 17ac 013083E0 		add	r3, r3, r1
+ 4711 17b0 8330A0E1 		mov	r3, r3, asl #1
+ 4712 17b4 013083E0 		add	r3, r3, r1
+ 4713 17b8 0332A0E1 		mov	r3, r3, asl #4
+ 4714 17bc 032082E0 		add	r2, r2, r3
+ 4715 17c0 08379FE5 		ldr	r3, .L125+28
+ 4716 17c4 030082E0 		add	r0, r2, r3
+ 4717 17c8 04379FE5 		ldr	r3, .L125+32
+ 4718 17cc 003093E5 		ldr	r3, [r3, #0]
+ 4719 17d0 072083E2 		add	r2, r3, #7
+ 4720 17d4 000053E3 		cmp	r3, #0
+ 4721 17d8 0230A0B1 		movlt	r3, r2
+ 4722 17dc C331A0E1 		mov	r3, r3, asr #3
+ 4723 17e0 0310A0E1 		mov	r1, r3
+ 4724 17e4 E8369FE5 		ldr	r3, .L125+32
+ 4725 17e8 002093E5 		ldr	r2, [r3, #0]
+ 4726 17ec C23FA0E1 		mov	r3, r2, asr #31
+ 4727 17f0 A33EA0E1 		mov	r3, r3, lsr #29
+ 4728 17f4 032082E0 		add	r2, r2, r3
+ 4729 17f8 072002E2 		and	r2, r2, #7
+ 4730 17fc 023063E0 		rsb	r3, r3, r2
+ 4731 1800 0320A0E1 		mov	r2, r3
+ 4732 1804 0221A0E1 		mov	r2, r2, asl #2
+ 4733 1808 032082E0 		add	r2, r2, r3
+ 4734 180c 8220A0E1 		mov	r2, r2, asl #1
+ 4735 1810 032082E0 		add	r2, r2, r3
+ 4736 1814 8230A0E1 		mov	r3, r2, asl #1
+ 4737 1818 0320A0E1 		mov	r2, r3
+ 4738 181c 0130A0E1 		mov	r3, r1
+ 4739 1820 0331A0E1 		mov	r3, r3, asl #2
+ 4740 1824 013083E0 		add	r3, r3, r1
+ 4741 1828 8330A0E1 		mov	r3, r3, asl #1
+ 4742 182c 013083E0 		add	r3, r3, r1
+ 4743 1830 0332A0E1 		mov	r3, r3, asl #4
+ 4744 1834 032082E0 		add	r2, r2, r3
+ 4745 1838 90369FE5 		ldr	r3, .L125+28
+ 4746 183c 033082E0 		add	r3, r2, r3
+ 4747 1840 0310A0E1 		mov	r1, r3
+ 4748 1844 FEFFFFEB 		bl	strcpy
+ 459:../proyecto.c **** 				frutas[i][j].precio = frutas[countF/8][countF%8].precio; //copiamos el precio
+ 4749              		.loc 1 459 0
+ 4750 1848 84369FE5 		ldr	r3, .L125+32
+ 4751 184c 003093E5 		ldr	r3, [r3, #0]
+ 4752 1850 072083E2 		add	r2, r3, #7
+ 4753 1854 000053E3 		cmp	r3, #0
+ 4754 1858 0230A0B1 		movlt	r3, r2
+ 4755 185c C331A0E1 		mov	r3, r3, asr #3
+ 4756 1860 0310A0E1 		mov	r1, r3
+ 4757 1864 68369FE5 		ldr	r3, .L125+32
+ 4758 1868 002093E5 		ldr	r2, [r3, #0]
+ 4759 186c C23FA0E1 		mov	r3, r2, asr #31
+ 4760 1870 A33EA0E1 		mov	r3, r3, lsr #29
+ 4761 1874 032082E0 		add	r2, r2, r3
+ 4762 1878 072002E2 		and	r2, r2, #7
+ 4763 187c 023063E0 		rsb	r3, r3, r2
+ 4764 1880 48C69FE5 		ldr	ip, .L125+28
+ 4765 1884 1000A0E3 		mov	r0, #16
+ 4766 1888 0320A0E1 		mov	r2, r3
+ 4767 188c 0221A0E1 		mov	r2, r2, asl #2
+ 4768 1890 032082E0 		add	r2, r2, r3
+ 4769 1894 8220A0E1 		mov	r2, r2, asl #1
+ 4770 1898 032082E0 		add	r2, r2, r3
+ 4771 189c 8230A0E1 		mov	r3, r2, asl #1
+ 4772 18a0 0320A0E1 		mov	r2, r3
+ 4773 18a4 0130A0E1 		mov	r3, r1
+ 4774 18a8 0331A0E1 		mov	r3, r3, asl #2
+ 4775 18ac 013083E0 		add	r3, r3, r1
+ 4776 18b0 8330A0E1 		mov	r3, r3, asl #1
+ 4777 18b4 013083E0 		add	r3, r3, r1
+ 4778 18b8 0332A0E1 		mov	r3, r3, asl #4
+ 4779 18bc 033082E0 		add	r3, r2, r3
+ 4780 18c0 03308CE0 		add	r3, ip, r3
+ 4781 18c4 003083E0 		add	r3, r3, r0
+ 4782 18c8 B400D3E1 		ldrh	r0, [r3, #4]
+ 4783 18cc FCE59FE5 		ldr	lr, .L125+28
+ 4784 18d0 18301BE5 		ldr	r3, [fp, #-24]
+ 4785 18d4 14101BE5 		ldr	r1, [fp, #-20]
+ 4786 18d8 10C0A0E3 		mov	ip, #16
+ 4787 18dc 0320A0E1 		mov	r2, r3
+ 4788 18e0 0221A0E1 		mov	r2, r2, asl #2
+ 4789 18e4 032082E0 		add	r2, r2, r3
+ 4790 18e8 8220A0E1 		mov	r2, r2, asl #1
+ 4791 18ec 032082E0 		add	r2, r2, r3
+ 4792 18f0 8230A0E1 		mov	r3, r2, asl #1
+ 4793 18f4 0320A0E1 		mov	r2, r3
+ 4794 18f8 0130A0E1 		mov	r3, r1
+ 4795 18fc 0331A0E1 		mov	r3, r3, asl #2
+ 4796 1900 013083E0 		add	r3, r3, r1
+ 4797 1904 8330A0E1 		mov	r3, r3, asl #1
+ 4798 1908 013083E0 		add	r3, r3, r1
+ 4799 190c 0332A0E1 		mov	r3, r3, asl #4
+ 4800 1910 033082E0 		add	r3, r2, r3
+ 4801 1914 03308EE0 		add	r3, lr, r3
+ 4802 1918 0C3083E0 		add	r3, r3, ip
+ 4803 191c B400C3E1 		strh	r0, [r3, #4]	@ movhi
+ 460:../proyecto.c **** 				strcpy(frutas[countF/8][countF%8].nombre, " "); //Esperemos que no pete D:
+ 4804              		.loc 1 460 0
+ 4805 1920 AC359FE5 		ldr	r3, .L125+32
+ 4806 1924 003093E5 		ldr	r3, [r3, #0]
+ 4807 1928 072083E2 		add	r2, r3, #7
+ 4808 192c 000053E3 		cmp	r3, #0
+ 4809 1930 0230A0B1 		movlt	r3, r2
+ 4810 1934 C331A0E1 		mov	r3, r3, asr #3
+ 4811 1938 0310A0E1 		mov	r1, r3
+ 4812 193c 90359FE5 		ldr	r3, .L125+32
+ 4813 1940 002093E5 		ldr	r2, [r3, #0]
+ 4814 1944 C23FA0E1 		mov	r3, r2, asr #31
+ 4815 1948 A33EA0E1 		mov	r3, r3, lsr #29
+ 4816 194c 032082E0 		add	r2, r2, r3
+ 4817 1950 072002E2 		and	r2, r2, #7
+ 4818 1954 023063E0 		rsb	r3, r3, r2
+ 4819 1958 0320A0E1 		mov	r2, r3
+ 4820 195c 0221A0E1 		mov	r2, r2, asl #2
+ 4821 1960 032082E0 		add	r2, r2, r3
+ 4822 1964 8220A0E1 		mov	r2, r2, asl #1
+ 4823 1968 032082E0 		add	r2, r2, r3
+ 4824 196c 8230A0E1 		mov	r3, r2, asl #1
+ 4825 1970 0320A0E1 		mov	r2, r3
+ 4826 1974 0130A0E1 		mov	r3, r1
+ 4827 1978 0331A0E1 		mov	r3, r3, asl #2
+ 4828 197c 013083E0 		add	r3, r3, r1
+ 4829 1980 8330A0E1 		mov	r3, r3, asl #1
+ 4830 1984 013083E0 		add	r3, r3, r1
+ 4831 1988 0332A0E1 		mov	r3, r3, asl #4
+ 4832 198c 032082E0 		add	r2, r2, r3
+ 4833 1990 38359FE5 		ldr	r3, .L125+28
+ 4834 1994 033082E0 		add	r3, r2, r3
+ 4835 1998 0300A0E1 		mov	r0, r3
+ 4836 199c 34159FE5 		ldr	r1, .L125+36
+ 4837 19a0 0220A0E3 		mov	r2, #2
+ 4838 19a4 FEFFFFEB 		bl	memcpy
+ 461:../proyecto.c **** 				frutas[countF/8][countF%8].precio = 0;
+ 4839              		.loc 1 461 0
+ 4840 19a8 24359FE5 		ldr	r3, .L125+32
+ 4841 19ac 003093E5 		ldr	r3, [r3, #0]
+ 4842 19b0 072083E2 		add	r2, r3, #7
+ 4843 19b4 000053E3 		cmp	r3, #0
+ 4844 19b8 0230A0B1 		movlt	r3, r2
+ 4845 19bc C331A0E1 		mov	r3, r3, asr #3
+ 4846 19c0 0310A0E1 		mov	r1, r3
+ 4847 19c4 08359FE5 		ldr	r3, .L125+32
+ 4848 19c8 002093E5 		ldr	r2, [r3, #0]
+ 4849 19cc C23FA0E1 		mov	r3, r2, asr #31
+ 4850 19d0 A33EA0E1 		mov	r3, r3, lsr #29
+ 4851 19d4 032082E0 		add	r2, r2, r3
+ 4852 19d8 072002E2 		and	r2, r2, #7
+ 4853 19dc 023063E0 		rsb	r3, r3, r2
+ 4854 19e0 E8C49FE5 		ldr	ip, .L125+28
+ 4855 19e4 1000A0E3 		mov	r0, #16
+ 4856 19e8 0320A0E1 		mov	r2, r3
+ 4857 19ec 0221A0E1 		mov	r2, r2, asl #2
+ 4858 19f0 032082E0 		add	r2, r2, r3
+ 4859 19f4 8220A0E1 		mov	r2, r2, asl #1
+ 4860 19f8 032082E0 		add	r2, r2, r3
+ 4861 19fc 8230A0E1 		mov	r3, r2, asl #1
+ 4862 1a00 0320A0E1 		mov	r2, r3
+ 4863 1a04 0130A0E1 		mov	r3, r1
+ 4864 1a08 0331A0E1 		mov	r3, r3, asl #2
+ 4865 1a0c 013083E0 		add	r3, r3, r1
+ 4866 1a10 8330A0E1 		mov	r3, r3, asl #1
+ 4867 1a14 013083E0 		add	r3, r3, r1
+ 4868 1a18 0332A0E1 		mov	r3, r3, asl #4
+ 4869 1a1c 033082E0 		add	r3, r2, r3
+ 4870 1a20 03308CE0 		add	r3, ip, r3
+ 4871 1a24 003083E0 		add	r3, r3, r0
+ 4872 1a28 0020A0E3 		mov	r2, #0
+ 4873 1a2c B420C3E1 		strh	r2, [r3, #4]	@ movhi
+ 462:../proyecto.c **** 				countF--;
+ 4874              		.loc 1 462 0
+ 4875 1a30 9C349FE5 		ldr	r3, .L125+32
+ 4876 1a34 003093E5 		ldr	r3, [r3, #0]
+ 4877 1a38 012043E2 		sub	r2, r3, #1
+ 4878 1a3c 90349FE5 		ldr	r3, .L125+32
+ 4879 1a40 002083E5 		str	r2, [r3, #0]
+ 463:../proyecto.c **** 				uart0_puts( "-------Producto Borrado--------" );uart0_putchar( '\n' );
+ 4880              		.loc 1 463 0
+ 4881 1a44 90049FE5 		ldr	r0, .L125+40
+ 4882 1a48 FEFFFFEB 		bl	uart0_puts
+ 4883 1a4c 0A00A0E3 		mov	r0, #10
+ 4884 1a50 FEFFFFEB 		bl	uart0_putchar
+ 4885 1a54 010000EA 		b	.L110
+ 4886              	.L109:
+ 466:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 4887              		.loc 1 466 0
+ 4888 1a58 80049FE5 		ldr	r0, .L125+44
+ 4889 1a5c FEFFFFEB 		bl	uart0_puts
+ 4890              	.L110:
+ 466:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 4891              		.loc 1 466 0 is_stmt 0 discriminator 1
+ 4892 1a60 0A00A0E3 		mov	r0, #10
+ 4893 1a64 FEFFFFEB 		bl	uart0_putchar
+ 467:../proyecto.c **** 			return;
+ 4894              		.loc 1 467 0 is_stmt 1 discriminator 1
+ 4895 1a68 0E0100EA 		b	.L100
+ 4896              	.L101:
+ 470:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 4897              		.loc 1 470 0
+ 4898 1a6c 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 4899 1a70 010053E3 		cmp	r3, #1
+ 4900 1a74 0301001A 		bne	.L112
+ 471:../proyecto.c **** 			lcd_clear();
+ 4901              		.loc 1 471 0
+ 4902 1a78 FEFFFFEB 		bl	lcd_clear
+ 473:../proyecto.c **** 			uart0_puts( "Escriba el Nombre del nuevo Producto: " );uart0_putchar( '\n' );
+ 4903              		.loc 1 473 0
+ 4904 1a7c 60049FE5 		ldr	r0, .L125+48
+ 4905 1a80 FEFFFFEB 		bl	uart0_puts
+ 4906 1a84 0A00A0E3 		mov	r0, #10
+ 4907 1a88 FEFFFFEB 		bl	uart0_putchar
+ 474:../proyecto.c **** 			uart0_gets( nombre );
+ 4908              		.loc 1 474 0
+ 4909 1a8c 44304BE2 		sub	r3, fp, #68
+ 4910 1a90 0300A0E1 		mov	r0, r3
+ 4911 1a94 FEFFFFEB 		bl	uart0_gets
+ 477:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4912              		.loc 1 477 0
+ 4913 1a98 0030A0E3 		mov	r3, #0
+ 4914 1a9c 14300BE5 		str	r3, [fp, #-20]
+ 4915 1aa0 340000EA 		b	.L113
+ 4916              	.L119:
+ 478:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4917              		.loc 1 478 0
+ 4918 1aa4 0030A0E3 		mov	r3, #0
+ 4919 1aa8 18300BE5 		str	r3, [fp, #-24]
+ 4920 1aac 280000EA 		b	.L114
+ 4921              	.L117:
+ 479:../proyecto.c **** 					strcpy(nombrelista, verduras[i][j].nombre);
+ 4922              		.loc 1 479 0
+ 4923 1ab0 18301BE5 		ldr	r3, [fp, #-24]
+ 4924 1ab4 0320A0E1 		mov	r2, r3
+ 4925 1ab8 0221A0E1 		mov	r2, r2, asl #2
+ 4926 1abc 032082E0 		add	r2, r2, r3
+ 4927 1ac0 8220A0E1 		mov	r2, r2, asl #1
+ 4928 1ac4 032082E0 		add	r2, r2, r3
+ 4929 1ac8 8230A0E1 		mov	r3, r2, asl #1
+ 4930 1acc 0320A0E1 		mov	r2, r3
+ 4931 1ad0 14101BE5 		ldr	r1, [fp, #-20]
+ 4932 1ad4 0130A0E1 		mov	r3, r1
+ 4933 1ad8 0331A0E1 		mov	r3, r3, asl #2
+ 4934 1adc 013083E0 		add	r3, r3, r1
+ 4935 1ae0 8330A0E1 		mov	r3, r3, asl #1
+ 4936 1ae4 013083E0 		add	r3, r3, r1
+ 4937 1ae8 0332A0E1 		mov	r3, r3, asl #4
+ 4938 1aec 032082E0 		add	r2, r2, r3
+ 4939 1af0 F0339FE5 		ldr	r3, .L125+52
+ 4940 1af4 033082E0 		add	r3, r2, r3
+ 4941 1af8 30204BE2 		sub	r2, fp, #48
+ 4942 1afc 0200A0E1 		mov	r0, r2
+ 4943 1b00 0310A0E1 		mov	r1, r3
+ 4944 1b04 FEFFFFEB 		bl	strcpy
+ 480:../proyecto.c **** 					if ((strcmp(nombre,nombrelista)) == 0){
+ 4945              		.loc 1 480 0
+ 4946 1b08 44204BE2 		sub	r2, fp, #68
+ 4947 1b0c 30304BE2 		sub	r3, fp, #48
+ 4948 1b10 0200A0E1 		mov	r0, r2
+ 4949 1b14 0310A0E1 		mov	r1, r3
+ 4950 1b18 FEFFFFEB 		bl	strcmp
+ 4951 1b1c 0030A0E1 		mov	r3, r0
+ 4952 1b20 000053E3 		cmp	r3, #0
+ 4953 1b24 0700001A 		bne	.L115
+ 481:../proyecto.c **** 						encontrado = 1;
+ 4954              		.loc 1 481 0
+ 4955 1b28 0130A0E3 		mov	r3, #1
+ 4956 1b2c 0D304BE5 		strb	r3, [fp, #-13]
+ 482:../proyecto.c **** 						i--;
+ 4957              		.loc 1 482 0
+ 4958 1b30 14301BE5 		ldr	r3, [fp, #-20]
+ 4959 1b34 013043E2 		sub	r3, r3, #1
+ 4960 1b38 14300BE5 		str	r3, [fp, #-20]
+ 483:../proyecto.c **** 						j--;
+ 4961              		.loc 1 483 0
+ 4962 1b3c 18301BE5 		ldr	r3, [fp, #-24]
+ 4963 1b40 013043E2 		sub	r3, r3, #1
+ 4964 1b44 18300BE5 		str	r3, [fp, #-24]
+ 4965              	.L115:
+ 478:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4966              		.loc 1 478 0
+ 4967 1b48 18301BE5 		ldr	r3, [fp, #-24]
+ 4968 1b4c 013083E2 		add	r3, r3, #1
+ 4969 1b50 18300BE5 		str	r3, [fp, #-24]
+ 4970              	.L114:
+ 478:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4971              		.loc 1 478 0 is_stmt 0 discriminator 1
+ 4972 1b54 18301BE5 		ldr	r3, [fp, #-24]
+ 4973 1b58 070053E3 		cmp	r3, #7
+ 4974 1b5c 020000CA 		bgt	.L116
+ 478:../proyecto.c **** 				for(j = 0; j < 8 && encontrado == 0; j++ ){
+ 4975              		.loc 1 478 0 discriminator 2
+ 4976 1b60 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4977 1b64 000053E3 		cmp	r3, #0
+ 4978 1b68 D0FFFF0A 		beq	.L117
+ 4979              	.L116:
+ 477:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4980              		.loc 1 477 0 is_stmt 1
+ 4981 1b6c 14301BE5 		ldr	r3, [fp, #-20]
+ 4982 1b70 013083E2 		add	r3, r3, #1
+ 4983 1b74 14300BE5 		str	r3, [fp, #-20]
+ 4984              	.L113:
+ 477:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4985              		.loc 1 477 0 is_stmt 0 discriminator 1
+ 4986 1b78 14301BE5 		ldr	r3, [fp, #-20]
+ 4987 1b7c 030053E3 		cmp	r3, #3
+ 4988 1b80 020000CA 		bgt	.L118
+ 477:../proyecto.c **** 			for(i=0; i < 4 && encontrado == 0; i++)
+ 4989              		.loc 1 477 0 discriminator 2
+ 4990 1b84 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4991 1b88 000053E3 		cmp	r3, #0
+ 4992 1b8c C4FFFF0A 		beq	.L119
+ 4993              	.L118:
+ 486:../proyecto.c **** 			if (encontrado == 1){
+ 4994              		.loc 1 486 0 is_stmt 1
+ 4995 1b90 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 4996 1b94 010053E3 		cmp	r3, #1
+ 4997 1b98 B500001A 		bne	.L120
+ 487:../proyecto.c **** 				strcpy(verduras[i][j].nombre, verduras[countV/8][countV%8].nombre); //copiamos el nombre
+ 4998              		.loc 1 487 0
+ 4999 1b9c 18301BE5 		ldr	r3, [fp, #-24]
+ 5000 1ba0 0320A0E1 		mov	r2, r3
+ 5001 1ba4 0221A0E1 		mov	r2, r2, asl #2
+ 5002 1ba8 032082E0 		add	r2, r2, r3
+ 5003 1bac 8220A0E1 		mov	r2, r2, asl #1
+ 5004 1bb0 032082E0 		add	r2, r2, r3
+ 5005 1bb4 8230A0E1 		mov	r3, r2, asl #1
+ 5006 1bb8 0320A0E1 		mov	r2, r3
+ 5007 1bbc 14101BE5 		ldr	r1, [fp, #-20]
+ 5008 1bc0 0130A0E1 		mov	r3, r1
+ 5009 1bc4 0331A0E1 		mov	r3, r3, asl #2
+ 5010 1bc8 013083E0 		add	r3, r3, r1
+ 5011 1bcc 8330A0E1 		mov	r3, r3, asl #1
+ 5012 1bd0 013083E0 		add	r3, r3, r1
+ 5013 1bd4 0332A0E1 		mov	r3, r3, asl #4
+ 5014 1bd8 032082E0 		add	r2, r2, r3
+ 5015 1bdc 04339FE5 		ldr	r3, .L125+52
+ 5016 1be0 030082E0 		add	r0, r2, r3
+ 5017 1be4 00339FE5 		ldr	r3, .L125+56
+ 5018 1be8 003093E5 		ldr	r3, [r3, #0]
+ 5019 1bec 072083E2 		add	r2, r3, #7
+ 5020 1bf0 000053E3 		cmp	r3, #0
+ 5021 1bf4 0230A0B1 		movlt	r3, r2
+ 5022 1bf8 C331A0E1 		mov	r3, r3, asr #3
+ 5023 1bfc 0310A0E1 		mov	r1, r3
+ 5024 1c00 E4329FE5 		ldr	r3, .L125+56
+ 5025 1c04 002093E5 		ldr	r2, [r3, #0]
+ 5026 1c08 C23FA0E1 		mov	r3, r2, asr #31
+ 5027 1c0c A33EA0E1 		mov	r3, r3, lsr #29
+ 5028 1c10 032082E0 		add	r2, r2, r3
+ 5029 1c14 072002E2 		and	r2, r2, #7
+ 5030 1c18 023063E0 		rsb	r3, r3, r2
+ 5031 1c1c 0320A0E1 		mov	r2, r3
+ 5032 1c20 0221A0E1 		mov	r2, r2, asl #2
+ 5033 1c24 032082E0 		add	r2, r2, r3
+ 5034 1c28 8220A0E1 		mov	r2, r2, asl #1
+ 5035 1c2c 032082E0 		add	r2, r2, r3
+ 5036 1c30 8230A0E1 		mov	r3, r2, asl #1
+ 5037 1c34 0320A0E1 		mov	r2, r3
+ 5038 1c38 0130A0E1 		mov	r3, r1
+ 5039 1c3c 0331A0E1 		mov	r3, r3, asl #2
+ 5040 1c40 013083E0 		add	r3, r3, r1
+ 5041 1c44 8330A0E1 		mov	r3, r3, asl #1
+ 5042 1c48 013083E0 		add	r3, r3, r1
+ 5043 1c4c 0332A0E1 		mov	r3, r3, asl #4
+ 5044 1c50 032082E0 		add	r2, r2, r3
+ 5045 1c54 8C329FE5 		ldr	r3, .L125+52
+ 5046 1c58 033082E0 		add	r3, r2, r3
+ 5047 1c5c 0310A0E1 		mov	r1, r3
+ 5048 1c60 FEFFFFEB 		bl	strcpy
+ 488:../proyecto.c **** 				verduras[i][j].precio = verduras[countV/8][countV%8].precio; //copiamos el precio
+ 5049              		.loc 1 488 0
+ 5050 1c64 80329FE5 		ldr	r3, .L125+56
+ 5051 1c68 003093E5 		ldr	r3, [r3, #0]
+ 5052 1c6c 072083E2 		add	r2, r3, #7
+ 5053 1c70 000053E3 		cmp	r3, #0
+ 5054 1c74 0230A0B1 		movlt	r3, r2
+ 5055 1c78 C331A0E1 		mov	r3, r3, asr #3
+ 5056 1c7c 0310A0E1 		mov	r1, r3
+ 5057 1c80 64329FE5 		ldr	r3, .L125+56
+ 5058 1c84 002093E5 		ldr	r2, [r3, #0]
+ 5059 1c88 C23FA0E1 		mov	r3, r2, asr #31
+ 5060 1c8c A33EA0E1 		mov	r3, r3, lsr #29
+ 5061 1c90 032082E0 		add	r2, r2, r3
+ 5062 1c94 072002E2 		and	r2, r2, #7
+ 5063 1c98 023063E0 		rsb	r3, r3, r2
+ 5064 1c9c 44C29FE5 		ldr	ip, .L125+52
+ 5065 1ca0 1000A0E3 		mov	r0, #16
+ 5066 1ca4 0320A0E1 		mov	r2, r3
+ 5067 1ca8 0221A0E1 		mov	r2, r2, asl #2
+ 5068 1cac 032082E0 		add	r2, r2, r3
+ 5069 1cb0 8220A0E1 		mov	r2, r2, asl #1
+ 5070 1cb4 032082E0 		add	r2, r2, r3
+ 5071 1cb8 8230A0E1 		mov	r3, r2, asl #1
+ 5072 1cbc 0320A0E1 		mov	r2, r3
+ 5073 1cc0 0130A0E1 		mov	r3, r1
+ 5074 1cc4 0331A0E1 		mov	r3, r3, asl #2
+ 5075 1cc8 013083E0 		add	r3, r3, r1
+ 5076 1ccc 8330A0E1 		mov	r3, r3, asl #1
+ 5077 1cd0 013083E0 		add	r3, r3, r1
+ 5078 1cd4 0332A0E1 		mov	r3, r3, asl #4
+ 5079 1cd8 033082E0 		add	r3, r2, r3
+ 5080 1cdc 03308CE0 		add	r3, ip, r3
+ 5081 1ce0 003083E0 		add	r3, r3, r0
+ 5082 1ce4 B400D3E1 		ldrh	r0, [r3, #4]
+ 5083 1ce8 F8E19FE5 		ldr	lr, .L125+52
+ 5084 1cec 18301BE5 		ldr	r3, [fp, #-24]
+ 5085 1cf0 14101BE5 		ldr	r1, [fp, #-20]
+ 5086 1cf4 10C0A0E3 		mov	ip, #16
+ 5087 1cf8 0320A0E1 		mov	r2, r3
+ 5088 1cfc 0221A0E1 		mov	r2, r2, asl #2
+ 5089 1d00 032082E0 		add	r2, r2, r3
+ 5090 1d04 8220A0E1 		mov	r2, r2, asl #1
+ 5091 1d08 032082E0 		add	r2, r2, r3
+ 5092 1d0c 8230A0E1 		mov	r3, r2, asl #1
+ 5093 1d10 0320A0E1 		mov	r2, r3
+ 5094 1d14 0130A0E1 		mov	r3, r1
+ 5095 1d18 0331A0E1 		mov	r3, r3, asl #2
+ 5096 1d1c 013083E0 		add	r3, r3, r1
+ 5097 1d20 8330A0E1 		mov	r3, r3, asl #1
+ 5098 1d24 013083E0 		add	r3, r3, r1
+ 5099 1d28 0332A0E1 		mov	r3, r3, asl #4
+ 5100 1d2c 033082E0 		add	r3, r2, r3
+ 5101 1d30 03308EE0 		add	r3, lr, r3
+ 5102 1d34 0C3083E0 		add	r3, r3, ip
+ 5103 1d38 B400C3E1 		strh	r0, [r3, #4]	@ movhi
+ 489:../proyecto.c **** 				strcpy(verduras[countV/8][countV%8].nombre, " "); //Esperemos que no pete D:
+ 5104              		.loc 1 489 0
+ 5105 1d3c A8319FE5 		ldr	r3, .L125+56
+ 5106 1d40 003093E5 		ldr	r3, [r3, #0]
+ 5107 1d44 072083E2 		add	r2, r3, #7
+ 5108 1d48 000053E3 		cmp	r3, #0
+ 5109 1d4c 0230A0B1 		movlt	r3, r2
+ 5110 1d50 C331A0E1 		mov	r3, r3, asr #3
+ 5111 1d54 0310A0E1 		mov	r1, r3
+ 5112 1d58 8C319FE5 		ldr	r3, .L125+56
+ 5113 1d5c 002093E5 		ldr	r2, [r3, #0]
+ 5114 1d60 C23FA0E1 		mov	r3, r2, asr #31
+ 5115 1d64 A33EA0E1 		mov	r3, r3, lsr #29
+ 5116 1d68 032082E0 		add	r2, r2, r3
+ 5117 1d6c 072002E2 		and	r2, r2, #7
+ 5118 1d70 023063E0 		rsb	r3, r3, r2
+ 5119 1d74 0320A0E1 		mov	r2, r3
+ 5120 1d78 0221A0E1 		mov	r2, r2, asl #2
+ 5121 1d7c 032082E0 		add	r2, r2, r3
+ 5122 1d80 8220A0E1 		mov	r2, r2, asl #1
+ 5123 1d84 032082E0 		add	r2, r2, r3
+ 5124 1d88 8230A0E1 		mov	r3, r2, asl #1
+ 5125 1d8c 0320A0E1 		mov	r2, r3
+ 5126 1d90 0130A0E1 		mov	r3, r1
+ 5127 1d94 0331A0E1 		mov	r3, r3, asl #2
+ 5128 1d98 013083E0 		add	r3, r3, r1
+ 5129 1d9c 8330A0E1 		mov	r3, r3, asl #1
+ 5130 1da0 013083E0 		add	r3, r3, r1
+ 5131 1da4 0332A0E1 		mov	r3, r3, asl #4
+ 5132 1da8 032082E0 		add	r2, r2, r3
+ 5133 1dac 34319FE5 		ldr	r3, .L125+52
+ 5134 1db0 033082E0 		add	r3, r2, r3
+ 5135 1db4 0300A0E1 		mov	r0, r3
+ 5136 1db8 18119FE5 		ldr	r1, .L125+36
+ 5137 1dbc 0220A0E3 		mov	r2, #2
+ 5138 1dc0 FEFFFFEB 		bl	memcpy
+ 490:../proyecto.c **** 				verduras[countV/8][countV%8].precio = 0;
+ 5139              		.loc 1 490 0
+ 5140 1dc4 20319FE5 		ldr	r3, .L125+56
+ 5141 1dc8 003093E5 		ldr	r3, [r3, #0]
+ 5142 1dcc 072083E2 		add	r2, r3, #7
+ 5143 1dd0 000053E3 		cmp	r3, #0
+ 5144 1dd4 0230A0B1 		movlt	r3, r2
+ 5145 1dd8 C331A0E1 		mov	r3, r3, asr #3
+ 5146 1ddc 0310A0E1 		mov	r1, r3
+ 5147 1de0 04319FE5 		ldr	r3, .L125+56
+ 5148 1de4 002093E5 		ldr	r2, [r3, #0]
+ 5149 1de8 C23FA0E1 		mov	r3, r2, asr #31
+ 5150 1dec A33EA0E1 		mov	r3, r3, lsr #29
+ 5151 1df0 032082E0 		add	r2, r2, r3
+ 5152 1df4 072002E2 		and	r2, r2, #7
+ 5153 1df8 023063E0 		rsb	r3, r3, r2
+ 5154 1dfc E4C09FE5 		ldr	ip, .L125+52
+ 5155 1e00 1000A0E3 		mov	r0, #16
+ 5156 1e04 0320A0E1 		mov	r2, r3
+ 5157 1e08 0221A0E1 		mov	r2, r2, asl #2
+ 5158 1e0c 032082E0 		add	r2, r2, r3
+ 5159 1e10 8220A0E1 		mov	r2, r2, asl #1
+ 5160 1e14 032082E0 		add	r2, r2, r3
+ 5161 1e18 8230A0E1 		mov	r3, r2, asl #1
+ 5162 1e1c 0320A0E1 		mov	r2, r3
+ 5163 1e20 0130A0E1 		mov	r3, r1
+ 5164 1e24 0331A0E1 		mov	r3, r3, asl #2
+ 5165 1e28 013083E0 		add	r3, r3, r1
+ 5166 1e2c 8330A0E1 		mov	r3, r3, asl #1
+ 5167 1e30 013083E0 		add	r3, r3, r1
+ 5168 1e34 0332A0E1 		mov	r3, r3, asl #4
+ 5169 1e38 033082E0 		add	r3, r2, r3
+ 5170 1e3c 03308CE0 		add	r3, ip, r3
+ 5171 1e40 003083E0 		add	r3, r3, r0
+ 5172 1e44 0020A0E3 		mov	r2, #0
+ 5173 1e48 B420C3E1 		strh	r2, [r3, #4]	@ movhi
+ 491:../proyecto.c **** 				countV--;
+ 5174              		.loc 1 491 0
+ 5175 1e4c 98309FE5 		ldr	r3, .L125+56
+ 5176 1e50 003093E5 		ldr	r3, [r3, #0]
+ 5177 1e54 012043E2 		sub	r2, r3, #1
+ 5178 1e58 8C309FE5 		ldr	r3, .L125+56
+ 5179 1e5c 002083E5 		str	r2, [r3, #0]
+ 492:../proyecto.c **** 				uart0_puts( "-------Producto Borrado--------" );uart0_putchar( '\n' );
+ 5180              		.loc 1 492 0
+ 5181 1e60 74009FE5 		ldr	r0, .L125+40
+ 5182 1e64 FEFFFFEB 		bl	uart0_puts
+ 5183 1e68 0A00A0E3 		mov	r0, #10
+ 5184 1e6c FEFFFFEB 		bl	uart0_putchar
+ 5185 1e70 010000EA 		b	.L121
+ 5186              	.L120:
+ 495:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 5187              		.loc 1 495 0
+ 5188 1e74 64009FE5 		ldr	r0, .L125+44
+ 5189 1e78 FEFFFFEB 		bl	uart0_puts
+ 5190              	.L121:
+ 495:../proyecto.c **** 				uart0_puts( "-----Producto no encontrado------" );uart0_putchar( '\n' );
+ 5191              		.loc 1 495 0 is_stmt 0 discriminator 1
+ 5192 1e7c 0A00A0E3 		mov	r0, #10
+ 5193 1e80 FEFFFFEB 		bl	uart0_putchar
+ 496:../proyecto.c **** 			return;
+ 5194              		.loc 1 496 0 is_stmt 1 discriminator 1
+ 5195 1e84 070000EA 		b	.L100
+ 5196              	.L112:
+ 498:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2){
+ 5197              		.loc 1 498 0
+ 5198 1e88 19305BE5 		ldrb	r3, [fp, #-25]	@ zero_extendqisi2
+ 5199 1e8c 020053E3 		cmp	r3, #2
+ 5200 1e90 EAFDFF1A 		bne	.L124
+ 499:../proyecto.c **** 			uart0_puts( "----------Cancelado-----------" );uart0_putchar( '\n' );
+ 5201              		.loc 1 499 0
+ 5202 1e94 54009FE5 		ldr	r0, .L125+60
+ 5203 1e98 FEFFFFEB 		bl	uart0_puts
+ 5204 1e9c 0A00A0E3 		mov	r0, #10
+ 5205 1ea0 FEFFFFEB 		bl	uart0_putchar
+ 500:../proyecto.c **** 			return;
+ 5206              		.loc 1 500 0
+ 5207 1ea4 0000A0E1 		mov	r0, r0	@ nop
+ 5208              	.L100:
+ 503:../proyecto.c **** 
+ 504:../proyecto.c **** }
+ 5209              		.loc 1 504 0
+ 5210 1ea8 0CD04BE2 		sub	sp, fp, #12
+ 5211 1eac 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 5212 1eb0 1EFF2FE1 		bx	lr
+ 5213              	.L126:
+ 5214              		.align	2
+ 5215              	.L125:
+ 5216 1eb4 10010000 		.word	.LC15
+ 5217 1eb8 1C010000 		.word	.LC16
+ 5218 1ebc 2C010000 		.word	.LC17
+ 5219 1ec0 70020000 		.word	.LC28
+ 5220 1ec4 94020000 		.word	.LC29
+ 5221 1ec8 B0020000 		.word	.LC30
+ 5222 1ecc D0020000 		.word	.LC31
+ 5223 1ed0 00000000 		.word	frutas
+ 5224 1ed4 00000000 		.word	countF
+ 5225 1ed8 FC020000 		.word	.LC32
+ 5226 1edc 00030000 		.word	.LC33
+ 5227 1ee0 20030000 		.word	.LC34
+ 5228 1ee4 6C000000 		.word	.LC11
+ 5229 1ee8 00000000 		.word	verduras
+ 5230 1eec 00000000 		.word	countV
+ 5231 1ef0 AC010000 		.word	.LC21
+ 5232              		.cfi_endproc
+ 5233              	.LFE12:
+ 5235              		.section	.rodata
+ 5236 0342 0000     		.align	2
+ 5237              	.LC35:
+ 5238 0344 2030202D 		.ascii	" 0 - A\361adir producto\000"
+ 5238      2041F161 
+ 5238      64697220 
+ 5238      70726F64 
+ 5238      7563746F 
+ 5239 0359 000000   		.align	2
+ 5240              	.LC36:
+ 5241 035c 2031202D 		.ascii	" 1 - Borrar producto\000"
+ 5241      20426F72 
+ 5241      72617220 
+ 5241      70726F64 
+ 5241      7563746F 
+ 5242              		.text
+ 5243              		.align	2
+ 5244              		.global	modo_admin
+ 5246              	modo_admin:
+ 5247              	.LFB13:
+ 505:../proyecto.c **** 
+ 506:../proyecto.c **** void modo_admin(){
+ 5248              		.loc 1 506 0
+ 5249              		.cfi_startproc
+ 5250              		@ Function supports interworking.
+ 5251              		@ args = 0, pretend = 0, frame = 8
+ 5252              		@ frame_needed = 1, uses_anonymous_args = 0
+ 5253 1ef4 0DC0A0E1 		mov	ip, sp
+ 5254              	.LCFI26:
+ 5255              		.cfi_def_cfa_register 12
+ 5256 1ef8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 5257 1efc 04B04CE2 		sub	fp, ip, #4
+ 5258              		.cfi_offset 14, -8
+ 5259              		.cfi_offset 13, -12
+ 5260              		.cfi_offset 11, -16
+ 5261              	.LCFI27:
+ 5262              		.cfi_def_cfa 11, 4
+ 5263 1f00 08D04DE2 		sub	sp, sp, #8
+ 507:../proyecto.c **** 	lcd_clear();
+ 5264              		.loc 1 507 0
+ 5265 1f04 FEFFFFEB 		bl	lcd_clear
+ 508:../proyecto.c **** 	//mostrar por lcd:
+ 509:../proyecto.c **** 	uint8 scancode;
+ 510:../proyecto.c **** 	lcd_puts_x2(7, 50,BLACK," 0 - Añadir producto");
+ 5266              		.loc 1 510 0
+ 5267 1f08 0700A0E3 		mov	r0, #7
+ 5268 1f0c 3210A0E3 		mov	r1, #50
+ 5269 1f10 0F20A0E3 		mov	r2, #15
+ 5270 1f14 80309FE5 		ldr	r3, .L134
+ 5271 1f18 FEFFFFEB 		bl	lcd_puts_x2
+ 511:../proyecto.c **** 	lcd_puts_x2(7,110,BLACK," 1 - Borrar producto");
+ 5272              		.loc 1 511 0
+ 5273 1f1c 0700A0E3 		mov	r0, #7
+ 5274 1f20 6E10A0E3 		mov	r1, #110
+ 5275 1f24 0F20A0E3 		mov	r2, #15
+ 5276 1f28 70309FE5 		ldr	r3, .L134+4
+ 5277 1f2c FEFFFFEB 		bl	lcd_puts_x2
+ 512:../proyecto.c **** 	lcd_puts_x2(7,170,BLACK," 2 - Cancelar");
+ 5278              		.loc 1 512 0
+ 5279 1f30 0700A0E3 		mov	r0, #7
+ 5280 1f34 AA10A0E3 		mov	r1, #170
+ 5281 1f38 0F20A0E3 		mov	r2, #15
+ 5282 1f3c 60309FE5 		ldr	r3, .L134+8
+ 5283 1f40 FEFFFFEB 		bl	lcd_puts_x2
+ 5284 1f44 000000EA 		b	.L132
+ 5285              	.L133:
+ 513:../proyecto.c **** 	while (1){
+ 514:../proyecto.c **** 		scancode = keypad_getchar();
+ 515:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 516:../proyecto.c **** 			anadir();
+ 517:../proyecto.c **** 			return;
+ 518:../proyecto.c **** 		}
+ 519:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 520:../proyecto.c **** 			borrar();
+ 521:../proyecto.c **** 			return;
+ 522:../proyecto.c **** 		}
+ 523:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2)
+ 524:../proyecto.c **** 			return;
+ 525:../proyecto.c **** 	}
+ 5286              		.loc 1 525 0
+ 5287 1f48 0000A0E1 		mov	r0, r0	@ nop
+ 5288              	.L132:
+ 514:../proyecto.c **** 		scancode = keypad_getchar();
+ 5289              		.loc 1 514 0
+ 5290 1f4c FEFFFFEB 		bl	keypad_getchar
+ 5291 1f50 0030A0E1 		mov	r3, r0
+ 5292 1f54 0D304BE5 		strb	r3, [fp, #-13]
+ 515:../proyecto.c **** 		if (scancode == KEYPAD_KEY0){
+ 5293              		.loc 1 515 0
+ 5294 1f58 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 5295 1f5c 000053E3 		cmp	r3, #0
+ 5296 1f60 0100001A 		bne	.L128
+ 516:../proyecto.c **** 			anadir();
+ 5297              		.loc 1 516 0
+ 5298 1f64 FEFFFFEB 		bl	anadir
+ 517:../proyecto.c **** 			return;
+ 5299              		.loc 1 517 0
+ 5300 1f68 080000EA 		b	.L127
+ 5301              	.L128:
+ 519:../proyecto.c **** 		else if (scancode == KEYPAD_KEY1){
+ 5302              		.loc 1 519 0
+ 5303 1f6c 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 5304 1f70 010053E3 		cmp	r3, #1
+ 5305 1f74 0100001A 		bne	.L130
+ 520:../proyecto.c **** 			borrar();
+ 5306              		.loc 1 520 0
+ 5307 1f78 FEFFFFEB 		bl	borrar
+ 521:../proyecto.c **** 			return;
+ 5308              		.loc 1 521 0
+ 5309 1f7c 030000EA 		b	.L127
+ 5310              	.L130:
+ 523:../proyecto.c **** 		else if (scancode == KEYPAD_KEY2)
+ 5311              		.loc 1 523 0
+ 5312 1f80 0D305BE5 		ldrb	r3, [fp, #-13]	@ zero_extendqisi2
+ 5313 1f84 020053E3 		cmp	r3, #2
+ 5314 1f88 EEFFFF1A 		bne	.L133
+ 524:../proyecto.c **** 			return;
+ 5315              		.loc 1 524 0
+ 5316 1f8c 0000A0E1 		mov	r0, r0	@ nop
+ 5317              	.L127:
+ 526:../proyecto.c **** }
+ 5318              		.loc 1 526 0
+ 5319 1f90 0CD04BE2 		sub	sp, fp, #12
+ 5320 1f94 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 5321 1f98 1EFF2FE1 		bx	lr
+ 5322              	.L135:
+ 5323              		.align	2
+ 5324              	.L134:
+ 5325 1f9c 44030000 		.word	.LC35
+ 5326 1fa0 5C030000 		.word	.LC36
+ 5327 1fa4 2C010000 		.word	.LC17
+ 5328              		.cfi_endproc
+ 5329              	.LFE13:
+ 5331              		.section	.rodata
+ 5332 0371 000000   		.align	2
+ 5333              	.LC37:
+ 5334 0374 56657264 		.ascii	"Verdura seleccionada\000"
+ 5334      75726120 
+ 5334      73656C65 
+ 5334      6363696F 
+ 5334      6E616461 
+ 5335 0389 000000   		.align	2
+ 5336              	.LC38:
+ 5337 038c 46727574 		.ascii	"Fruta seleccionada\000"
+ 5337      61207365 
+ 5337      6C656363 
+ 5337      696F6E61 
+ 5337      646100
+ 5338 039f 00       		.text
+ 5339              		.align	2
+ 5340              		.global	main
+ 5342              	main:
+ 5343              	.LFB14:
+ 527:../proyecto.c **** 
+ 528:../proyecto.c **** void main( void ){
+ 5344              		.loc 1 528 0
+ 5345              		.cfi_startproc
+ 5346              		@ Function supports interworking.
+ 5347              		@ args = 0, pretend = 0, frame = 16
+ 5348              		@ frame_needed = 1, uses_anonymous_args = 0
+ 5349 1fa8 0DC0A0E1 		mov	ip, sp
+ 5350              	.LCFI28:
+ 5351              		.cfi_def_cfa_register 12
+ 5352 1fac 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 5353 1fb0 04B04CE2 		sub	fp, ip, #4
+ 5354              		.cfi_offset 14, -8
+ 5355              		.cfi_offset 13, -12
+ 5356              		.cfi_offset 11, -16
+ 5357              	.LCFI29:
+ 5358              		.cfi_def_cfa 11, 4
+ 5359 1fb4 10D04DE2 		sub	sp, sp, #16
+ 529:../proyecto.c **** 
+ 530:../proyecto.c **** 	sys_init();
+ 5360              		.loc 1 530 0
+ 5361 1fb8 FEFFFFEB 		bl	sys_init
+ 531:../proyecto.c **** 	uart0_init();
+ 5362              		.loc 1 531 0
+ 5363 1fbc FEFFFFEB 		bl	uart0_init
+ 532:../proyecto.c **** 	lcd_init();
+ 5364              		.loc 1 532 0
+ 5365 1fc0 FEFFFFEB 		bl	lcd_init
+ 533:../proyecto.c **** 	keypad_init();
+ 5366              		.loc 1 533 0
+ 5367 1fc4 FEFFFFEB 		bl	keypad_init
+ 534:../proyecto.c **** 	uart0_init();
+ 5368              		.loc 1 534 0
+ 5369 1fc8 FEFFFFEB 		bl	uart0_init
+ 535:../proyecto.c **** 	timers_init();
+ 5370              		.loc 1 535 0
+ 5371 1fcc FEFFFFEB 		bl	timers_init
+ 536:../proyecto.c **** 
+ 537:../proyecto.c **** 
+ 538:../proyecto.c **** 	uart0_putchar('/n');
+ 5372              		.loc 1 538 0
+ 5373 1fd0 6E00A0E3 		mov	r0, #110
+ 5374 1fd4 FEFFFFEB 		bl	uart0_putchar
+ 539:../proyecto.c **** 	n_ticks = 0;
+ 5375              		.loc 1 539 0
+ 5376 1fd8 64329FE5 		ldr	r3, .L153
+ 5377 1fdc 0020A0E3 		mov	r2, #0
+ 5378 1fe0 002083E5 		str	r2, [r3, #0]
+ 540:../proyecto.c **** 
+ 541:../proyecto.c **** 	timer0_open_ms( isr_timer, 9999, 0 );
+ 5379              		.loc 1 541 0
+ 5380 1fe4 5C029FE5 		ldr	r0, .L153+4
+ 5381 1fe8 5C129FE5 		ldr	r1, .L153+8
+ 5382 1fec 0020A0E3 		mov	r2, #0
+ 5383 1ff0 FEFFFFEB 		bl	timer0_open_ms
+ 542:../proyecto.c **** 
+ 543:../proyecto.c **** 
+ 544:../proyecto.c **** 
+ 545:../proyecto.c **** 	int pantalla;
+ 546:../proyecto.c **** 	int seleccion;
+ 547:../proyecto.c **** 	int i=0,j = 0;
+ 5384              		.loc 1 547 0
+ 5385 1ff4 0030A0E3 		mov	r3, #0
+ 5386 1ff8 14300BE5 		str	r3, [fp, #-20]
+ 5387 1ffc 0030A0E3 		mov	r3, #0
+ 5388 2000 18300BE5 		str	r3, [fp, #-24]
+ 548:../proyecto.c **** 
+ 549:../proyecto.c **** 	lcd_clear();
+ 5389              		.loc 1 549 0
+ 5390 2004 FEFFFFEB 		bl	lcd_clear
+ 550:../proyecto.c **** 	lcd_on();
+ 5391              		.loc 1 550 0
+ 5392 2008 FEFFFFEB 		bl	lcd_on
+ 5393              	.L152:
+ 551:../proyecto.c **** 	while(1){
+ 552:../proyecto.c **** 		pantalla =0;
+ 5394              		.loc 1 552 0
+ 5395 200c 0030A0E3 		mov	r3, #0
+ 5396 2010 10300BE5 		str	r3, [fp, #-16]
+ 553:../proyecto.c **** 		seleccion = frutas_verduras();
+ 5397              		.loc 1 553 0
+ 5398 2014 FEFFFFEB 		bl	frutas_verduras
+ 5399 2018 1C000BE5 		str	r0, [fp, #-28]
+ 554:../proyecto.c **** 
+ 555:../proyecto.c **** 		if(seleccion == 1){
+ 5400              		.loc 1 555 0
+ 5401 201c 1C301BE5 		ldr	r3, [fp, #-28]
+ 5402 2020 010053E3 		cmp	r3, #1
+ 5403 2024 3F00001A 		bne	.L137
+ 556:../proyecto.c **** 			uart0_puts("Verdura seleccionada");
+ 5404              		.loc 1 556 0
+ 5405 2028 20029FE5 		ldr	r0, .L153+12
+ 5406 202c FEFFFFEB 		bl	uart0_puts
+ 557:../proyecto.c **** 			uart0_putchar( '\n' );
+ 5407              		.loc 1 557 0
+ 5408 2030 0A00A0E3 		mov	r0, #10
+ 5409 2034 FEFFFFEB 		bl	uart0_putchar
+ 5410              	.L143:
+ 558:../proyecto.c **** 
+ 559:../proyecto.c **** 			do{
+ 560:../proyecto.c **** 				lcd_putWallpaper(MENU);
+ 5411              		.loc 1 560 0
+ 5412 2038 14029FE5 		ldr	r0, .L153+16
+ 5413 203c FEFFFFEB 		bl	lcd_putWallpaper
+ 561:../proyecto.c **** 				i = writelist_verduras(pantalla,j);
+ 5414              		.loc 1 561 0
+ 5415 2040 10001BE5 		ldr	r0, [fp, #-16]
+ 5416 2044 18101BE5 		ldr	r1, [fp, #-24]
+ 5417 2048 FEFFFFEB 		bl	writelist_verduras
+ 5418 204c 14000BE5 		str	r0, [fp, #-20]
+ 562:../proyecto.c **** 
+ 563:../proyecto.c **** 				if(i==2)
+ 5419              		.loc 1 563 0
+ 5420 2050 14301BE5 		ldr	r3, [fp, #-20]
+ 5421 2054 020053E3 		cmp	r3, #2
+ 5422 2058 0700001A 		bne	.L138
+ 564:../proyecto.c **** 					j = (j+1)%8;
+ 5423              		.loc 1 564 0
+ 5424 205c 18301BE5 		ldr	r3, [fp, #-24]
+ 5425 2060 012083E2 		add	r2, r3, #1
+ 5426 2064 C23FA0E1 		mov	r3, r2, asr #31
+ 5427 2068 A33EA0E1 		mov	r3, r3, lsr #29
+ 5428 206c 032082E0 		add	r2, r2, r3
+ 5429 2070 072002E2 		and	r2, r2, #7
+ 5430 2074 023063E0 		rsb	r3, r3, r2
+ 5431 2078 18300BE5 		str	r3, [fp, #-24]
+ 5432              	.L138:
+ 565:../proyecto.c **** 				if(i==1)
+ 5433              		.loc 1 565 0
+ 5434 207c 14301BE5 		ldr	r3, [fp, #-20]
+ 5435 2080 010053E3 		cmp	r3, #1
+ 5436 2084 0700001A 		bne	.L139
+ 566:../proyecto.c **** 					j = (j-1) %8;
+ 5437              		.loc 1 566 0
+ 5438 2088 18301BE5 		ldr	r3, [fp, #-24]
+ 5439 208c 012043E2 		sub	r2, r3, #1
+ 5440 2090 C23FA0E1 		mov	r3, r2, asr #31
+ 5441 2094 A33EA0E1 		mov	r3, r3, lsr #29
+ 5442 2098 032082E0 		add	r2, r2, r3
+ 5443 209c 072002E2 		and	r2, r2, #7
+ 5444 20a0 023063E0 		rsb	r3, r3, r2
+ 5445 20a4 18300BE5 		str	r3, [fp, #-24]
+ 5446              	.L139:
+ 567:../proyecto.c **** 				if(i==4){ 			// se ha dado a OK
+ 5447              		.loc 1 567 0
+ 5448 20a8 14301BE5 		ldr	r3, [fp, #-20]
+ 5449 20ac 040053E3 		cmp	r3, #4
+ 5450 20b0 0200001A 		bne	.L140
+ 568:../proyecto.c **** 					keypad_wait_any_keyup();
+ 5451              		.loc 1 568 0
+ 5452 20b4 FEFFFFEB 		bl	keypad_wait_any_keyup
+ 569:../proyecto.c **** 					i = 0; //para salir del bucle
+ 5453              		.loc 1 569 0
+ 5454 20b8 0030A0E3 		mov	r3, #0
+ 5455 20bc 14300BE5 		str	r3, [fp, #-20]
+ 5456              	.L140:
+ 570:../proyecto.c **** 				}
+ 571:../proyecto.c **** 				if (i == 5) 		//pantalla anterior
+ 5457              		.loc 1 571 0
+ 5458 20c0 14301BE5 		ldr	r3, [fp, #-20]
+ 5459 20c4 050053E3 		cmp	r3, #5
+ 5460 20c8 0700001A 		bne	.L141
+ 572:../proyecto.c **** 					pantalla = (pantalla-1)%8;
+ 5461              		.loc 1 572 0
+ 5462 20cc 10301BE5 		ldr	r3, [fp, #-16]
+ 5463 20d0 012043E2 		sub	r2, r3, #1
+ 5464 20d4 C23FA0E1 		mov	r3, r2, asr #31
+ 5465 20d8 A33EA0E1 		mov	r3, r3, lsr #29
+ 5466 20dc 032082E0 		add	r2, r2, r3
+ 5467 20e0 072002E2 		and	r2, r2, #7
+ 5468 20e4 023063E0 		rsb	r3, r3, r2
+ 5469 20e8 10300BE5 		str	r3, [fp, #-16]
+ 5470              	.L141:
+ 573:../proyecto.c **** 				if (i == 6)			//siguiente pantalla
+ 5471              		.loc 1 573 0
+ 5472 20ec 14301BE5 		ldr	r3, [fp, #-20]
+ 5473 20f0 060053E3 		cmp	r3, #6
+ 5474 20f4 0700001A 		bne	.L142
+ 574:../proyecto.c **** 					pantalla = (pantalla+1)%8;
+ 5475              		.loc 1 574 0
+ 5476 20f8 10301BE5 		ldr	r3, [fp, #-16]
+ 5477 20fc 012083E2 		add	r2, r3, #1
+ 5478 2100 C23FA0E1 		mov	r3, r2, asr #31
+ 5479 2104 A33EA0E1 		mov	r3, r3, lsr #29
+ 5480 2108 032082E0 		add	r2, r2, r3
+ 5481 210c 072002E2 		and	r2, r2, #7
+ 5482 2110 023063E0 		rsb	r3, r3, r2
+ 5483 2114 10300BE5 		str	r3, [fp, #-16]
+ 5484              	.L142:
+ 575:../proyecto.c **** 			} while( i != 0 );
+ 5485              		.loc 1 575 0
+ 5486 2118 14301BE5 		ldr	r3, [fp, #-20]
+ 5487 211c 000053E3 		cmp	r3, #0
+ 5488 2120 C4FFFF1A 		bne	.L143
+ 576:../proyecto.c **** 		}
+ 577:../proyecto.c **** 
+ 578:../proyecto.c **** 		else if (seleccion == 0){
+ 579:../proyecto.c **** 			uart0_puts("Fruta seleccionada");uart0_putchar( '\n' );
+ 580:../proyecto.c **** 
+ 581:../proyecto.c **** 			do{
+ 582:../proyecto.c **** 				lcd_putWallpaper(MENU);
+ 583:../proyecto.c **** 				i = writelist_frutas(pantalla,j);
+ 584:../proyecto.c **** 
+ 585:../proyecto.c **** 				if(i==2) //busca en la siguiente fila
+ 586:../proyecto.c **** 					j = (j+1)%8;
+ 587:../proyecto.c **** 
+ 588:../proyecto.c **** 				if(i==1) //busca en la fila anterior
+ 589:../proyecto.c **** 					j = (j-1)%8;
+ 590:../proyecto.c **** 				if(i==4){ // se ha dado a ok
+ 591:../proyecto.c **** 					keypad_wait_any_keyup();
+ 592:../proyecto.c **** 					i = 0; //para salir del bucle
+ 593:../proyecto.c **** 				}
+ 594:../proyecto.c **** 				if (i == 5) 		//pantalla anterior
+ 595:../proyecto.c **** 					pantalla = (pantalla-1)%8;
+ 596:../proyecto.c **** 				if (i == 6)			//siguiente pantalla
+ 597:../proyecto.c **** 					pantalla = (pantalla+1)%8;
+ 598:../proyecto.c **** 			} while( i != 0 );
+ 599:../proyecto.c **** 		}
+ 600:../proyecto.c **** 		else{
+ 601:../proyecto.c **** 			uart0_putchar('/n');
+ 602:../proyecto.c **** 			modo_admin();
+ 603:../proyecto.c **** 		}
+ 604:../proyecto.c **** 	}
+ 5489              		.loc 1 604 0
+ 5490 2124 B8FFFFEA 		b	.L152
+ 5491              	.L137:
+ 578:../proyecto.c **** 		else if (seleccion == 0){
+ 5492              		.loc 1 578 0
+ 5493 2128 1C301BE5 		ldr	r3, [fp, #-28]
+ 5494 212c 000053E3 		cmp	r3, #0
+ 5495 2130 3F00001A 		bne	.L145
+ 579:../proyecto.c **** 			uart0_puts("Fruta seleccionada");uart0_putchar( '\n' );
+ 5496              		.loc 1 579 0
+ 5497 2134 1C019FE5 		ldr	r0, .L153+20
+ 5498 2138 FEFFFFEB 		bl	uart0_puts
+ 5499 213c 0A00A0E3 		mov	r0, #10
+ 5500 2140 FEFFFFEB 		bl	uart0_putchar
+ 5501              	.L151:
+ 582:../proyecto.c **** 				lcd_putWallpaper(MENU);
+ 5502              		.loc 1 582 0
+ 5503 2144 08019FE5 		ldr	r0, .L153+16
+ 5504 2148 FEFFFFEB 		bl	lcd_putWallpaper
+ 583:../proyecto.c **** 				i = writelist_frutas(pantalla,j);
+ 5505              		.loc 1 583 0
+ 5506 214c 10001BE5 		ldr	r0, [fp, #-16]
+ 5507 2150 18101BE5 		ldr	r1, [fp, #-24]
+ 5508 2154 FEFFFFEB 		bl	writelist_frutas
+ 5509 2158 14000BE5 		str	r0, [fp, #-20]
+ 585:../proyecto.c **** 				if(i==2) //busca en la siguiente fila
+ 5510              		.loc 1 585 0
+ 5511 215c 14301BE5 		ldr	r3, [fp, #-20]
+ 5512 2160 020053E3 		cmp	r3, #2
+ 5513 2164 0700001A 		bne	.L146
+ 586:../proyecto.c **** 					j = (j+1)%8;
+ 5514              		.loc 1 586 0
+ 5515 2168 18301BE5 		ldr	r3, [fp, #-24]
+ 5516 216c 012083E2 		add	r2, r3, #1
+ 5517 2170 C23FA0E1 		mov	r3, r2, asr #31
+ 5518 2174 A33EA0E1 		mov	r3, r3, lsr #29
+ 5519 2178 032082E0 		add	r2, r2, r3
+ 5520 217c 072002E2 		and	r2, r2, #7
+ 5521 2180 023063E0 		rsb	r3, r3, r2
+ 5522 2184 18300BE5 		str	r3, [fp, #-24]
+ 5523              	.L146:
+ 588:../proyecto.c **** 				if(i==1) //busca en la fila anterior
+ 5524              		.loc 1 588 0
+ 5525 2188 14301BE5 		ldr	r3, [fp, #-20]
+ 5526 218c 010053E3 		cmp	r3, #1
+ 5527 2190 0700001A 		bne	.L147
+ 589:../proyecto.c **** 					j = (j-1)%8;
+ 5528              		.loc 1 589 0
+ 5529 2194 18301BE5 		ldr	r3, [fp, #-24]
+ 5530 2198 012043E2 		sub	r2, r3, #1
+ 5531 219c C23FA0E1 		mov	r3, r2, asr #31
+ 5532 21a0 A33EA0E1 		mov	r3, r3, lsr #29
+ 5533 21a4 032082E0 		add	r2, r2, r3
+ 5534 21a8 072002E2 		and	r2, r2, #7
+ 5535 21ac 023063E0 		rsb	r3, r3, r2
+ 5536 21b0 18300BE5 		str	r3, [fp, #-24]
+ 5537              	.L147:
+ 590:../proyecto.c **** 				if(i==4){ // se ha dado a ok
+ 5538              		.loc 1 590 0
+ 5539 21b4 14301BE5 		ldr	r3, [fp, #-20]
+ 5540 21b8 040053E3 		cmp	r3, #4
+ 5541 21bc 0200001A 		bne	.L148
+ 591:../proyecto.c **** 					keypad_wait_any_keyup();
+ 5542              		.loc 1 591 0
+ 5543 21c0 FEFFFFEB 		bl	keypad_wait_any_keyup
+ 592:../proyecto.c **** 					i = 0; //para salir del bucle
+ 5544              		.loc 1 592 0
+ 5545 21c4 0030A0E3 		mov	r3, #0
+ 5546 21c8 14300BE5 		str	r3, [fp, #-20]
+ 5547              	.L148:
+ 594:../proyecto.c **** 				if (i == 5) 		//pantalla anterior
+ 5548              		.loc 1 594 0
+ 5549 21cc 14301BE5 		ldr	r3, [fp, #-20]
+ 5550 21d0 050053E3 		cmp	r3, #5
+ 5551 21d4 0700001A 		bne	.L149
+ 595:../proyecto.c **** 					pantalla = (pantalla-1)%8;
+ 5552              		.loc 1 595 0
+ 5553 21d8 10301BE5 		ldr	r3, [fp, #-16]
+ 5554 21dc 012043E2 		sub	r2, r3, #1
+ 5555 21e0 C23FA0E1 		mov	r3, r2, asr #31
+ 5556 21e4 A33EA0E1 		mov	r3, r3, lsr #29
+ 5557 21e8 032082E0 		add	r2, r2, r3
+ 5558 21ec 072002E2 		and	r2, r2, #7
+ 5559 21f0 023063E0 		rsb	r3, r3, r2
+ 5560 21f4 10300BE5 		str	r3, [fp, #-16]
+ 5561              	.L149:
+ 596:../proyecto.c **** 				if (i == 6)			//siguiente pantalla
+ 5562              		.loc 1 596 0
+ 5563 21f8 14301BE5 		ldr	r3, [fp, #-20]
+ 5564 21fc 060053E3 		cmp	r3, #6
+ 5565 2200 0700001A 		bne	.L150
+ 597:../proyecto.c **** 					pantalla = (pantalla+1)%8;
+ 5566              		.loc 1 597 0
+ 5567 2204 10301BE5 		ldr	r3, [fp, #-16]
+ 5568 2208 012083E2 		add	r2, r3, #1
+ 5569 220c C23FA0E1 		mov	r3, r2, asr #31
+ 5570 2210 A33EA0E1 		mov	r3, r3, lsr #29
+ 5571 2214 032082E0 		add	r2, r2, r3
+ 5572 2218 072002E2 		and	r2, r2, #7
+ 5573 221c 023063E0 		rsb	r3, r3, r2
+ 5574 2220 10300BE5 		str	r3, [fp, #-16]
+ 5575              	.L150:
+ 598:../proyecto.c **** 			} while( i != 0 );
+ 5576              		.loc 1 598 0
+ 5577 2224 14301BE5 		ldr	r3, [fp, #-20]
+ 5578 2228 000053E3 		cmp	r3, #0
+ 5579 222c C4FFFF1A 		bne	.L151
+ 5580              		.loc 1 604 0
+ 5581 2230 75FFFFEA 		b	.L152
+ 5582              	.L145:
+ 601:../proyecto.c **** 			uart0_putchar('/n');
+ 5583              		.loc 1 601 0
+ 5584 2234 6E00A0E3 		mov	r0, #110
+ 5585 2238 FEFFFFEB 		bl	uart0_putchar
+ 602:../proyecto.c **** 			modo_admin();
+ 5586              		.loc 1 602 0
+ 5587 223c FEFFFFEB 		bl	modo_admin
+ 5588              		.loc 1 604 0
+ 5589 2240 71FFFFEA 		b	.L152
+ 5590              	.L154:
+ 5591              		.align	2
+ 5592              	.L153:
+ 5593 2244 00000000 		.word	n_ticks
+ 5594 2248 00000000 		.word	isr_timer
+ 5595 224c 0F270000 		.word	9999
+ 5596 2250 74030000 		.word	.LC37
+ 5597 2254 0000230C 		.word	203620352
+ 5598 2258 8C030000 		.word	.LC38
+ 5599              		.cfi_endproc
+ 5600              	.LFE14:
+ 5602              		.align	2
+ 5603              		.global	isr_timer
+ 5605              	isr_timer:
+ 5606              	.LFB15:
+ 605:../proyecto.c **** 
+ 606:../proyecto.c **** }
+ 607:../proyecto.c **** 
+ 608:../proyecto.c **** void isr_timer( void ){
+ 5607              		.loc 1 608 0
+ 5608              		.cfi_startproc
+ 5609              		@ Interrupt Service Routine.
+ 5610              		@ args = 0, pretend = 0, frame = 0
+ 5611              		@ frame_needed = 1, uses_anonymous_args = 0
+ 5612 225c 04C02DE5 		str	ip, [sp, #-4]!
+ 5613 2260 0DC0A0E1 		mov	ip, sp
+ 5614              	.LCFI30:
+ 5615              		.cfi_def_cfa_register 12
+ 5616 2264 0FD82DE9 		stmfd	sp!, {r0, r1, r2, r3, fp, ip, lr, pc}
+ 5617 2268 04B04CE2 		sub	fp, ip, #4
+ 5618              		.cfi_offset 14, -8
+ 5619              		.cfi_offset 13, -12
+ 5620              		.cfi_offset 11, -16
+ 5621              		.cfi_offset 3, -20
+ 5622              		.cfi_offset 2, -24
+ 5623              		.cfi_offset 1, -28
+ 5624              		.cfi_offset 0, -32
+ 5625              	.LCFI31:
+ 5626              		.cfi_def_cfa 11, 4
+ 609:../proyecto.c **** 
+ 610:../proyecto.c **** 	if (n_ticks < 3) // si hay menos de 10s se suma 1
+ 5627              		.loc 1 610 0
+ 5628 226c A4309FE5 		ldr	r3, .L160
+ 5629 2270 003093E5 		ldr	r3, [r3, #0]
+ 5630 2274 020053E3 		cmp	r3, #2
+ 5631 2278 050000CA 		bgt	.L156
+ 611:../proyecto.c **** 		n_ticks++;
+ 5632              		.loc 1 611 0
+ 5633 227c 94309FE5 		ldr	r3, .L160
+ 5634 2280 003093E5 		ldr	r3, [r3, #0]
+ 5635 2284 012083E2 		add	r2, r3, #1
+ 5636 2288 88309FE5 		ldr	r3, .L160
+ 5637 228c 002083E5 		str	r2, [r3, #0]
+ 5638 2290 1C0000EA 		b	.L155
+ 5639              	.L156:
+ 5640              	.LBB2:
+ 612:../proyecto.c **** 
+ 613:../proyecto.c **** 	else{
+ 614:../proyecto.c **** 		I_ISPC = BIT_TIMER0;
+ 5641              		.loc 1 614 0
+ 5642 2294 80309FE5 		ldr	r3, .L160+4
+ 5643 2298 022AA0E3 		mov	r2, #8192
+ 5644 229c 002083E5 		str	r2, [r3, #0]
+ 615:../proyecto.c **** 		lcd_savescreen(lcd_aux); //guarda en lcd_aux el estado de la pantalla;
+ 5645              		.loc 1 615 0
+ 5646 22a0 78009FE5 		ldr	r0, .L160+8
+ 5647 22a4 FEFFFFEB 		bl	lcd_savescreen
+ 616:../proyecto.c **** 		while(keypad_scan() == KEYPAD_FAILURE){ //mientras no se pulse ninguna tecla
+ 5648              		.loc 1 616 0
+ 5649 22a8 070000EA 		b	.L158
+ 5650              	.L159:
+ 617:../proyecto.c **** 			lcd_putWallpaper(SP1);
+ 5651              		.loc 1 617 0
+ 5652 22ac 70009FE5 		ldr	r0, .L160+12
+ 5653 22b0 FEFFFFEB 		bl	lcd_putWallpaper
+ 618:../proyecto.c **** 			timer3_delay_s(2);
+ 5654              		.loc 1 618 0
+ 5655 22b4 0200A0E3 		mov	r0, #2
+ 5656 22b8 FEFFFFEB 		bl	timer3_delay_s
+ 619:../proyecto.c **** 			lcd_putWallpaper(SP2);
+ 5657              		.loc 1 619 0
+ 5658 22bc 64009FE5 		ldr	r0, .L160+16
+ 5659 22c0 FEFFFFEB 		bl	lcd_putWallpaper
+ 620:../proyecto.c **** 			timer3_delay_s(2);
+ 5660              		.loc 1 620 0
+ 5661 22c4 0200A0E3 		mov	r0, #2
+ 5662 22c8 FEFFFFEB 		bl	timer3_delay_s
+ 5663              	.L158:
+ 616:../proyecto.c **** 		while(keypad_scan() == KEYPAD_FAILURE){ //mientras no se pulse ninguna tecla
+ 5664              		.loc 1 616 0 discriminator 1
+ 5665 22cc FEFFFFEB 		bl	keypad_scan
+ 5666 22d0 0030A0E1 		mov	r3, r0
+ 5667 22d4 FF0053E3 		cmp	r3, #255
+ 5668 22d8 F3FFFF0A 		beq	.L159
+ 621:../proyecto.c **** 		}
+ 622:../proyecto.c **** 
+ 623:../proyecto.c **** 		lcd_loadscreen(lcd_aux); //muestra por pantalla lo que estaba antes del salvapantallas
+ 5669              		.loc 1 623 0
+ 5670 22dc 3C009FE5 		ldr	r0, .L160+8
+ 5671 22e0 FEFFFFEB 		bl	lcd_loadscreen
+ 624:../proyecto.c **** 		sw_delay_ms(1000);
+ 5672              		.loc 1 624 0
+ 5673 22e4 FA0FA0E3 		mov	r0, #1000
+ 5674 22e8 FEFFFFEB 		bl	sw_delay_ms
+ 625:../proyecto.c **** 		n_ticks = 0;
+ 5675              		.loc 1 625 0
+ 5676 22ec 24309FE5 		ldr	r3, .L160
+ 5677 22f0 0020A0E3 		mov	r2, #0
+ 5678 22f4 002083E5 		str	r2, [r3, #0]
+ 626:../proyecto.c **** 		timer0_open_ms( isr_timer, 10000, 1 );
+ 5679              		.loc 1 626 0
+ 5680 22f8 2C009FE5 		ldr	r0, .L160+20
+ 5681 22fc 2C109FE5 		ldr	r1, .L160+24
+ 5682 2300 0120A0E3 		mov	r2, #1
+ 5683 2304 FEFFFFEB 		bl	timer0_open_ms
+ 5684              	.L155:
+ 5685              	.LBE2:
+ 627:../proyecto.c **** 
+ 628:../proyecto.c **** 	}
+ 629:../proyecto.c **** 
+ 630:../proyecto.c **** }
+ 5686              		.loc 1 630 0
+ 5687 2308 1CD04BE2 		sub	sp, fp, #28
+ 5688 230c 0F689DE8 		ldmfd	sp, {r0, r1, r2, r3, fp, sp, lr}
+ 5689 2310 04C09DE4 		ldmfd	sp!, {ip}
+ 5690 2314 04F05EE2 		subs	pc, lr, #4
+ 5691              	.L161:
+ 5692              		.align	2
+ 5693              	.L160:
+ 5694 2318 00000000 		.word	n_ticks
+ 5695 231c 2400E001 		.word	31457316
+ 5696 2320 00000000 		.word	lcd_aux
+ 5697 2324 0000240C 		.word	203685888
+ 5698 2328 0000250C 		.word	203751424
+ 5699 232c 00000000 		.word	isr_timer
+ 5700 2330 10270000 		.word	10000
+ 5701              		.cfi_endproc
+ 5702              	.LFE15:
+ 5704              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 proyecto.c
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2232   .bss:00000000 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2233   .bss:00000000 lcd_aux
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2239   .bss:00009600 n_ticks
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2246   .data:00000000 countV
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2243   .data:00000000 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2252   .data:00000004 countF
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2258   .data:00000008 verduras
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2336   .data:000002c8 frutas
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2415   .bss:00009604 p
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2418   .rodata:00000000 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2422   .text:00000000 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2425   .text:00000000 lcd_putfix
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2580   .text:000001c8 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2593   .text:000001d0 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2596   .text:000001d0 writelist_verduras
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3611   .text:00000ce4 funcion_peso
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2974   .text:0000064c $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2988   .text:00000658 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:2991   .text:00000658 writelist_frutas
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3369   .text:00000ad4 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3375   .text:00000ae0 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3378   .text:00000ae0 frutas_verduras
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3472   .text:00000bac $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3497   .text:00000bb4 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3500   .text:00000bb4 pantalla_peso
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3597   .text:00000cc4 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3608   .text:00000ce4 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3720   .text:00000e04 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4340   .text:0000142c imprimeticket
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3724   .text:00000e08 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3727   .text:00000e08 strcpy
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3812   .text:00000e98 nuevoAlimento
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3916   .text:00000fb0 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3947   .text:00000fc4 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:3950   .text:00000fc4 anadir
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4233   .text:00001364 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4247   .text:00001390 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4250   .text:00001390 uart0_putfix
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4313   .text:00001428 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4337   .text:0000142c $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4418   .text:000014f4 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4427   .text:0000150c $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4430   .text:0000150c strcmp
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:4526   .text:000015a4 borrar
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5216   .text:00001eb4 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5243   .text:00001ef4 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5246   .text:00001ef4 modo_admin
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5325   .text:00001f9c $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5339   .text:00001fa8 $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5342   .text:00001fa8 main
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5593   .text:00002244 $d
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5605   .text:0000225c isr_timer
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5602   .text:0000225c $a
+C:\Users\USUARI~1\AppData\Local\Temp\ccyIVr3W.s:5694   .text:00002318 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+lcd_putint_x3
+lcd_puts_x3
+lcd_puts
+keypad_scan
+sw_delay_ms
+lcd_clear
+lcd_putWallpaper
+keypad_getchar
+lcd_draw_box
+lcd_draw_hline
+lcd_draw_vline
+lcd_puts_x2
+scale_init
+pbs_init
+lcd_putint_x2
+timer3_delay_ms
+pb_wait_any_keydown
+scale_getWeight
+__aeabi_i2f
+__aeabi_fdiv
+__aeabi_f2d
+__aeabi_dmul
+__aeabi_d2iz
+uart0_puts
+uart0_gets
+uart0_putchar
+uart0_getint
+memcpy
+uart0_putint
+sys_init
+uart0_init
+lcd_init
+keypad_init
+timers_init
+timer0_open_ms
+lcd_on
+keypad_wait_any_keyup
+lcd_savescreen
+timer3_delay_s
+lcd_loadscreen
